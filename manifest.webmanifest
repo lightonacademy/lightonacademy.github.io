@@ -1,0 +1,21 @@
+{
+  "name": "LightOn Academy",
+  "short_name": "LightOn",
+  "description": "LightOn Academy portal for students, parents, sponsors and staff.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#070C33",
+  "theme_color": "#070C33",
+  "categories": ["education"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Register", "short_name": "Register", "url": "./?page=register", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
