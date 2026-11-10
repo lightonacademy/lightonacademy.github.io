@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LightOn">
-<script>document.write('<script src="config.js?v=6.0.2&t='+Date.now()+'"><\/script>');</script>
+<script>document.write('<script src="config.js?v=6.1.1&t='+Date.now()+'"><\/script>');</script>
 <style>
   /* Plus Jakarta Sans (variable, weights 200-800), bundled inside the app — SIL Open Font License 1.1 */
   @font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-display:swap;font-weight:200 800;
@@ -644,7 +644,7 @@ var VIEW_PERM={Overview:null,Leads:['leads.view','leads.edit'],Register:['studen
   Fees:['fees.view','fees.collect'],Finance:['finance.view','finance.edit'],Courses:['courses.manage'],Staff:['staff.manage'],Settings:['settings.manage']};
 var PORTAL_ROLES=['Student','Parent','Sponsor'];
 var ALL_PERMS=['overview.view','leads.view','leads.edit','students.register','students.view','students.edit','sponsors.manage','fees.view','fees.collect','finance.view','finance.edit','courses.manage','courses.teach_all','staff.manage','settings.manage'];
-var CLIENT_VERSION='6.0.0';
+var CLIENT_VERSION='6.1.0';
 function myPermList(){
   if(!S.data) return [];
   if(S.data.perms) return S.data.perms;
@@ -656,8 +656,13 @@ function myPermList(){
 function can(p){ var m=myPermList(); return [].concat(p).some(function(x){ return m.indexOf(x)>=0; }); }
 function versionBanner(){
   if(!S.data||!isStaff()||S.data.version===CLIENT_VERSION) return '';
-  return '<div class="banner"><b>Update not finished.</b> The screens are version '+CLIENT_VERSION+' but the server code is '+(S.data.version?'version '+esc(S.data.version):'an older version')+
-    '. In Apps Script make sure there are only two files — <b>Code.gs</b> and <b>Index.html</b> — paste the new Code.gs, save, then Deploy ▸ Manage deployments ▸ Edit ▸ New version.</div>';
+  var sv=S.data.version||'older', screensOld=S.data.version && S.data.version>CLIENT_VERSION;
+  var how = screensOld
+    ? (IS_PWA ? 'Upload the new <b>index.html</b> and <b>sw.js</b> to your GitHub repository (keep config.js), wait 1–2 minutes, then reload this page.'
+              : 'In Apps Script, paste the new <b>Index.html</b>, save, then Deploy ▸ Manage deployments ▸ ✏ Edit ▸ New version.')
+    : 'In Apps Script, paste the new <b>Code.gs</b> (keep Index.html and Website.gs), save, then Deploy ▸ Manage deployments ▸ ✏ Edit ▸ New version.';
+  return '<div class="banner"><b>Update not finished.</b> The '+(screensOld?'screens':'server code')+' are older: screens version '+CLIENT_VERSION+', server version '+esc(sv)+'. '+how+
+    (screensOld&&IS_PWA?' <button class="btn sm secondary" style="margin-left:6px" onclick="repairApp()">Reload fresh</button>':'')+'</div>';
 }
 function isStaff(){ return S.data && PORTAL_ROLES.indexOf(S.data.user.role)<0; }
 function target(){ return $('view')||$('app'); }
@@ -1180,14 +1185,29 @@ function drawBalances(q){
 function vCourses(){
   loading(); S.courseCache=null;
   getCourses().then(function(r){
-    target().innerHTML='<div class="row" style="align-items:center"><h1 style="flex:2">Courses</h1><div style="flex:0"><button class="btn sm" onclick="editCourse()">＋ New course</button></div></div>'+
+    target().innerHTML='<div class="row" style="align-items:center"><h1 style="flex:2">Courses</h1><div class="actions"><button class="btn sm secondary" id="syncbtn" onclick="syncWebCourses(this)">'+ic('upload')+' Sync from website</button><button class="btn sm" onclick="editCourse()">＋ New course</button></div></div>'+
       (r.courses.length?'<div class="grid">'+r.courses.map(function(c,i){
         var t=r.staff.filter(function(s){return String(s.LoginID).toLowerCase()===String(c.TeacherLogin).toLowerCase();})[0];
-        return '<div class="card"><h3>'+esc(c.CourseName)+'</h3><div class="small muted">'+esc(c.CourseID)+' · '+statusPill(c.Status||'Open')+'</div>'+
+        return '<div class="card"><h3>'+esc(c.CourseName)+'</h3><div class="small muted">'+esc(c.CourseID)+' · '+statusPill(c.Status||'Open')+(c.WebID?' <span class="pill info" title="Linked to the website course &quot;'+esc(c.WebID)+'&quot;">🌐 Website</span>':'')+'</div>'+
           '<div class="small" style="margin-top:6px">Teacher: '+esc(t?t.Name:(c.TeacherLogin||'— not set —'))+'<br>'+d(c.StartDate)+' – '+d(c.EndDate)+'<br>Fee '+money(c.Fee,c.FeeCurrency)+' · '+c.students+' students</div>'+
           '<div style="display:flex;gap:6px;margin-top:10px"><button class="btn sm secondary" onclick="editCourse('+i+')">Edit</button><button class="btn sm secondary" onclick="openCourse(\''+esc(c.CourseID)+'\')">Open class</button></div></div>';
       }).join('')+'</div>':'<div class="card muted">No courses yet. Click “New course”.</div>');
   }).catch(failView);
+}
+function syncWebCourses(btn,withMc){
+  busy(btn,true,'Syncing…');
+  call('apiSyncWebCourses',S.token,{includeMasterclasses:!!withMc}).then(function(r){
+    var list=function(a,f){ return a.length?'<ul class="small" style="margin:4px 0 10px;padding-left:18px">'+a.map(f).join('')+'</ul>':''; };
+    modal('<h3>Website courses synced</h3>'+
+      '<div class="grid" style="margin:10px 0;grid-template-columns:repeat(3,minmax(0,1fr))">'+kpi(r.added.length,'Added','plus','ok')+kpi(r.updated.length,'Updated','check','')+kpi(r.unchanged,'Up to date','book','navy')+'</div>'+
+      (r.added.length?'<b class="small">Added</b>'+list(r.added,function(x){ return '<li>'+esc(x.CourseName)+' <span class="muted">('+esc(x.CourseID)+')</span></li>'; }):'')+
+      (r.updated.length?'<b class="small">Updated</b>'+list(r.updated,function(x){ return '<li>'+esc(x.CourseName)+' <span class="muted">— '+esc(x.fields.join(', '))+'</span></li>'; }):'')+
+      (r.noFee.length?'<div class="banner">These have no price on the website ("Fees on request"). Open each one here and set its fee:'+list(r.noFee,function(x){ return '<li>'+esc(x.CourseName)+'</li>'; })+'</div>':'')+
+      (r.skipped.length?'<p class="small muted">Skipped '+r.skipped.length+' masterclass'+(r.skipped.length===1?'':'es')+' (events, not classes). '+(withMc?'':'<button class="linkbtn" onclick="closeModal();syncWebCourses($(\'syncbtn\'),true)">Include them</button>')+'</p>':'')+
+      '<p class="small muted">Next: open each new course to set the <b>teacher</b> and <b>dates</b>. Syncing again later only updates names, fees, descriptions and open/closed — never your teachers, dates or rules.</p>'+
+      '<button class="btn" onclick="closeModal()">Done</button>');
+    S.courseCache=null; vCourses();
+  }).catch(function(e){ toast(e.message); busy(btn,false,'Sync from website'); });
 }
 function editCourse(i){
   var r=S.courseCache, c=i===undefined?{Status:'Open'}:r.courses[i], isNew=i===undefined;
