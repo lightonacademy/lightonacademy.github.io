@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LightOn">
-<script src="config.js"></script>
+<script>document.write('<script src="config.js?v=6.0.2&t='+Date.now()+'"><\/script>');</script>
 <style>
   /* Plus Jakarta Sans (variable, weights 200-800), bundled inside the app — SIL Open Font License 1.1 */
   @font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-display:swap;font-weight:200 800;
@@ -320,7 +320,7 @@ function isoDay(v){ var x=v?new Date(v):new Date(); return x.getFullYear()+'-'+(
 function pct(v){ return v===null||v===undefined||v===''? '—' : Math.round(v)+'%'; }
 function toast(msg){ var t=document.createElement('div'); t.className='toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(function(){t.remove();},2800); }
 /* Two ways to reach the server: inside Apps Script (google.script.run) or as the installed app (JSON over HTTPS). */
-var IS_PWA = !(window.google && google.script && google.script.run) && !!window.LIGHTON_API;
+var IS_PWA = !(window.google && google.script && google.script.run) && (typeof window.LIGHTON_API!=='undefined' || location.hostname.indexOf('script.google')<0);
 function call(fn){
   var args=[].slice.call(arguments,1);
   var fail=function(rej,m){
@@ -333,8 +333,9 @@ function call(fn){
       google.script.run.withSuccessHandler(res).withFailureHandler(function(e){ fail(rej,(e&&e.message)||String(e)); })[fn].apply(null,args);
       return;
     }
-    if(!window.LIGHTON_API||/PASTE_/.test(window.LIGHTON_API)){ fail(rej,'The app is not connected to the server yet. Put your Apps Script web app URL in config.js.'); return; }
-    fetch(window.LIGHTON_API,{method:'POST',redirect:'follow',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn:fn,args:args})})
+    var api=apiUrl();
+    if(!api){ showNotConnected(); return; }   // screen replaced; leave the request pending
+    fetch(api,{method:'POST',redirect:'follow',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn:fn,args:args})})
       .then(function(r){ if(!r.ok) throw new Error('Server error ('+r.status+')'); return r.json(); })
       .then(function(j){ if(j&&j.ok) res(j.result); else fail(rej,(j&&j.error)||'Unknown server error'); })
       .catch(function(e){ var m=(e&&e.message)||String(e); fail(rej,/fetch|network|load failed/i.test(m)?'Network error — check your internet connection.':m); });
@@ -427,6 +428,30 @@ function accountSheet(){ var u=S.data.user, name=u.name||u.loginId;
   modal('<div style="display:flex;gap:12px;align-items:center">'+avatar(name)+'<div><b>'+esc(name)+'</b><div class="small muted">'+esc(u.role)+' · '+esc(u.loginId)+'</div></div></div>'+
     '<div class="sheetnav" style="margin-top:16px"><button onclick="closeModal();openChangePin()">'+ic('key')+'<span>Change PIN</span></button><button onclick="closeModal();logout()">'+ic('logout')+'<span>Log out</span></button>'+
     (canInstall()?'<button onclick="closeModal();installApp()">'+ic('down')+'<span>Install app</span></button>':'')+'</div>'); }
+
+/* Finds the Apps Script URL in config.js even if it was pasted with extra text around it. */
+function apiUrl(){
+  var raw=String(window.LIGHTON_API||'');
+  var m=raw.match(/https:\/\/script\.google\.com\/(?:a\/[^\/]+\/)?macros\/s\/[A-Za-z0-9_-]+\/exec/);
+  return m?m[0]:'';
+}
+function showNotConnected(){
+  var raw=String(window.LIGHTON_API||'(nothing)'), dev=/\/dev\b/.test(raw);
+  document.body.className='bare';
+  $('app').innerHTML='<div class="auth-form" style="min-height:90vh;margin-top:0"><div class="auth-card"><h1>Not connected yet</h1>'+
+    '<p class="small">The app could not find a valid Apps Script web app address in <b>config.js</b>.</p>'+
+    '<label>What the app sees right now</label><div class="hint" style="word-break:break-all;padding:8px 10px">'+esc(raw.slice(0,160))+'</div>'+
+    (dev?'<p class="err">This is a <b>/dev</b> (test) address. Use the <b>/exec</b> address from Deploy ▸ Manage deployments.</p>':'')+
+    '<p class="small muted" style="margin-top:12px">config.js must contain one line like:<br><code style="font-size:12px;word-break:break-all">window.LIGHTON_API = \'https://script.google.com/macros/s/AKfy…/exec\';</code></p>'+
+    '<p class="small muted">Already fixed it on GitHub? Wait 1–2 minutes, then tap <b>Repair &amp; reload</b> to clear the saved copy on this device.</p>'+
+    '<button class="btn" onclick="repairApp()">Repair &amp; reload</button></div></div>';
+}
+function repairApp(){
+  var jobs=[];
+  try{ if('serviceWorker' in navigator) jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){ return Promise.all(rs.map(function(r){ return r.unregister(); })); })); }catch(e){}
+  try{ if(window.caches) jobs.push(caches.keys().then(function(ks){ return Promise.all(ks.map(function(k){ return caches.delete(k); })); })); }catch(e){}
+  Promise.all(jobs).catch(function(){}).then(function(){ location.replace(location.pathname+'?fresh='+Date.now()+(MODE==='register'?'&page=register':'')); });
+}
 
 /* ---------- installable app (PWA) ---------- */
 var INSTALL=null;
@@ -1727,7 +1752,8 @@ var ACADEMY='<?= academy ?>';
 if(MODE.indexOf('<'+'?')===0) MODE=(new URLSearchParams(location.search).get('page')==='register')?'register':'app';
 if(ACADEMY.indexOf('<'+'?')===0) ACADEMY='LightOn Academy';
 setupPwa();
-if(MODE==='register') renderPublic();
+if(IS_PWA && !apiUrl()) showNotConnected();
+else if(MODE==='register') renderPublic();
 else { S.token=load('lo_token'); if(S.token) boot(); else renderLogin(); }
 </script>
 </body>
