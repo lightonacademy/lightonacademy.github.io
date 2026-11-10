@@ -4,8 +4,8 @@
  * - Requests to the server (Apps Script) are never cached here; the app keeps its own "last saved" copy.
  * Bump VERSION whenever you upload new files so phones pick up the update.
  */
-var VERSION = 'lighton-v6.0.1';
-var SHELL = ['./', 'index.html', 'config.js', 'manifest.webmanifest',
+var VERSION = 'lighton-v6.0.2';
+var SHELL = ['./', 'index.html', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-32.png'];
 
 self.addEventListener('install', function (e) {
@@ -45,7 +45,13 @@ self.addEventListener('fetch', function (e) {
   if (url.hostname.indexOf('google.com') >= 0 || url.hostname.indexOf('googleusercontent.com') >= 0) return;
   if (req.mode === 'navigate') { e.respondWith(networkFirst(req, 'index.html')); return; }
   if (url.origin === location.origin) {
-    if (/config\.js$/.test(url.pathname)) { e.respondWith(networkFirst(req)); return; }
+    if (/config\.js$/.test(url.pathname)) {   // always the latest config (never an old saved copy)
+      e.respondWith(fetch(new Request(req.url, { cache: 'no-store' })).then(function (res) {
+        if (res && res.ok) { var copy = res.clone(); caches.open(VERSION).then(function (c) { c.put('config.js', copy); }); }
+        return res;
+      }).catch(function () { return caches.match('config.js', { ignoreSearch: true }); }));
+      return;
+    }
     e.respondWith(caches.match(req).then(function (r) { return r || networkFirst(req); }));
     return;
   }
