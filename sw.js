@@ -4,7 +4,7 @@
  * - Requests to the server (Apps Script) are never cached here; the app keeps its own "last saved" copy.
  * Bump VERSION whenever you upload new files so phones pick up the update.
  */
-var VERSION = 'lighton-v6.0.0';
+var VERSION = 'lighton-v6.0.1';
 var SHELL = ['./', 'index.html', 'config.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-32.png'];
 
@@ -49,5 +49,5 @@ self.addEventListener('fetch', function (e) {
     e.respondWith(caches.match(req).then(function (r) { return r || networkFirst(req); }));
     return;
   }
-  if (/fonts\.(googleapis|gstatic)\.com$/.test(url.hostname)) e.respondWith(staleWhileRevalidate(req));
+
 });
