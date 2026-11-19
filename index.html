@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LightOn">
-<script>document.write('<script src="config.js?v=6.2.0&t='+Date.now()+'"><\/script>');</script>
+<script>document.write('<script src="config.js?v=6.3.0&t='+Date.now()+'"><\/script>');</script>
 <style>
   /* Plus Jakarta Sans (variable, weights 200-800), bundled inside the app — SIL Open Font License 1.1 */
   @font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-display:swap;font-weight:200 800;
@@ -296,6 +296,52 @@
     .printable .card,.printable .kpi{break-inside:avoid;box-shadow:none}
     .modal-bg{background:none;backdrop-filter:none} .modal{box-shadow:none}
   }
+
+  /* ================= My Growth (v6.3) ================= */
+  .grhero{padding:22px} .grhero h2.grtitle{color:#fff;font-size:21px;line-height:1.3;margin:4px 0 6px;max-width:720px}
+  .grkicker{margin:0;font-size:12px;font-weight:700;letter-spacing:.08em;color:#FFB15C}
+  .grhero .btn.secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)} .grhero .btn.secondary:hover{background:rgba(255,255,255,.08)}
+  .grdone{background:rgba(255,255,255,.08);border-radius:12px;padding:12px;margin-top:12px} .grdone input{background:#fff}
+  .grinbox{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;background:var(--warn-soft);border:1px solid #F8DDB0;border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;cursor:pointer;color:var(--text)}
+  .grweek{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:8px;margin-top:8px}
+  .grday-box{background:var(--line-2);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px;font-size:13px}
+  .grday-box span{font-size:11.5px;font-weight:700;color:var(--muted)}
+  .grday-box.ok{background:var(--ok-soft)} .grday-box.ok span{color:var(--ok)} .grday-box.warn{background:var(--warn-soft)} .grday-box.warn span{color:var(--warn)} .grday-box.bad{background:var(--bad-soft)} .grday-box.bad span{color:var(--bad)}
+  .grai{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:2px;margin:0 !important;cursor:pointer;background:#F7F9FC;border:1px solid var(--line);border-radius:12px;padding:12px}
+  .grcount{width:56px;height:56px;border-radius:14px;background:var(--info-soft);color:var(--info);display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}
+  .grcount b{font-size:19px;line-height:1} .grcount span{font-size:10.5px}
+  .grfab{position:fixed;right:22px;bottom:24px;width:56px;height:56px;border-radius:50%;background:#F57C00;color:#070C33;border:0;box-shadow:0 8px 22px rgba(7,12,51,.28);display:grid;place-items:center;cursor:pointer;z-index:45}
+  .grfab svg{width:26px;height:26px;stroke-width:2.6}
+  .grboard{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 10px;scroll-snap-type:x proximity}
+  .grcol{flex:0 0 272px;background:#E9EDF4;border-radius:14px;padding:10px;min-height:140px;scroll-snap-align:start;align-self:flex-start}
+  .grcol.drop{outline:2px dashed var(--navy-3);background:#E2E8FF}
+  .grcolh{display:flex;justify-content:space-between;align-items:center;margin-bottom:2px}
+  .grcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:8px;box-shadow:var(--shadow)}
+  .grcard[draggable=true]{cursor:grab}
+  .grct{font-weight:600;font-size:14px;line-height:1.35;margin:6px 0 4px;cursor:pointer}
+  .grcb{display:flex;gap:6px;margin-top:8px} .grcb .btn{flex:1}
+  .grcl{display:flex;gap:8px;align-items:center;margin-bottom:6px} .grcl input[type=text]{flex:1;min-height:36px;padding:7px 10px}
+  .grradio{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14px;cursor:pointer}
+  .grradio input{margin-top:4px}
+  .grdaychip{display:inline-flex;gap:6px;align-items:center;margin:0}
+  .grsort{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:12px}
+  .grcomments{border-top:1px solid var(--line-2);margin-top:14px;padding-top:4px} .grcomments .small{padding:6px 0;border-bottom:1px solid var(--line-2)}
+  .grline{position:relative;padding-left:6px}
+  .grstop{position:relative;padding-left:34px}
+  .grstop::before{content:"";position:absolute;left:13px;top:0;bottom:0;width:3px;background:#C9D3E3}
+  .grstop.done::before,.grstop.late::before{background:var(--ok)}
+  .grstop>i{position:absolute;left:5px;top:22px;width:19px;height:19px;border-radius:50%;background:#fff;border:3px solid #9AA8C2;box-sizing:border-box;z-index:1}
+  .grstop.done>i{background:#1B7F3B;border-color:#1B7F3B} .grstop.late>i{background:#C77700;border-color:#C77700} .grstop.next>i{background:#1565D8;border-color:#1565D8} .grstop.now>i{background:#F57C00;border-color:#FFD9B0}
+  .grstop .card{all:unset;box-sizing:border-box;display:block;width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:6px 0;cursor:pointer}
+  .grhere{background:var(--warn-soft);color:#8A4F00;border-radius:12px;padding:10px 12px;margin:8px 0}
+  .grtrain{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:10px;box-shadow:var(--shadow)}
+  .grlab{position:absolute;width:110px;text-align:center;font-size:11.5px;font-weight:600;line-height:1.25;pointer-events:none}
+  .gropt{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:4px;margin:0 !important;cursor:pointer;background:#fff;border:2px solid var(--line);border-radius:12px;padding:12px}
+  .gropt.on{border-color:var(--navy-3);background:var(--info-soft)}
+  .grtoggle{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-2);margin:0;font-weight:500;cursor:pointer}
+  .grtoggle input{width:22px;height:22px}
+  @media (max-width:980px){ .grfab{bottom:calc(84px + env(safe-area-inset-bottom));right:16px} .grcol{flex-basis:84vw} }
+  @media (max-width:600px){ .grsort .btn{padding:0 6px;font-size:12.5px} .grhero h2.grtitle{font-size:19px} }
 </style>
 </head>
 <body class="bare">
@@ -400,9 +446,9 @@ function skel(){ return '<div style="padding-top:8px"><div class="sk" style="hei
 function empty(icn,msg){ return '<div class="empty">'+ic(icn)+'<div>'+msg+'</div></div>'; }
 
 /* ---------- chrome: sidebar, top bar, bottom tabs ---------- */
-var NAV_META={Overview:['home','Overview'],Leads:['inbox','Leads'],Register:['userplus','Register'],Students:['cap','Students'],Sponsors:['heart','Sponsors'],Fees:['receipt','Fees'],Finance:['wallet','Finance'],Courses:['book','Courses'],Website:['globe','Website'],Staff:['users','Staff & roles'],Settings:['cog','Settings']};
-var MOBILE_ORDER=['Overview','Leads','Students','Finance','Fees','Register','Sponsors','Courses','Website','Staff','Settings'];
-var NAV_GROUPS=[['',['Overview']],['Admissions',['Leads','Register','Students','Sponsors']],['Money',['Fees','Finance']],['Academy',['Courses','Website','Staff','Settings']]];
+var NAV_META={Overview:['home','Overview'],Leads:['inbox','Leads'],Register:['userplus','Register'],Students:['cap','Students'],Sponsors:['heart','Sponsors'],Fees:['receipt','Fees'],Finance:['wallet','Finance'],Courses:['book','Courses'],Website:['globe','Website'],Staff:['users','Staff & roles'],Settings:['cog','Settings'],Growth:['target','My Growth']};
+var MOBILE_ORDER=['Overview','Growth','Leads','Students','Finance','Fees','Register','Sponsors','Courses','Website','Staff','Settings'];
+var NAV_GROUPS=[['',['Overview','Growth']],['Admissions',['Leads','Register','Students','Sponsors']],['Money',['Fees','Finance']],['Academy',['Courses','Website','Staff','Settings']]];
 function navBtn(v){ var n=S.data.summary&&S.data.summary.leadStatus&&S.data.summary.leadStatus.New;
   return '<button class="'+(S.view===v?'on':'')+'" onclick="go(\''+v+'\')">'+ic(NAV_META[v][0])+'<span>'+NAV_META[v][1]+'</span>'+(v==='Leads'&&n?'<span class="badge">'+n+'</span>':'')+'</button>'; }
 function chrome(){
@@ -657,10 +703,10 @@ function doSubmit(aid){
 
 /* ---------- STAFF (Teacher + Admin) ---------- */
 var VIEW_PERM={Overview:null,Leads:['leads.view','leads.edit'],Register:['students.register'],Students:['students.view','students.edit'],Sponsors:['sponsors.manage'],
-  Fees:['fees.view','fees.collect'],Finance:['finance.view','finance.edit'],Courses:['courses.manage'],Website:['website.edit'],Staff:['staff.manage'],Settings:['settings.manage']};
+  Fees:['fees.view','fees.collect'],Finance:['finance.view','finance.edit'],Courses:['courses.manage'],Website:['website.edit'],Staff:['staff.manage'],Settings:['settings.manage'],Growth:['growth.activate']};
 var PORTAL_ROLES=['Student','Parent','Sponsor'];
-var ALL_PERMS=['overview.view','leads.view','leads.edit','students.register','students.view','students.edit','sponsors.manage','fees.view','fees.collect','finance.view','finance.edit','courses.manage','courses.teach_all','staff.manage','settings.manage','website.edit'];
-var CLIENT_VERSION='6.2.0';
+var ALL_PERMS=['overview.view','leads.view','leads.edit','students.register','students.view','students.edit','sponsors.manage','fees.view','fees.collect','finance.view','finance.edit','courses.manage','courses.teach_all','staff.manage','settings.manage','website.edit','growth.activate'];
+var CLIENT_VERSION='6.3.0';
 function myPermList(){
   if(!S.data) return [];
   if(S.data.perms) return S.data.perms;
@@ -684,7 +730,7 @@ function isStaff(){ return S.data && PORTAL_ROLES.indexOf(S.data.user.role)<0; }
 function target(){ return $('view')||$('app'); }
 function myViews(){
   if(!isStaff()) return null;
-  var v=Object.keys(VIEW_PERM).filter(function(k){ return !VIEW_PERM[k]||can(VIEW_PERM[k]); });
+  var v=Object.keys(VIEW_PERM).filter(function(k){ return k==='Growth'?growthVisible():(!VIEW_PERM[k]||can(VIEW_PERM[k])); });
   return v.length>1?v:null;
 }
 function renderStaff(){
@@ -694,7 +740,7 @@ function renderStaff(){
   if(views.indexOf(S.view)<0) S.view=views[0];
   chrome();
   $('app').innerHTML=offlineBanner()+'<div id="view"></div>';
-  ({Overview:renderOverview,Leads:vLeads,Register:vRegister,Students:vStudents,Sponsors:vSponsors,Fees:vFees,Finance:vFinance,Courses:vCourses,Website:vWebsite,Staff:vStaff,Settings:vSettings})[S.view]();
+  ({Overview:renderOverview,Leads:vLeads,Register:vRegister,Students:vStudents,Sponsors:vSponsors,Fees:vFees,Finance:vFinance,Courses:vCourses,Website:vWebsite,Staff:vStaff,Settings:vSettings,Growth:vGrowth})[S.view]();
 }
 function go(v){ if(S.offline && v!=='Overview' && v!=='Finance'){ toast('Connect to the internet first.'); return; } S.view=v; S.tab=null; S.studentId=null; window.scrollTo(0,0); if(v==='Overview' && !S.offline) boot(); else renderStaff(); }
 function renderOverview(){
@@ -1910,6 +1956,574 @@ function renderSponsor(){
       '</div>';
   });
   $('app').innerHTML=h+'</div>';
+}
+
+
+/* ---------- MY GROWTH (v6.3) ---------- */
+ICO.flag='<path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/>';
+ICO.route='<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/>';
+ICO.board='<rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/>';
+ICO.lock='<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>';
+ICO.spark='<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>';
+ICO.chat='<path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z"/>';
+ICO.sun='<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+
+var GR_LISTS=['Backlog','This Month','This Week','In Progress','Blocked','Partner Review','Done'];
+var GR_PILL={skills:['Skills','#4B33B5','#EEEAFD'],funding:['Funding','#0B6466','#E0F3F3'],business:['Business','#8A4F00','#FFF0DD'],tech:['Technology','#0E4FA8','#E6F0FD'],content:['Content','#9A1450','#FCE8F0']};
+var GR_LINE={skills:'#5B3FD0',funding:'#0E7C7E',business:'#C26500',tech:'#1565D8',content:'#B0175A'};
+var GR_DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var GR_STATUS_PILL={Done:'ok',Late:'warn',Next:'info',Upcoming:'',Focus:'info',Active:'',Parked:'',Inbox:'warn'};
+
+function growthVisible(){ var g=S.data&&S.data.growth; return !!g && (g.active||g.canActivate||(g.partnerOf&&g.partnerOf.length>0)); }
+function grPill(p){ var m=GR_PILL[p]||GR_PILL.skills; return '<span class="pill" style="background:'+m[2]+';color:'+m[1]+'">'+m[0]+'</span>'; }
+function grOwnerLabel(){ return S.gr&&!S.gr.isOwner?esc(S.gr.owner.name.split(' ')[0])+'\'s':'My'; }
+function grDay(v){ if(!v) return ''; var x=new Date(v); return isNaN(x)?'':x.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'}); }
+function grSameDay(a,b){ a=new Date(a); b=new Date(b); return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate(); }
+function grMonday(d){ var x=new Date(d||new Date()); x=new Date(x.getFullYear(),x.getMonth(),x.getDate()); var w=x.getDay(); x.setDate(x.getDate()-(w===0?6:w-1)); return x; }
+function grCards(list){ return (S.gr.cards||[]).filter(function(c){ return c.List===list; }); }
+function grHours(){ return Math.round((S.gr.cards||[]).filter(function(c){return c.List==='This Week'||c.List==='In Progress';}).reduce(function(t,c){return t+(+c.Hours||0);},0)*10)/10; }
+function grComments(id){ return (S.gr.comments||[]).filter(function(c){ return c.ItemID===id; }); }
+function grGoal(id){ return (S.gr.goals||[]).filter(function(g){ return g.GoalID===id; })[0]; }
+function grErr(e,retry){
+  var m=String(e&&e.message||e);
+  var ob=m.match(/OVER_BUDGET:([\d.]+):([\d.]+)/);
+  if(ob){ if(retry && confirmBox('That takes this week to '+ob[1]+' of your '+ob[2]+' planned hours.\n\nAdd it anyway? (Better: move something to next week first.)')) retry(); return; }
+  toast(m);
+}
+
+function vGrowth(){
+  if(S.grOwner===undefined) S.grOwner='';
+  if(S.gr && S.grLoadedFor===S.grOwner){ drawGrowth(); grReload(); return; }
+  loading();
+  call('apiGrowthLoad',S.token,S.grOwner).then(function(r){ S.gr=r; S.grLoadedFor=S.grOwner; if(!S.grTab) S.grTab='now'; drawGrowth(); }).catch(failView);
+}
+function grReload(msg){
+  return call('apiGrowthLoad',S.token,S.grOwner).then(function(r){ S.gr=r; S.grLoadedFor=S.grOwner;
+    if(S.data.growth){ S.data.growth.active=r.isOwner?!r.inactive:S.data.growth.active; }
+    if(msg) toast(msg); if(S.view==='Growth') drawGrowth(); }).catch(function(e){ toast(e.message); });
+}
+function grSwitchOwner(o){ S.grOwner=o; S.grTab='now'; S.gr=null; vGrowth(); }
+function grTab(t){ S.grTab=t; drawGrowth(); window.scrollTo(0,0); }
+
+function drawGrowth(){
+  var g=S.gr, h='';
+  var partners=(g.partnerOf||[]);
+  var switcher=partners.length?'<div class="chips" style="margin:0 0 4px">'+
+    '<button class="chip'+(!S.grOwner?' on':'')+'" onclick="grSwitchOwner(\'\')">My Growth</button>'+
+    partners.map(function(p){ return '<button class="chip'+(S.grOwner===p.login?' on':'')+'" onclick="grSwitchOwner(\''+esc(p.login)+'\')">'+esc(p.name)+'</button>'; }).join('')+'</div>':'';
+  if(g.inactive){ target().innerHTML=switcher+grActivationView(); return; }
+  var inbox=grCards('Inbox').length;
+  h+=switcher+'<div class="ph"><div><h1>'+(g.isOwner?'My Growth':esc(g.owner.name))+'</h1><div class="sub">Week '+g.week+(g.profile.Template==='founder'?' of 52':'')+
+    ' · '+esc(g.profile.Days.join(', '))+' at '+esc(g.profile.SessionTime)+(g.isOwner?(g.partnerName?' · '+esc(g.partnerName)+' can view':''):' · view only, you can comment')+'</div></div>'+
+    (g.isOwner?'':'<div class="actions"><button class="btn secondary sm" onclick="grCommentModal(\'general\')">'+ic('chat')+' Comment</button></div>')+'</div>';
+  var tabs=[['now','Now'],['board','Board'],['map','Road map'],['goals','Goals']];
+  if(g.isOwner) tabs.push(['inbox','Inbox'+(inbox?' ('+inbox+')':'')],['settings','Settings']);
+  h+='<div class="tabs">'+tabs.map(function(t){ return '<button class="'+(S.grTab===t[0]?'on':'')+'" onclick="grTab(\''+t[0]+'\')">'+t[1]+'</button>'; }).join('')+'</div><div id="grbody"></div>';
+  if(g.isOwner) h+='<button class="grfab" aria-label="Add something that came in" onclick="grCapture()">'+ic('plus')+'</button>';
+  target().innerHTML=h;
+  ({now:grNow,board:grBoard,map:grMap,goals:grGoals,inbox:grInbox,settings:grSettings}[S.grTab]||grNow)();
+}
+
+/* ----- activation ----- */
+function grActivationView(){
+  var g=S.gr;
+  if(!g.canActivate){
+    return '<div class="card"><h3>My Growth</h3><p class="muted">A private board, goals and road map for your own growth.</p>'+
+      '<p>Ask the administrator to switch on <b>My Growth</b> for your role (Staff & roles ▸ Roles).</p></div>';
+  }
+  return '<div class="hero"><div class="hero-in"><div><p class="sub" style="margin:0">MY GROWTH</p><h1>Your goals, your week, your road map.</h1>'+
+    '<p class="sub">A private space inside the portal: tonight\'s session, a simple board, your milestones as a road map, and reminders by email. '+
+    'Nothing is created until you press the button. Only you can see it, plus one partner you choose.</p>'+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn gold" onclick="grSetup(false)">'+ic('target')+' '+(g.hadData?'Reactivate My Growth':'Activate My Growth')+'</button>'+
+    (g.hadData?'<button class="btn secondary" onclick="grSetup(true)">Start fresh</button>':'')+'</div></div></div></div>'+
+    '<div class="grid2"><div class="card"><h3>What you get</h3><div class="small">Now: tonight\'s session and the 20-minute minimum<br>Board: Inbox, This Week, In Progress (max 3), Done<br>Road map: your milestones as a train line<br>Goals: pick 3 to focus on each quarter<br>Monday email with your week\'s plan</div></div>'+
+    '<div class="card"><h3>Your privacy</h3><div class="small">Your partner can view and comment, never edit. Items you mark Private are hidden from them and from AI. '+
+    'Admins only see that you use it, not what is inside. You can switch it off or delete everything at any time.</div></div></div>';
+}
+function grSetup(fresh){
+  var g=S.gr, u=S.data.user, defEmail=/@/.test(u.loginId)?u.loginId:'';
+  var tpls=g.templates||[];
+  modal('<h3>'+(fresh?'Start fresh':'Set up My Growth')+'</h3><p class="small muted">About 3 minutes. You can change all of this later in Settings.</p>'+
+    (fresh?'<p class="err">Starting fresh deletes your old goals, cards and road map.</p>':'')+
+    '<label>1. Start from</label>'+tpls.map(function(t,i){ return '<label class="grradio"><input type="radio" name="grtpl" value="'+t.id+'"'+(i===(u.role==='Admin'?0:1)?' checked':'')+' onchange="grSetupTpl()"> <span><b>'+esc(t.name)+'</b><br><span class="small muted">'+esc(t.sub)+'</span></span></label>'; }).join('')+
+    '<div id="grfounder"><div class="row"><div><label>Week 1 of the capacity plan started on</label><input type="date" id="grps" value="2026-10-12"></div></div>'+
+    '<label class="grradio"><input type="checkbox" id="grcatch"> <span class="small">Also add the weeks before this one to Backlog, so I can catch up</span></label></div>'+
+    '<label>2. My session days</label><div class="chips">'+['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(function(d){ return '<label class="chip grdaychip"><input type="checkbox" class="grday" value="'+d+'"'+(/Mon|Tue|Thu/.test(d)?' checked':'')+'> '+d+'</label>'; }).join('')+'</div>'+
+    '<div class="row"><div><label>Time</label><input type="time" id="grtime" value="19:00"></div><div><label>Hours a week (all goals)</label><input type="number" id="grbudget" min="1" max="40" value="5"></div></div>'+
+    '<label>3. Email for your Monday plan and reminders</label><input id="gremail" type="email" placeholder="your personal email" value="'+esc(defEmail)+'">'+
+    '<label>4. Accountability partner (can view and comment, never edit)</label><select id="grpartner"><option value="">No partner for now</option>'+(g.staff||[]).map(function(x){ return '<option value="'+esc(x.login)+'">'+esc(x.name)+'</option>'; }).join('')+'</select>'+
+    '<label>5. AI</label><select id="grai"><option value="copy" selected>Copy prompt only: the app never connects to AI (recommended)</option><option value="off">Off</option><option value="gemini">Gemini free: sends only after I check and tap Send</option></select>'+
+    '<div class="err" id="grerr"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px"><button class="btn secondary" onclick="closeModal()">Cancel</button>'+
+    '<button class="btn" id="grgo" onclick="grActivate('+(fresh?'true':'false')+')">'+(fresh?'Delete and start fresh':'Activate')+'</button></div>');
+  grSetupTpl();
+}
+function grSetupTpl(){ var v=(document.querySelector('input[name=grtpl]:checked')||{}).value; var f=$('grfounder'); if(f) f.style.display=v==='founder'?'':'none'; }
+function grActivate(fresh){
+  var opts={ template:(document.querySelector('input[name=grtpl]:checked')||{}).value||'blank', planStart:val('grps'), catchUp:!!($('grcatch')&&$('grcatch').checked),
+    days:[].map.call(document.querySelectorAll('.grday:checked'),function(x){return x.value;}), time:val('grtime'), budget:val('grbudget'),
+    email:val('gremail'), partner:val('grpartner'), aiMode:val('grai'), fresh:!!fresh };
+  if(fresh && !confirmBox('Delete your old My Growth data and start again?')) return;
+  busy($('grgo'),true,'Setting up…');
+  call('apiGrowthActivate',S.token,opts).then(function(){
+    closeModal(); S.data.growth.active=true; S.grTab='now'; S.gr=null; toast('My Growth is ready'); vGrowth();
+  }).catch(function(e){ $('grerr').textContent=e.message; busy($('grgo'),false,'Activate'); });
+}
+
+/* ----- Now ----- */
+function grWeekCard(){
+  var g=S.gr; var list=(g.cards||[]).filter(function(c){ return +c.Week===+g.week && c.Checklist && c.Checklist.length && c.List!=='Inbox'; });
+  return list[0]||null;
+}
+function grTodaySlot(){ var g=S.gr, d=GR_DAYS[new Date().getDay()]; return g.profile.Days.indexOf(d); }
+function grSessionsThisWeek(){
+  var mon=grMonday(); return (S.gr.log||[]).filter(function(l){ return (l.Kind==='session'||l.Kind==='minimum') && new Date(l.Date)>=mon; });
+}
+function grNow(){
+  var g=S.gr, p=g.profile, wc=grWeekCard(), slot=grTodaySlot(), h='';
+  var doneToday=(g.log||[]).filter(function(l){ return (l.Kind==='session'||l.Kind==='minimum') && grSameDay(l.Date,new Date()); })[0];
+  var item=null;
+  if(wc && slot>=0) item=wc.Checklist.filter(function(x){ return String(x.slot)===String(slot); })[0]||null;
+  var top=grCards('In Progress')[0]||grCards('This Week')[0];
+  h+='<div class="hero grhero"><div>';
+  if(slot>=0){
+    h+='<p class="grkicker">TONIGHT · '+GR_DAYS[new Date().getDay()].toUpperCase()+' · '+esc(p.SessionTime)+(item&&item.label?' · '+esc(item.label.toUpperCase()):'')+'</p>'+
+      '<h2 class="grtitle">'+esc(item?item.t:(top?top.Title:'Work on your focus goals'))+'</h2>'+
+      (wc?'<p class="sub">'+esc(wc.Title)+'</p>':'');
+    if(!g.isOwner){ h+=doneToday?'<p class="sub">Logged today: '+doneToday.Minutes+' minutes.</p>':''; }
+    else if(doneToday){
+      h+='<div class="grdone"><b>'+(doneToday.Kind==='minimum'?'Logged '+doneToday.Minutes+' minutes. The week still counts.':'Session done. '+doneToday.Minutes+' minutes logged.')+'</b>'+
+        '<label style="color:#C9D4E5">First step for next time</label><div style="display:flex;gap:8px"><input id="grnext" value="'+esc(doneToday.NextStep||'')+'" placeholder="e.g. Open the after copy and write the time saved">'+
+        '<button class="btn gold sm" onclick="grSaveNext(\''+esc(doneToday.LogID)+'\')">Save</button></div></div>';
+    } else {
+      h+='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">'+
+        '<button class="btn gold" onclick="grStart()">'+ic('clock')+' '+(S.grStarted?'Running since '+S.grStarted.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):'Start session')+'</button>'+
+        '<button class="btn secondary" onclick="grLog(60,'+(wc?'\''+esc(wc.CardID)+'\'':'null')+','+slot+')">'+ic('check')+' Mark done</button>'+
+        '<button class="btn secondary" onclick="grLog(20,'+(wc?'\''+esc(wc.CardID)+'\'':'null')+','+slot+')">Did 20 min</button></div>';
+    }
+  } else {
+    var next=null, dnum=new Date().getDay();
+    for(var k=1;k<=7&&!next;k++){ var dd=GR_DAYS[(dnum+k)%7]; if(p.Days.indexOf(dd)>=0) next=dd; }
+    var ns=wc&&next?wc.Checklist.filter(function(x){ return String(x.slot)===String(p.Days.indexOf(next)); })[0]:null;
+    h+='<p class="grkicker">NO SESSION TODAY</p><h2 class="grtitle">Next: '+esc(next||'')+' at '+esc(p.SessionTime)+(ns&&ns.label?' · '+esc(ns.label):'')+'</h2>'+
+      (ns?'<p class="sub">'+esc(ns.t)+'</p>':'')+
+      (g.isOwner?'<div style="margin-top:12px"><button class="btn secondary" onclick="grLog(30,null,\'\')">Log extra time (30 min)</button></div>':'');
+  }
+  h+='</div></div>';
+  var inbox=grCards('Inbox').length;
+  if(g.isOwner && inbox) h+='<button class="card clickable grinbox" onclick="grTab(\'inbox\')"><div><b>Inbox: '+inbox+' new to sort</b><div class="small muted">Sort them on Monday, or now</div></div><b>Sort →</b></button>';
+  // this week
+  var mon=grMonday(), sess=grSessionsThisWeek(), hrs=grHours(), budget=p.BudgetHours;
+  h+='<div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline"><h3>This week · Week '+g.week+'</h3><span class="small muted">'+grDay(mon)+'</span></div><div class="grweek">'+
+    p.Days.map(function(dn,i){
+      var di=(GR_DAYS.indexOf(dn)+6)%7, day=new Date(mon.getTime()); day.setDate(day.getDate()+di);
+      var did=sess.filter(function(l){ return grSameDay(l.Date,day); })[0];
+      var it=wc?wc.Checklist.filter(function(x){ return String(x.slot)===String(i); })[0]:null;
+      var isToday=grSameDay(day,new Date()), past=day<new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate());
+      var act=p.ActivatedAt?new Date(p.ActivatedAt):null, before=act&&day<new Date(act.getFullYear(),act.getMonth(),act.getDate());
+      var st=did?['Done','ok']:isToday?['Today','warn']:before?['Not started','']:past?['Missed','bad']:['Upcoming',''];
+      return '<div class="grday-box '+st[1]+'"><span>'+dn.toUpperCase()+' · '+st[0]+'</span><b>'+esc(it&&it.label?it.label:'Session')+'</b></div>';
+    }).join('')+'</div>'+
+    '<div style="display:flex;justify-content:space-between;font-size:13px;margin-top:12px"><span>Time planned this week</span><b>'+hrs+' of '+budget+' h</b></div>'+
+    '<div class="bar"><div style="width:'+Math.min(100,Math.round(hrs/budget*100))+'%;'+(hrs>budget?'background:var(--warn)':'')+'"></div></div></div>';
+  // saved brief
+  var brief=(g.log||[]).filter(function(l){ return l.Kind==='ai-brief' && new Date(l.Date)>=mon; })[0];
+  if(brief) h+='<div class="card"><h3>Your coach brief</h3><div class="small" style="white-space:pre-line">'+esc(brief.Note)+'</div></div>';
+  // AI helpers
+  if(g.isOwner && p.AIMode!=='off'){
+    var f=p.AIFeatures;
+    h+='<div class="card"><div style="display:flex;justify-content:space-between"><h3>AI helpers</h3><span class="small muted">'+(p.AIMode==='copy'?'Copy prompt mode':'Gemini · asks first')+'</span></div><div class="grid">'+
+      (f.indexOf('brief')>=0?'<button class="card clickable grai" onclick="grAsk(\'brief\')"><b>Coach brief</b><span class="small muted">5 lines on your week</span></button>':'')+
+      (f.indexOf('study')>=0?'<button class="card clickable grai" onclick="grAsk(\'study\')"><b>Study buddy</b><span class="small muted">Quiz me on my notes</span></button>':'')+
+      (f.indexOf('sort')>=0&&inbox?'<button class="card clickable grai" onclick="grAsk(\'sort\')"><b>Sort my Inbox</b><span class="small muted">Suggestions only</span></button>':'')+
+      '</div></div>';
+  }
+  // focus goals
+  var focus=(g.goals||[]).filter(function(x){ return x.Status==='Focus'; });
+  h+='<div class="card"><div style="display:flex;justify-content:space-between"><h3>Focus this quarter</h3><span class="small muted">'+focus.length+' of '+(g.goals||[]).length+' goals</span></div>'+
+    (focus.length?focus.map(function(x){ return '<div class="list-item clickable" onclick="grGoalModal(\''+esc(x.GoalID)+'\')"><div>'+grPill(x.Pillar)+'<div style="font-weight:600;margin-top:4px">'+esc(x.Title)+'</div>'+
+      (x.NextAction?'<div class="small muted">Next: '+esc(x.NextAction)+'</div>':'')+'</div></div>'; }).join(''):'<p class="small muted">No focus goals yet. Pick up to 3 in Goals.</p>')+'</div>';
+  // next station
+  var ns2=(g.stations||[]).filter(function(x){ return x.Status==='Next'; })[0];
+  if(ns2){ var days=Math.max(0,Math.round((new Date(ns2.Date)-new Date())/86400000));
+    h+='<div class="card clickable" onclick="grStationModal(\''+esc(ns2.StationID)+'\')" style="display:flex;gap:14px;align-items:center"><div class="grcount"><b>'+days+'</b><span>days</span></div><div><div class="small muted">Next station on your road map</div><b>'+esc(ns2.Title)+' · '+grDay(ns2.Date)+'</b>'+
+      (ns2.Proof?'<div class="small muted">'+esc(ns2.Proof)+'</div>':'')+'</div></div>'; }
+  // partner comments
+  var notes=(g.comments||[]).filter(function(c){ return c.Author!==g.me.login; }).slice(-3).reverse();
+  if(notes.length) h+='<div class="card"><h3>Comments</h3>'+notes.map(function(c){ return '<div class="list-item"><div><b class="small">'+esc(c.AuthorName)+'</b><div class="small">'+esc(c.Text)+'</div></div><span class="small muted">'+dt(c.CreatedAt)+'</span></div>'; }).join('')+'</div>';
+  $('grbody').innerHTML=h;
+}
+function grStart(){ S.grStarted=S.grStarted||new Date(); toast('Session started. Tap Mark done when you finish.'); grNow(); }
+function grLog(min,cardId,slot){
+  if(S.grStarted && min>=60){ var m=Math.round((new Date()-S.grStarted)/60000); if(m>=5) min=m; }
+  call('apiGrowthLogSession',S.token,{cardId:cardId,slot:slot,minutes:min}).then(function(){ S.grStarted=null; grReload(min<45?'Logged. The week still counts.':'Session done.'); }).catch(function(e){ toast(e.message); });
+}
+function grSaveNext(id){ call('apiGrowthUpdateLog',S.token,id,val('grnext')).then(function(){ grReload('Next step saved'); }).catch(function(e){ toast(e.message); }); }
+
+/* ----- capture + Inbox ----- */
+function grCapture(){
+  modal('<h3>What came in?</h3><p class="small muted">Just type it. You\'ll sort it on Monday.</p><input id="grcap" placeholder="e.g. Call a pastor about team training" maxlength="200">'+
+    '<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" id="grcapb" onclick="grCaptureSave()">Add to Inbox</button></div>');
+  setTimeout(function(){ var i=$('grcap'); if(i){ i.focus(); i.addEventListener('keydown',function(e){ if(e.key==='Enter') grCaptureSave(); }); } },60);
+}
+function grCaptureSave(){ var t=val('grcap'); if(!t) return; busy($('grcapb'),true); call('apiGrowthCapture',S.token,t).then(function(){ closeModal(); grReload('Added to Inbox'); }).catch(function(e){ busy($('grcapb'),false); toast(e.message); }); }
+function grInbox(){
+  var g=S.gr, items=grCards('Inbox'), hrs=grHours(), b=g.profile.BudgetHours, h='';
+  h+='<div class="card"><h3>Sort your Inbox</h3><p class="small muted">For each item: do it now (under 5 minutes), plan it this week, keep it for later, or drop it. "This week" checks your '+b+'-hour budget.</p>'+
+    '<div style="display:flex;justify-content:space-between;font-size:13px"><span>This week\'s time</span><b>'+hrs+' of '+b+' h</b></div><div class="bar"><div style="width:'+Math.min(100,Math.round(hrs/b*100))+'%"></div></div>'+
+    (g.profile.AIMode!=='off'&&g.profile.AIFeatures.indexOf('sort')>=0&&items.length?'<button class="btn secondary sm" style="margin-top:8px" onclick="grAsk(\'sort\')">'+ic('spark')+' Suggest with AI (you check first)</button>':'')+'</div>';
+  if(!items.length) h+='<div class="card">'+empty('check','Inbox clear. Tap + whenever something new comes in.')+'</div>';
+  items.forEach(function(c){
+    h+='<div class="card"><div style="display:flex;justify-content:space-between;gap:10px"><b>'+esc(c.Title)+'</b><span class="small muted">'+dt(c.UpdatedAt)+'</span></div>'+
+      '<div class="row" style="margin-top:6px"><div><label>Pillar</label><select id="grp_'+esc(c.CardID)+'">'+opt(Object.keys(GR_PILL).map(function(k){return {v:k,t:GR_PILL[k][0]};}),c.Pillar)+'</select></div>'+
+      '<div><label>Goal</label><select id="grg_'+esc(c.CardID)+'"><option value="">No goal</option>'+opt((g.goals||[]).filter(function(x){return x.Status!=='Done';}).map(function(x){return {v:x.GoalID,t:x.Title};}),c.GoalID)+'</select></div>'+
+      '<div style="max-width:120px"><label>Hours</label><select id="grh_'+esc(c.CardID)+'">'+opt([{v:0.1,t:'5 min'},{v:0.5,t:'30 min'},{v:1,t:'1 h'},{v:2,t:'2 h'},{v:3,t:'3 h'}],c.Hours||0.5)+'</select></div></div>'+
+      '<div class="grsort"><button class="btn sm" style="background:var(--ok);border-color:var(--ok)" onclick="grSort(\''+esc(c.CardID)+'\',\'now\')">Do now</button>'+
+      '<button class="btn sm" onclick="grSort(\''+esc(c.CardID)+'\',\'week\')">This week</button>'+
+      '<button class="btn secondary sm" onclick="grSort(\''+esc(c.CardID)+'\',\'later\')">Later</button>'+
+      '<button class="btn danger sm" onclick="grSort(\''+esc(c.CardID)+'\',\'drop\')">Drop</button></div></div>';
+  });
+  $('grbody').innerHTML=h;
+}
+function grSort(id,where,force){
+  var o={pillar:val('grp_'+id),goalId:val('grg_'+id),hours:val('grh_'+id),force:!!force};
+  call('apiGrowthSort',S.token,id,where,o).then(function(r){ grReload(r==='dropped'?'Dropped':r==='Done'?'Done and logged':'Moved to '+r); })
+    .catch(function(e){ grErr(e,function(){ grSort(id,where,true); }); });
+}
+
+/* ----- Board ----- */
+function grBoard(){
+  var g=S.gr, h='';
+  h+='<div class="ph" style="margin-top:0"><div><div class="sub">'+(g.isOwner?'Drag cards on a laptop, or tap Move on a phone. In Progress stops at 3.':'View only. Tap a card to read it or leave a comment.')+'</div></div>'+
+    (g.isOwner?'<div class="actions"><button class="btn sm" onclick="grCardModal()">'+ic('plus')+' Add card</button></div>':'')+'</div>';
+  h+='<div class="grboard">'+GR_LISTS.map(function(l){
+    var cs=grCards(l).sort(function(a,b){ return (b.Urgent?1:0)-(a.Urgent?1:0) || (a.Week||999)-(b.Week||999) || (a.Order||0)-(b.Order||0); });
+    var full=l==='In Progress'&&cs.length>=3, n=cs.length, shown=cs;
+    if(l==='Backlog' && !S.grShowBacklog) shown=[];
+    if(l==='Done') shown=cs.slice().sort(function(a,b){ return new Date(b.DoneAt||b.UpdatedAt)-new Date(a.DoneAt||a.UpdatedAt); }).slice(0,8);
+    return '<div class="grcol" data-list="'+l+'" ondragover="grDragOver(event)" ondragleave="this.classList.remove(\'drop\')" ondrop="grDrop(event,\''+l+'\')">'+
+      '<div class="grcolh"><b>'+l+'</b><span class="pill'+(full?' warn':'')+'">'+(l==='In Progress'?n+' of 3':n)+'</span></div>'+
+      (l==='Backlog'?'<button class="linkbtn" onclick="S.grShowBacklog=!S.grShowBacklog;grBoard()">'+(S.grShowBacklog?'Hide backlog':'Show '+n+' cards')+'</button>':'')+
+      (!n&&l!=='Backlog'?'<div class="small muted" style="padding:8px 2px">Nothing here</div>':'')+
+      shown.map(grCardHtml).join('')+(l==='Done'&&n>8?'<div class="small muted" style="padding:6px 2px">+ '+(n-8)+' older</div>':'')+'</div>';
+  }).join('')+'</div>';
+  $('grbody').innerHTML=h;
+}
+function grCardHtml(c){
+  var g=S.gr, cl=c.Checklist||[], done=cl.filter(function(x){return x.done;}).length, nc=grComments(c.CardID).length;
+  return '<div class="grcard"'+(g.isOwner?' draggable="true" ondragstart="event.dataTransfer.setData(\'text\',\''+esc(c.CardID)+'\')"':'')+'>'+
+    '<div style="display:flex;gap:4px;flex-wrap:wrap">'+grPill(c.Pillar)+(c.Private?'<span class="pill">'+ic('lock')+' Private</span>':'')+(c.Urgent?'<span class="pill bad">Urgent</span>':'')+'</div>'+
+    '<div class="grct" onclick="grCardModal(\''+esc(c.CardID)+'\')">'+esc(c.Title)+'</div>'+
+    '<div class="small muted">'+[c.Week?'Week '+c.Week:'',c.Due?'Due '+grDay(c.Due):'',cl.length?done+'/'+cl.length+' done':'',c.Hours?c.Hours+' h':'',nc?nc+' comment'+(nc>1?'s':''):''].filter(String).join(' · ')+'</div>'+
+    (g.isOwner?'<div class="grcb"><button class="btn secondary sm" onclick="grCardModal(\''+esc(c.CardID)+'\')">Edit</button>'+(c.List!=='Done'?'<button class="btn sm" onclick="grMoveMenu(\''+esc(c.CardID)+'\')">Move</button>':'')+'</div>':'')+'</div>';
+}
+function grDragOver(e){ if(!S.gr.isOwner) return; e.preventDefault(); e.currentTarget.classList.add('drop'); }
+function grDrop(e,list){ e.preventDefault(); e.currentTarget.classList.remove('drop'); var id=e.dataTransfer.getData('text'); if(id) grMove(id,list); }
+function grMoveMenu(id){
+  var c=(S.gr.cards||[]).filter(function(x){return x.CardID===id;})[0]; if(!c) return;
+  modal('<h3>Move card</h3><p class="small muted">'+esc(c.Title)+'</p><div class="sheetnav">'+GR_LISTS.filter(function(l){return l!==c.List;}).map(function(l){
+    return '<button onclick="closeModal();grMove(\''+esc(id)+'\',\''+l+'\')">'+ic(l==='Done'?'check':'arrow')+'<span>'+l+'</span></button>'; }).join('')+'</div>');
+}
+function grMove(id,list,force){
+  call('apiGrowthMoveCard',S.token,id,list,!!force).then(function(){ grReload('Moved to '+list); }).catch(function(e){ grErr(e,function(){ grMove(id,list,true); }); });
+}
+function grCardModal(id){
+  var g=S.gr, c=id?(g.cards||[]).filter(function(x){return x.CardID===id;})[0]:{Title:'',List:'This Week',Pillar:'skills',Checklist:[],Hours:1};
+  if(!c) return;
+  var ro=!g.isOwner, dis=ro?' disabled':'';
+  var h='<h3>'+(id?(ro?'Card':'Edit card'):'New card')+'</h3>'+
+    '<label>Title</label><input id="gct" value="'+esc(c.Title)+'"'+dis+' maxlength="200">'+
+    '<div class="row"><div><label>List</label><select id="gcl"'+dis+'>'+opt(GR_LISTS.concat(c.List==='Inbox'?['Inbox']:[]),c.List)+'</select></div>'+
+    '<div><label>Pillar</label><select id="gcp"'+dis+'>'+opt(Object.keys(GR_PILL).map(function(k){return {v:k,t:GR_PILL[k][0]};}),c.Pillar)+'</select></div></div>'+
+    '<div class="row"><div><label>Goal</label><select id="gcg"'+dis+'><option value="">No goal</option>'+opt((g.goals||[]).map(function(x){return {v:x.GoalID,t:x.Title};}),c.GoalID)+'</select></div>'+
+    '<div><label>Due</label><input type="date" id="gcd" value="'+(c.Due?isoDay(c.Due):'')+'"'+dis+'></div><div style="max-width:110px"><label>Hours</label><input type="number" step="0.5" min="0" id="gch" value="'+(c.Hours||0)+'"'+dis+'></div></div>'+
+    '<label>Checklist</label><div id="gccl">'+(c.Checklist||[]).map(function(x,i){ return grChecklistRow(x,ro); }).join('')+'</div>'+
+    (ro?'':'<button class="linkbtn" onclick="var d=document.createElement(\'div\');d.innerHTML=grChecklistRow({t:\'\',done:false});$(\'gccl\').appendChild(d.firstChild)">+ Add item</button>')+
+    '<label>Notes</label><textarea id="gcn"'+dis+'>'+esc(c.Notes||'')+'</textarea>'+
+    '<label>Proof link (Drive, photo, file)</label><input id="gcf" value="'+esc(c.Proof||'')+'" placeholder="https://"'+dis+'>'+(c.Proof&&ro?'<div class="small">'+linkify(c.Proof)+'</div>':'')+
+    (ro?'':'<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px"><label class="grradio" style="margin:0"><input type="checkbox" id="gcpv"'+(c.Private?' checked':'')+'> <span>'+ic('lock')+' Private <span class="small muted">(hidden from your partner and never sent to AI)</span></span></label>'+
+      '<label class="grradio" style="margin:0"><input type="checkbox" id="gcu"'+(c.Urgent?' checked':'')+'> <span>Urgent</span></label></div>');
+  if(id) h+=grCommentsHtml(id);
+  h+='<div class="err" id="gcerr"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap">'+
+    (!ro&&id?'<button class="btn danger" style="margin-right:auto" onclick="grDeleteCard(\''+esc(id)+'\')">Delete</button>':'')+
+    '<button class="btn secondary" onclick="closeModal()">'+(ro?'Close':'Cancel')+'</button>'+(ro?'':'<button class="btn" id="gcsave" onclick="grSaveCard(\''+esc(id||'')+'\')">Save</button>')+'</div>';
+  modal(h);
+}
+function grChecklistRow(x,ro){
+  return '<div class="grcl" data-slot="'+esc(x.slot===undefined?'':x.slot)+'" data-label="'+esc(x.label||'')+'"><input type="checkbox"'+(x.done?' checked':'')+(ro?' disabled':'')+'>'+
+    (x.label?'<span class="small muted" style="white-space:nowrap">'+esc(x.label)+'</span>':'')+'<input type="text" value="'+esc(x.t||'')+'"'+(ro?' disabled':'')+' placeholder="Checklist item"></div>';
+}
+function grSaveCard(id,force){
+  var cl=[].map.call(document.querySelectorAll('#gccl .grcl'),function(r){ return {slot:r.getAttribute('data-slot'),label:r.getAttribute('data-label'),done:r.querySelector('input[type=checkbox]').checked,t:r.querySelector('input[type=text]').value.trim()}; }).filter(function(x){return x.t;});
+  var c={CardID:id||undefined,Title:val('gct'),List:val('gcl'),Pillar:val('gcp'),GoalID:val('gcg'),Due:val('gcd'),Hours:val('gch'),Checklist:cl,Notes:val('gcn'),Proof:val('gcf'),Private:$('gcpv').checked,Urgent:$('gcu').checked};
+  var old=id?(S.gr.cards||[]).filter(function(x){return x.CardID===id;})[0]:null; if(old&&old.Week) c.Week=old.Week;
+  busy($('gcsave'),true);
+  call('apiGrowthSaveCard',S.token,c,!!force).then(function(){ closeModal(); grReload('Saved'); })
+    .catch(function(e){ busy($('gcsave'),false); var m=String(e.message); if(/OVER_BUDGET/.test(m)) grErr(e,function(){ grSaveCard(id,true); }); else $('gcerr').textContent=m; });
+}
+function grDeleteCard(id){ if(!confirmBox('Delete this card?')) return; call('apiGrowthDeleteCard',S.token,id).then(function(){ closeModal(); grReload('Deleted'); }).catch(function(e){ toast(e.message); }); }
+
+/* ----- comments ----- */
+function grCommentsHtml(id){
+  var list=grComments(id);
+  return '<div class="grcomments"><label>'+ic('chat')+' Comments</label>'+(list.length?list.map(function(c){ return '<div class="small"><b>'+esc(c.AuthorName)+'</b> · <span class="muted">'+dt(c.CreatedAt)+'</span><br>'+esc(c.Text)+'</div>'; }).join(''):'<div class="small muted">No comments yet.</div>')+
+    '<div style="display:flex;gap:8px;margin-top:8px"><input id="grcm" placeholder="'+(S.gr.isOwner?'Reply…':'Encourage or ask a question…')+'" maxlength="1000"><button class="btn sm" onclick="grComment(\''+esc(id)+'\')">Send</button></div></div>';
+}
+function grCommentModal(id){ modal('<h3>Comment</h3><p class="small muted">'+esc(S.gr.owner.name)+' gets it by email.</p>'+grCommentsHtml(id)); }
+function grComment(id){ var t=val('grcm'); if(!t) return; call('apiGrowthComment',S.token,S.gr.owner.login,id,t).then(function(){ closeModal(); grReload('Comment sent'); }).catch(function(e){ toast(e.message); }); }
+
+/* ----- Goals ----- */
+function grGoals(){
+  var g=S.gr, f=S.grGoalFilter||'focus', h='';
+  var list=(g.goals||[]).filter(function(x){ return f==='all'||(f==='focus'&&x.Status==='Focus')||(f==='parked'&&x.Status==='Parked')||(f==='done'&&x.Status==='Done'); })
+    .sort(function(a,b){ return (a.Order||0)-(b.Order||0); });
+  h+='<div class="ph" style="margin-top:0"><div><div class="sub">Pick up to 3 to focus on each quarter. Park the rest; they are not dropped.</div></div>'+
+    (g.isOwner?'<div class="actions"><button class="btn sm" onclick="grGoalModal()">'+ic('plus')+' Add goal</button></div>':'')+'</div>'+
+    '<div class="chips">'+[['focus','Focus'],['all','All '+(g.goals||[]).length],['parked','Parked'],['done','Done']].map(function(x){ return '<button class="chip'+(f===x[0]?' on':'')+'" onclick="S.grGoalFilter=\''+x[0]+'\';grGoals()">'+x[1]+'</button>'; }).join('')+'</div>';
+  if(!list.length) h+='<div class="card">'+empty('flag','No goals here.')+'</div>';
+  list.forEach(function(x){
+    var linked=(g.cards||[]).filter(function(c){ return c.GoalID===x.GoalID; }), dn=linked.filter(function(c){return c.List==='Done';}).length;
+    h+='<div class="card clickable" onclick="grGoalModal(\''+esc(x.GoalID)+'\')"><div style="display:flex;justify-content:space-between;gap:8px">'+grPill(x.Pillar)+'<span class="pill '+(GR_STATUS_PILL[x.Status]||'')+'">'+esc(x.Status)+'</span></div>'+
+      '<div style="font-weight:700;margin-top:6px">'+(x.Private?ic('lock')+' ':'')+esc(x.Title)+'</div>'+(x.NextAction?'<div class="small muted">Next: '+esc(x.NextAction)+'</div>':'')+
+      (linked.length?'<div class="bar"><div style="width:'+Math.round(dn/linked.length*100)+'%"></div></div><div class="small muted">'+dn+' of '+linked.length+' cards done'+(x.TargetDate?' · target '+grDay(x.TargetDate):'')+'</div>':(x.TargetDate?'<div class="small muted">Target '+grDay(x.TargetDate)+'</div>':''))+'</div>';
+  });
+  $('grbody').innerHTML=h;
+}
+function grGoalModal(id){
+  var g=S.gr, x=id?grGoal(id):{Title:'',Pillar:'skills',Status:'Active'}; if(!x) return;
+  var ro=!g.isOwner, dis=ro?' disabled':'';
+  var h='<h3>'+(id?(ro?'Goal':'Edit goal'):'New goal')+'</h3><label>Goal</label><input id="ggt" value="'+esc(x.Title)+'"'+dis+'>'+
+    '<div class="row"><div><label>Status</label><select id="ggs"'+dis+'>'+opt(['Focus','Active','Parked','Done'],x.Status)+'</select></div><div><label>Pillar</label><select id="ggp"'+dis+'>'+opt(Object.keys(GR_PILL).map(function(k){return {v:k,t:GR_PILL[k][0]};}),x.Pillar)+'</select></div>'+
+    '<div><label>Target date</label><input type="date" id="ggd" value="'+(x.TargetDate?isoDay(x.TargetDate):'')+'"'+dis+'></div></div>'+
+    '<label>Next action</label><input id="ggn" value="'+esc(x.NextAction||'')+'"'+dis+' placeholder="The very next step">'+
+    (ro?'':'<label class="grradio"><input type="checkbox" id="ggpv"'+(x.Private?' checked':'')+'> <span>'+ic('lock')+' Private</span></label>');
+  if(id) h+=grCommentsHtml(id);
+  h+='<div class="err" id="ggerr"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">'+(!ro&&id?'<button class="btn danger" style="margin-right:auto" onclick="grDeleteGoal(\''+esc(id)+'\')">Delete</button>':'')+
+    '<button class="btn secondary" onclick="closeModal()">'+(ro?'Close':'Cancel')+'</button>'+(ro?'':'<button class="btn" onclick="grSaveGoal(\''+esc(id||'')+'\')">Save</button>')+'</div>';
+  modal(h);
+}
+function grSaveGoal(id){
+  var x={GoalID:id||undefined,Title:val('ggt'),Status:val('ggs'),Pillar:val('ggp'),TargetDate:val('ggd'),NextAction:val('ggn'),Private:$('ggpv').checked};
+  call('apiGrowthSaveGoal',S.token,x).then(function(){ closeModal(); grReload('Saved'); }).catch(function(e){ $('ggerr').textContent=e.message; });
+}
+function grDeleteGoal(id){ if(!confirmBox('Delete this goal? Its cards stay on your board.')) return; call('apiGrowthDeleteGoal',S.token,id).then(function(){ closeModal(); grReload('Deleted'); }).catch(function(e){ toast(e.message); }); }
+
+/* ----- Road map ----- */
+function grMap(){
+  var g=S.gr, mode=S.grMapMode||(window.innerWidth>900?'train':'list'), h='';
+  h+='<div class="ph" style="margin-top:0"><div><div class="sub">Every station is a milestone. Tap one to '+(g.isOwner?'edit it':'read or comment')+'.</div></div><div class="actions">'+
+    '<div class="seg"><button class="'+(mode==='list'?'on Excused':'')+'" onclick="S.grMapMode=\'list\';grMap()">List</button><button class="'+(mode==='train'?'on Excused':'')+'" onclick="S.grMapMode=\'train\';grMap()">Train map</button></div>'+
+    (g.isOwner?'<button class="btn sm" onclick="grStationModal()">'+ic('plus')+' Add station</button>':'')+'</div></div>';
+  h+=mode==='train'?grTrainMap():grStationList();
+  $('grbody').innerHTML=h;
+}
+function grStationList(){
+  var st=(S.gr.stations||[]).slice().sort(function(a,b){ return new Date(a.Date)-new Date(b.Date); });
+  var now=new Date(), placed=false, h='<div class="grline">';
+  st.forEach(function(x){
+    if(!placed && new Date(x.Date)>=now){ placed=true; h+='<div class="grstop now"><i></i><div class="grhere"><b>You are here</b><div class="small">Week '+S.gr.week+' · '+grDay(now)+'</div></div></div>'; }
+    h+='<div class="grstop '+x.Status.toLowerCase()+'"><i style="'+(x.Status==='Upcoming'?'border-color:'+GR_LINE[x.Pillar]:'')+'"></i><button class="card clickable" onclick="grStationModal(\''+esc(x.StationID)+'\')">'+
+      '<div style="display:flex;justify-content:space-between;gap:8px"><b>'+(x.Private?ic('lock')+' ':'')+esc(x.Title)+'</b><span class="pill '+(GR_STATUS_PILL[x.Status]||'')+'">'+x.Status+'</span></div>'+
+      '<div class="small muted">'+grDay(x.Date)+' · '+GR_PILL[x.Pillar][0]+'</div>'+(x.Proof?'<div class="small">'+esc(x.Proof)+'</div>':'')+'</button></div>';
+  });
+  if(!placed) h+='<div class="grstop now"><i></i><div class="grhere"><b>You are here</b></div></div>';
+  return h+'</div>';
+}
+function grTrainMap(){
+  var st=(S.gr.stations||[]); if(!st.length) return '<div class="card">'+empty('route','No stations yet.')+'</div>';
+  var t=function(x){ return new Date(x).getTime(); };
+  var lo=Math.min.apply(null,st.map(function(x){return t(x.Date);}).concat([Date.now()]));
+  var hi=Math.max.apply(null,st.map(function(x){return t(x.Date);}).concat([Date.now()]));
+  var s0=new Date(lo); s0=new Date(s0.getFullYear(),s0.getMonth(),1); var s1=new Date(hi); s1=new Date(s1.getFullYear(),s1.getMonth()+1,1);
+  var months=(s1.getFullYear()-s0.getFullYear())*12+s1.getMonth()-s0.getMonth(), mw=110, left=150, W=left+months*mw+40;
+  var X=function(d){ return left+(t(d)-s0.getTime())/(s1.getTime()-s0.getTime())*months*mw; };
+  var lines=Object.keys(GR_PILL).filter(function(p){ return st.some(function(x){return x.Pillar===p;}); });
+  var rowH=110, top=70, H=top+lines.length*rowH+20, h='<div class="grtrain"><div style="position:relative;width:'+W+'px;height:'+H+'px">';
+  for(var m=0;m<=months;m++){ var md=new Date(s0.getFullYear(),s0.getMonth()+m,1), x=X(md);
+    h+='<div style="position:absolute;left:'+x+'px;top:40px;bottom:0;border-left:1px solid #E3E8F2"></div>'+(m<months?'<span class="small muted" style="position:absolute;left:'+(x+6)+'px;top:16px;font-weight:600">'+md.toLocaleDateString(undefined,{month:'short'})+(md.getMonth()===0||m===0?' '+String(md.getFullYear()).slice(2):'')+'</span>':''); }
+  var tx=X(new Date());
+  h+='<div style="position:absolute;left:'+tx+'px;top:40px;bottom:0;border-left:2px dashed #F57C00"></div><span class="pill warn" style="position:absolute;left:'+(tx+4)+'px;top:44px">Today · Week '+S.gr.week+'</span>';
+  lines.forEach(function(p,i){
+    var y=top+i*rowH+50, col=GR_LINE[p];
+    h+='<div style="position:absolute;left:8px;top:'+(y-12)+'px;width:'+(left-20)+'px"><b style="color:'+col+'">'+GR_PILL[p][0]+'</b></div>'+
+      '<div style="position:absolute;left:'+left+'px;right:20px;top:'+y+'px;height:6px;border-radius:9px;background:'+col+'"></div>';
+    st.filter(function(x){return x.Pillar===p;}).sort(function(a,b){return t(a.Date)-t(b.Date);}).forEach(function(x,k){
+      var sx=X(x.Date), fill={Done:'#1B7F3B',Late:'#C77700',Next:'#1565D8',Upcoming:'#fff'}[x.Status]||'#fff', ring=x.Status==='Upcoming'?col:fill, above=k%2===0;
+      h+='<button title="'+esc(x.Title)+'" onclick="grStationModal(\''+esc(x.StationID)+'\')" style="position:absolute;left:'+(sx-10)+'px;top:'+(y-7)+'px;width:20px;height:20px;border-radius:50%;background:'+fill+';border:3px solid '+ring+';cursor:pointer;padding:0"></button>'+
+        '<div class="grlab" style="left:'+(sx-55)+'px;top:'+(above?y-46:y+18)+'px">'+esc(x.Title)+'<br><span class="muted">'+new Date(x.Date).toLocaleDateString(undefined,{day:'numeric',month:'short'})+'</span></div>';
+    });
+  });
+  return h+'</div></div><div class="small muted" style="margin-top:6px">Green done · orange late · blue next · white upcoming. Scroll sideways to see the whole year.</div>';
+}
+function grStationModal(id){
+  var g=S.gr, x=id?(g.stations||[]).filter(function(s){return s.StationID===id;})[0]:{Title:'',Status:'Upcoming',Pillar:'skills',Date:''}; if(!x) return;
+  var ro=!g.isOwner, dis=ro?' disabled':'';
+  var h='<h3>'+(id?(ro?'Station':'Edit station'):'New station')+'</h3><label>Milestone</label><input id="gst" value="'+esc(x.Title)+'"'+dis+'>'+
+    '<div class="row"><div><label>Date</label><input type="date" id="gsd" value="'+(x.Date?isoDay(x.Date):'')+'"'+dis+'></div><div><label>Status</label><select id="gss"'+dis+'>'+opt(['Done','Late','Next','Upcoming'],x.Status)+'</select></div>'+
+    '<div><label>Line</label><select id="gsp"'+dis+'>'+opt(Object.keys(GR_PILL).map(function(k){return {v:k,t:GR_PILL[k][0]};}),x.Pillar)+'</select></div></div>'+
+    '<label>What proves it</label><input id="gsf" value="'+esc(x.Proof||'')+'"'+dis+' placeholder="e.g. certificate saved in Drive">'+
+    (ro?'':'<label class="grradio"><input type="checkbox" id="gspv"'+(x.Private?' checked':'')+'> <span>'+ic('lock')+' Private</span></label>');
+  if(id) h+=grCommentsHtml(id);
+  h+='<div class="err" id="gserr"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">'+(!ro&&id?'<button class="btn danger" style="margin-right:auto" onclick="grDeleteStation(\''+esc(id)+'\')">Delete</button>':'')+
+    '<button class="btn secondary" onclick="closeModal()">'+(ro?'Close':'Cancel')+'</button>'+(ro?'':'<button class="btn" onclick="grSaveStation(\''+esc(id||'')+'\')">Save</button>')+'</div>';
+  modal(h);
+}
+function grSaveStation(id){
+  var x={StationID:id||undefined,Title:val('gst'),Date:val('gsd'),Status:val('gss'),Pillar:val('gsp'),Proof:val('gsf'),Private:$('gspv').checked};
+  call('apiGrowthSaveStation',S.token,x).then(function(){ closeModal(); grReload('Saved'); }).catch(function(e){ $('gserr').textContent=e.message; });
+}
+function grDeleteStation(id){ if(!confirmBox('Delete this station?')) return; call('apiGrowthDeleteStation',S.token,id).then(function(){ closeModal(); grReload('Deleted'); }).catch(function(e){ toast(e.message); }); }
+
+/* ----- Settings ----- */
+function grSettings(){
+  var g=S.gr, p=g.profile, f=p.AIFeatures, h='';
+  h+='<div class="grid2" style="margin-top:0"><div class="card"><h3>Reminders</h3>'+
+    '<label>Email for your Monday plan and reminders</label><input id="gse" type="email" value="'+esc(p.Email||'')+'" placeholder="your personal email">'+
+    '<label>Session days</label><div class="chips">'+['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(function(d){ return '<label class="chip grdaychip"><input type="checkbox" class="gsday" value="'+d+'"'+(p.Days.indexOf(d)>=0?' checked':'')+'> '+d+'</label>'; }).join('')+'</div>'+
+    '<div class="row"><div><label>Time</label><input type="time" id="gstm" value="'+esc(p.SessionTime)+'"></div><div><label>Hours a week</label><input type="number" id="gsb" min="1" max="40" value="'+p.BudgetHours+'"></div></div>'+
+    (p.Template==='founder'?'<label>Week 1 started on</label><input type="date" id="gsps" value="'+(p.PlanStart?isoDay(p.PlanStart):'')+'">':'')+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn" onclick="grSaveSettings()">Save</button><button class="btn secondary" onclick="grIcs()">'+ic('calendar')+' Calendar file for phone alerts</button></div>'+
+    '<p class="small muted">The calendar file adds your sessions (alerts 1 hour and 10 minutes before) and milestones (alerts 1 week and 1 day before) to your phone\'s calendar.</p></div>'+
+    '<div class="card"><h3>Accountability partner</h3><p class="small muted">They can view and comment, never edit. Private items are hidden from them. They are copied on the gentle nudge if you miss 2 sessions.</p>'+
+    '<select id="gsptn"><option value="">No partner</option>'+(g.staff||[]).map(function(x){ return '<option value="'+esc(x.login)+'"'+(x.login===p.PartnerLogin?' selected':'')+'>'+esc(x.name)+'</option>'; }).join('')+'</select>'+
+    '<div style="margin-top:12px"><button class="btn" onclick="grSaveProfile({PartnerLogin:val(\'gsptn\')})">Save partner</button></div></div></div>';
+  h+='<div class="card"><h3>How AI works for you</h3><div class="grid">'+[['off','Off','No AI at all. Everything else still works.'],['copy','Copy prompt only (recommended)','The app never connects to AI. It prepares a prompt you paste into any free AI app yourself.'],['gemini','Gemini free, ask me every time','Sends only after you check the text and tap Send. On the free tier Google may use what you send to improve its products.']].map(function(m){
+      return '<button class="card clickable gropt'+(p.AIMode===m[0]?' on':'')+'" onclick="grSaveProfile({AIMode:\''+m[0]+'\'})"><b>'+m[1]+'</b><span class="small muted">'+m[2]+'</span></button>'; }).join('')+'</div>';
+  if(p.AIMode!=='off'){
+    h+='<div style="margin-top:12px">'+[['brief','Coach brief','5 lines on your week, when you tap'],['sort','Sort my Inbox','Suggestions only; you decide'],['study','Study buddy','Quizzes from your own notes']].map(function(x){
+      var on=f.indexOf(x[0])>=0; return '<label class="grtoggle"><span><b>'+x[1]+'</b><br><span class="small muted">'+x[2]+'</span></span><input type="checkbox"'+(on?' checked':'')+' onchange="grToggleFeat(\''+x[0]+'\',this.checked)"></label>'; }).join('')+
+      '<label class="grtoggle"><span><b>Remove names and numbers</b><br><span class="small muted">People, phones, emails and amounts become [PERSON], [PHONE], [EMAIL], [AMOUNT]</span></span><input type="checkbox"'+(p.Redact?' checked':'')+' onchange="grSaveProfile({Redact:this.checked})"></label></div>';
+  }
+  if(p.AIMode==='gemini'){
+    h+='<div class="row" style="margin-top:6px"><div><label>Your Gemini API key '+(p.HasAiKey?'<span class="pill ok">saved</span>':'')+'</label><input id="gskey" type="password" placeholder="'+(p.HasAiKey?'Saved. Paste a new one to replace it':'From Google AI Studio')+'" autocomplete="off"></div>'+
+      '<div style="max-width:220px"><label>Model</label><input id="gsmod" value="'+esc(p.AIModel||'gemini-flash-latest')+'"></div></div>'+
+      '<div style="display:flex;gap:8px;margin-top:10px"><button class="btn sm" onclick="grSaveKey()">Save key</button>'+(p.HasAiKey?'<button class="btn danger sm" onclick="grSaveKey(true)">Remove key</button>':'')+'<button class="btn secondary sm" onclick="grSaveProfile({AIModel:val(\'gsmod\')})">Save model</button></div>'+
+      '<p class="small muted">The key is stored on the server, never in the Sheet and never shown again.</p>';
+  }
+  h+='<div class="grid2"><div><h3 style="margin-top:12px">Never sent to AI</h3><div class="small">Cards, goals and stations you mark Private<br>Money and revenue figures<br>Comments from your partner<br>Anything from the student portal: students, fees, sponsors</div></div>'+
+    '<div><h3 style="margin-top:12px">Sent log</h3>'+((g.aiLog||[]).length?(g.aiLog||[]).map(function(a){ return '<div class="small">'+dt(a.Date)+' · '+esc(a.Feature)+' · '+a.Chars+' characters</div>'; }).join(''):'<div class="small muted">Nothing has been sent to AI.</div>')+'</div></div></div>';
+  if(g.usage) h+='<div class="card"><h3>Who uses My Growth</h3><p class="small muted">You see who has activated it, never what is inside.</p>'+g.usage.map(function(u){ return '<div class="list-item"><span>'+esc(u.name)+'</span><span class="small muted">'+(u.active?'Active since '+d(u.since):'Switched off')+'</span></div>'; }).join('')+'</div>';
+  h+='<div class="card"><h3>Switch off or delete</h3><p class="small muted">Switching off hides My Growth and stops emails; your data stays and comes back when you reactivate. Deleting removes everything for good.</p>'+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn secondary" onclick="grDeactivate()">Switch off My Growth</button><button class="btn danger" onclick="grDeleteAll()">Delete everything</button></div></div>';
+  $('grbody').innerHTML=h;
+}
+function grSaveProfile(f){ call('apiGrowthSaveProfile',S.token,f).then(function(){ grReload('Saved'); }).catch(function(e){ toast(e.message); }); }
+function grSaveSettings(){
+  var f={Email:val('gse'),Days:[].map.call(document.querySelectorAll('.gsday:checked'),function(x){return x.value;}),SessionTime:val('gstm'),BudgetHours:val('gsb')};
+  if($('gsps')) f.PlanStart=val('gsps');
+  grSaveProfile(f);
+}
+function grToggleFeat(k,on){ var f=S.gr.profile.AIFeatures.filter(function(x){return x!==k;}); if(on) f.push(k); grSaveProfile({AIFeatures:f}); }
+function grSaveKey(remove){ call('apiGrowthSetAiKey',S.token,remove?'':val('gskey')).then(function(){ grReload(remove?'Key removed':'Key saved'); }).catch(function(e){ toast(e.message); }); }
+function grDeactivate(){ if(!confirmBox('Switch off My Growth? Your data is kept and reminders stop.')) return;
+  call('apiGrowthDeactivate',S.token).then(function(){ S.data.growth.active=false; S.gr=null; toast('My Growth switched off'); vGrowth(); }).catch(function(e){ toast(e.message); }); }
+function grDeleteAll(){
+  var w=window.prompt?window.prompt('This deletes all your goals, cards, road map, notes and comments for good.\n\nType DELETE to confirm.'):'';
+  if(!w) return;
+  call('apiGrowthDeleteAll',S.token,w).then(function(){ S.data.growth.active=false; S.gr=null; toast('Deleted'); vGrowth(); }).catch(function(e){ toast(e.message); });
+}
+
+/* Calendar file (.ics) for phone alerts */
+function grIcs(){
+  var p=S.gr.profile, lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//LightOn Academy//My Growth//EN','CALSCALE:GREGORIAN','X-WR-CALNAME:My Growth'];
+  var pad=function(n){return ('0'+n).slice(-2);}, ymd=function(x){ return x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate()); };
+  var tm=String(p.SessionTime||'19:00').split(':'), stamp=new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z';
+  var mon=grMonday(), RR={Mon:'MO',Tue:'TU',Wed:'WE',Thu:'TH',Fri:'FR',Sat:'SA',Sun:'SU'};
+  var wc=grWeekCard();
+  p.Days.forEach(function(dn,i){
+    var first=new Date(mon.getTime()); first.setDate(first.getDate()+((GR_DAYS.indexOf(dn)+6)%7)); if(first<new Date(new Date().setHours(0,0,0,0))) first.setDate(first.getDate()+7);
+    var lab=wc&&wc.Checklist.filter(function(x){return String(x.slot)===String(i);})[0], name='My Growth: '+(lab&&lab.label?lab.label:'session');
+    var end=new Date(first.getFullYear(),first.getMonth(),first.getDate(),+tm[0]+1,+tm[1]);
+    lines.push('BEGIN:VEVENT','UID:grs'+i+'-'+S.gr.owner.login.replace(/[^a-z0-9]/gi,'')+'@lighton','DTSTAMP:'+stamp,'DTSTART:'+ymd(first)+'T'+pad(+tm[0])+pad(+tm[1])+'00',
+      'DTEND:'+ymd(end)+'T'+pad(end.getHours())+pad(end.getMinutes())+'00','RRULE:FREQ=WEEKLY;BYDAY='+RR[dn],'SUMMARY:'+name,'DESCRIPTION:Open My Growth for tonight\'s task. Minimum: 20 minutes.',
+      'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:In 1 hour: '+name,'TRIGGER:-PT1H','END:VALARM','BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:Starting soon: '+name,'TRIGGER:-PT10M','END:VALARM','END:VEVENT');
+  });
+  (S.gr.stations||[]).filter(function(x){ return x.Status!=='Done' && new Date(x.Date)>=new Date(new Date().setHours(0,0,0,0)); }).forEach(function(x){
+    var dd=new Date(x.Date), nx=new Date(dd.getTime()); nx.setDate(nx.getDate()+1);
+    lines.push('BEGIN:VEVENT','UID:'+x.StationID+'@lighton','DTSTAMP:'+stamp,'DTSTART;VALUE=DATE:'+ymd(dd),'DTEND;VALUE=DATE:'+ymd(nx),'SUMMARY:Milestone: '+String(x.Title).replace(/[,;]/g,' '),
+      'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:One week to '+String(x.Title).replace(/[,;]/g,' '),'TRIGGER:-P7D','END:VALARM','BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:Tomorrow: '+String(x.Title).replace(/[,;]/g,' '),'TRIGGER:-P1D','END:VALARM','END:VEVENT');
+  });
+  lines.push('END:VCALENDAR');
+  try{ var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([lines.join('\r\n')],{type:'text/calendar'})); a.download='My-Growth-reminders.ics'; document.body.appendChild(a); a.click(); a.remove(); toast('Calendar file downloaded. Open it to add the reminders.'); }
+  catch(e){ toast('Your browser blocked the download. Open the portal in Chrome and try again.'); }
+}
+
+/* ----- AI prompts: built on this phone, shown in full before anything leaves ----- */
+function grRedact(text){
+  var n={PERSON:0,PHONE:0,EMAIL:0,AMOUNT:0}, t=String(text||'');
+  var rep=function(re,tag){ t=t.replace(re,function(){ n[tag]++; return '['+tag+']'; }); };
+  rep(/[^\s@,;:()<>]+@[^\s@,;:()<>]+\.[a-z]{2,}/gi,'EMAIL');
+  rep(/(?:US\$|L\$|LRD|USD|NGN|₦|\$)\s?\d[\d,]*(?:\.\d+)?|\b\d[\d,]*(?:\.\d+)?\s?(?:USD|LRD|dollars|naira)\b/gi,'AMOUNT');
+  rep(/\+?\d[\d\s\-]{6,}\d/g,'PHONE');
+  rep(/\b(?:Mr|Mrs|Ms|Miss|Dr|Pastor|Rev|Reverend|Bishop|Prophet|Elder|Deacon|Apostle|Prof|Chief|Hon)\.?\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?/g,'PERSON');
+  (S.gr.people||[]).concat([S.data.user.name||'']).filter(function(x){ return x && x.length>2; }).sort(function(a,b){return b.length-a.length;}).forEach(function(name){
+    String(name).split(/\s+/).filter(function(w){ return w.length>2; }).concat([name]).sort(function(a,b){return b.length-a.length;}).forEach(function(part){
+      var re=new RegExp('\\b'+part.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','g'); t=t.replace(re,function(){ n.PERSON++; return '[PERSON]'; }); });
+  });
+  t=t.replace(/(\[PERSON\]\s*)+\[PERSON\]/g,'[PERSON]');
+  return {text:t,counts:n};
+}
+function grPrompt(kind,notes){
+  var g=S.gr, p=g.profile, pub=function(x){ return !x.Private; };
+  var cards=(g.cards||[]).filter(pub), goals=(g.goals||[]).filter(pub);
+  var hidden=(g.cards||[]).length-cards.length+(g.goals||[]).length-goals.length;
+  var focus=goals.filter(function(x){return x.Status==='Focus';}).map(function(x){return x.Title;});
+  var t='';
+  if(kind==='brief'){
+    var sess=grSessionsThisWeek(), mins=sess.reduce(function(a,l){return a+(+l.Minutes||0);},0), wc=grWeekCard();
+    var lastMon=grMonday(); lastMon.setDate(lastMon.getDate()-7);
+    var last=(g.log||[]).filter(function(l){ return (l.Kind==='session'||l.Kind==='minimum') && new Date(l.Date)>=lastMon && new Date(l.Date)<grMonday(); });
+    var ns=(g.stations||[]).filter(function(x){return x.Status==='Next'&&!x.Private;})[0];
+    t='Act as my personal growth coach. Be short, honest and encouraging.\n'+
+      'Last week: '+last.length+' sessions logged ('+Math.round(last.reduce(function(a,l){return a+(+l.Minutes||0);},0)/6)/10+' hours).\n'+
+      'This week (week '+g.week+') so far: '+sess.length+' sessions, '+Math.round(mins/6)/10+' hours. My weekly budget is '+p.BudgetHours+' hours on '+p.Days.join(', ')+'.\n'+
+      'Focus goals: '+(focus.join('; ')||'none chosen')+'.\n'+
+      (wc&&!wc.Private?'This week\'s plan: '+wc.Title+'. '+wc.Checklist.map(function(x){return (x.label?x.label+': ':'')+x.t+(x.done?' (done)':'');}).join(' | ')+'\n':'')+
+      'In progress: '+(cards.filter(function(c){return c.List==='In Progress';}).map(function(c){return c.Title;}).join('; ')||'nothing')+'.\n'+
+      'Blocked: '+(cards.filter(function(c){return c.List==='Blocked';}).map(function(c){return c.Title;}).join('; ')||'nothing')+'.\n'+
+      (ns?'Next milestone: '+ns.Title+' on '+grDay(ns.Date)+'.\n':'')+
+      'Write 5 short lines: what went well, what slipped, the 3 things that matter most this week, one practical tip for days with power cuts, and one encouragement.';
+  } else if(kind==='sort'){
+    var inbox=cards.filter(function(c){return c.List==='Inbox';});
+    t='Help me sort these new tasks. For each one suggest: do now (under 5 minutes), this week, later or drop, and which goal it serves.\n'+
+      'My focus goals: '+(focus.join('; ')||'none')+'. My budget is '+p.BudgetHours+' hours a week and '+grHours()+' are already planned.\n'+
+      inbox.map(function(c,i){ return (i+1)+'. '+c.Title; }).join('\n')+'\nAnswer as a numbered list, one line per task.';
+  } else {
+    t='Make 5 multiple-choice questions from my study notes below. For each give 3 options, the correct answer and one line explaining why. Then list 3 flashcards (question → answer).\n\nMy notes:\n'+(notes||'');
+  }
+  var r=p.Redact?grRedact(t):{text:t,counts:{}};
+  var c=r.counts, parts=[];
+  if(hidden) parts.push(hidden+' Private item'+(hidden>1?'s':''));
+  parts.push('money figures','partner comments');
+  var red=Object.keys(c).filter(function(k){return c[k];}).map(function(k){ return c[k]+' '+k.toLowerCase()+(c[k]>1?'s':''); });
+  return {text:r.text,left:'Left out: '+parts.join(', ')+'.'+(red.length?' Replaced: '+red.join(', ')+'.':'')+(p.Redact?'':' Names and numbers are NOT being removed (Settings).')};
+}
+function grAsk(kind){
+  if(kind==='study' && S.grNotes===undefined){
+    var last=(S.gr.log||[]).filter(function(l){ return l.Note && /session|minimum|note/.test(l.Kind); })[0];
+    modal('<h3>Study buddy</h3><p class="small muted">Paste or type your notes from your Learn session. Only these notes are used.</p><textarea id="grnotes" style="min-height:160px">'+esc(last?last.Note:'')+'</textarea>'+
+      '<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" onclick="S.grNotes=val(\'grnotes\');closeModal();grAsk(\'study\')">Next</button></div>');
+    return;
+  }
+  var pr=grPrompt(kind,S.grNotes), mode=S.gr.profile.AIMode; S.grNotes=undefined;
+  var title={brief:'Coach brief',sort:'Sort my Inbox',study:'Study buddy'}[kind];
+  modal('<h3>'+title+': check before it leaves</h3><p class="small muted">This is exactly what '+(mode==='copy'?'you will paste into your AI app':'goes to Gemini')+', and nothing else. You can edit it.</p>'+
+    '<textarea id="graitext" style="min-height:200px;font-size:13px">'+esc(pr.text)+'</textarea><div class="hint" style="background:var(--ok-soft);color:var(--ok)">'+esc(pr.left)+'</div>'+
+    (mode==='copy'?'<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><button class="btn" onclick="copyText(val(\'graitext\'))">Copy prompt</button><span class="small muted" style="align-self:center">Paste it into the free ChatGPT, Gemini or Claude app.</span></div>'+
+      '<label>Paste the answer here to keep it</label><textarea id="graians" placeholder="Optional"></textarea>'
+      :'<div style="display:flex;gap:8px;margin-top:12px"><button class="btn" id="graisend" onclick="grSendAi(\''+kind+'\')">Send to Gemini</button></div><div id="graiout"></div>')+
+    '<div class="err" id="graierr"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px"><button class="btn secondary" onclick="closeModal()">Close</button>'+
+    '<button class="btn" id="graisave" onclick="grSaveAi(\''+kind+'\')"'+(mode==='copy'?'':' style="display:none"')+'>'+(kind==='study'?'Save as study notes':'Save answer')+'</button></div>');
+}
+function grSendAi(kind){
+  busy($('graisend'),true,'Sending…');
+  call('apiGrowthAi',S.token,kind,val('graitext')).then(function(ans){
+    $('graiout').innerHTML='<label>Answer (AI can be wrong; check it)</label><textarea id="graians" style="min-height:180px">'+esc(ans)+'</textarea>';
+    $('graisave').style.display=''; busy($('graisend'),false,'Send again'); grReload();
+  }).catch(function(e){ busy($('graisend'),false,'Send to Gemini'); $('graierr').textContent=e.message; });
+}
+function grSaveAi(kind){
+  var a=val('graians'); if(!a){ closeModal(); return; }
+  call('apiGrowthNote',S.token,'ai-'+kind,a).then(function(){ closeModal(); grReload('Saved'); }).catch(function(e){ $('graierr').textContent=e.message; });
 }
 
 /* ---------- start ---------- */
