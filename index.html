@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LightOn">
-<script>document.write('<script src="config.js?v=6.3.0&t='+Date.now()+'"><\/script>');</script>
+<script>document.write('<script src="config.js?v=6.4.0&t='+Date.now()+'"><\/script>');</script>
 <style>
   /* Plus Jakarta Sans (variable, weights 200-800), bundled inside the app — SIL Open Font License 1.1 */
   @font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-display:swap;font-weight:200 800;
@@ -342,6 +342,41 @@
   .grtoggle input{width:22px;height:22px}
   @media (max-width:980px){ .grfab{bottom:calc(84px + env(safe-area-inset-bottom));right:16px} .grcol{flex-basis:84vw} }
   @media (max-width:600px){ .grsort .btn{padding:0 6px;font-size:12.5px} .grhero h2.grtitle{font-size:19px} }
+  /* My Growth ▸ Projects (v6.4) */
+  .gpdot{display:inline-block;border-radius:50%;flex:none;vertical-align:-2px;margin-right:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+  .gpproj{display:block;width:100%;text-align:left;font:inherit;color:inherit}
+  .gptiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}
+  .gptile{background:#F7F9FC;border:1px solid var(--line-2);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:3px;min-width:0}
+  .gptile b{font-size:20px;letter-spacing:-.01em;line-height:1.2} .gpof{font-size:13px;font-weight:500;color:var(--muted)}
+  .gplight{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line-2)} .gplight:last-of-type{border-bottom:none}
+  .gptrack{display:flex;gap:4px;position:relative;margin:14px 0 8px;overflow-x:auto;padding-bottom:4px}
+  .gptrack:before{content:'';position:absolute;left:24px;right:24px;top:17px;height:4px;background:#E3E8F2;border-radius:4px}
+  .gpstn{all:unset;cursor:pointer;flex:1;min-width:48px;display:flex;flex-direction:column;align-items:center;gap:3px;position:relative;font-size:12px}
+  .gpstn i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#fff;border:3px solid #94A3B8;font-style:normal;font-weight:700;font-size:12px;box-sizing:border-box}
+  .gpstn.done i{background:var(--ok);border-color:var(--ok);color:#fff} .gpstn.now i{background:var(--info);border-color:var(--info);color:#fff;box-shadow:0 0 0 4px var(--info-soft)}
+  .gpstn.late i{border-color:#E08A00} .gpstn span{color:var(--muted);font-size:11px}
+  .gpchart{width:100%;height:auto;display:block;margin:6px 0} .gpax{font-size:10px;fill:#64748B;font-family:inherit}
+  .gprow{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line-2);font-size:14px} .gprow:last-child{border-bottom:none}
+  .gprow.strong{font-weight:700;background:#F7F9FC;margin:0 -8px;padding:7px 8px;border-radius:8px}
+  .gpreview{display:flex;flex-direction:column;gap:3px;margin-top:12px;background:var(--gold-soft);border-radius:12px;padding:12px}
+  .gpalert{background:var(--bad-soft);border-color:#F4B4B6;color:#9B1C1F;display:flex;gap:8px;align-items:flex-start}
+  .gpcur{border-color:#9DB7F5;box-shadow:0 0 0 3px var(--info-soft)}
+  .gpms{all:unset;cursor:pointer;display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line-2);width:100%;box-sizing:border-box}
+  .gpms:last-child{border-bottom:none} .gpms .pill{min-width:74px;justify-content:center} .gpmst{font-size:14px;line-height:1.4}
+  .gpmini{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin-top:10px}
+  .gpmini>div,.gpcalc>div{background:#F7F9FC;border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;gap:2px;min-width:0}
+  .gpmini span,.gpcalc span{font-size:11.5px;color:var(--muted)} .gpmini b,.gpcalc b{font-size:15px}
+  .gpcalc{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 6px}
+  .gplights{display:flex;gap:2px;flex:none}
+  .gptable{font-size:13px;white-space:nowrap} .gptable td,.gptable th{padding:8px 7px} .gptable tr.clickable:hover td{background:#F7F9FC}
+  .gpterms{white-space:pre-line;font-size:14px;line-height:1.55;background:#F7F9FC;border-radius:12px;padding:12px 14px}
+  .gptermgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:4px 14px}
+  .gpterm{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line-2);margin:0;font-size:13.5px;font-weight:500;color:var(--text)}
+  .gpterm input{width:96px;flex:none;text-align:right}
+  .gpinc{display:block;width:100%;text-align:left;font:inherit;color:inherit}
+  .gpseg{display:flex;flex-wrap:wrap} .gpseg button.on,.gpver button.on{background:var(--navy-3);color:#fff}
+  .modal h4{margin:16px 0 0;font-size:14px;color:var(--navy-2)}
+  @media (max-width:640px){ .gpcalc{grid-template-columns:repeat(2,1fr)} .gptile b{font-size:18px} .gpterm input{width:84px} }
 </style>
 </head>
 <body class="bare">
@@ -706,7 +741,7 @@ var VIEW_PERM={Overview:null,Leads:['leads.view','leads.edit'],Register:['studen
   Fees:['fees.view','fees.collect'],Finance:['finance.view','finance.edit'],Courses:['courses.manage'],Website:['website.edit'],Staff:['staff.manage'],Settings:['settings.manage'],Growth:['growth.activate']};
 var PORTAL_ROLES=['Student','Parent','Sponsor'];
 var ALL_PERMS=['overview.view','leads.view','leads.edit','students.register','students.view','students.edit','sponsors.manage','fees.view','fees.collect','finance.view','finance.edit','courses.manage','courses.teach_all','staff.manage','settings.manage','website.edit','growth.activate'];
-var CLIENT_VERSION='6.3.0';
+var CLIENT_VERSION='6.4.0';
 function myPermList(){
   if(!S.data) return [];
   if(S.data.perms) return S.data.perms;
@@ -1959,7 +1994,7 @@ function renderSponsor(){
 }
 
 
-/* ---------- MY GROWTH (v6.3) ---------- */
+/* ---------- MY GROWTH (v6.3, Projects v6.4) ---------- */
 ICO.flag='<path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/>';
 ICO.route='<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/>';
 ICO.board='<rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/>';
@@ -2002,8 +2037,8 @@ function grReload(msg){
     if(S.data.growth){ S.data.growth.active=r.isOwner?!r.inactive:S.data.growth.active; }
     if(msg) toast(msg); if(S.view==='Growth') drawGrowth(); }).catch(function(e){ toast(e.message); });
 }
-function grSwitchOwner(o){ S.grOwner=o; S.grTab='now'; S.gr=null; vGrowth(); }
-function grTab(t){ S.grTab=t; drawGrowth(); window.scrollTo(0,0); }
+function grSwitchOwner(o){ S.grOwner=o; S.grTab='now'; S.gr=null; S.gpId=null; S.gp=null; vGrowth(); }
+function grTab(t){ if(t==='projects'&&S.grTab==='projects'){ S.gpId=null; S.gp=null; } S.grTab=t; drawGrowth(); window.scrollTo(0,0); }
 
 function drawGrowth(){
   var g=S.gr, h='';
@@ -2017,11 +2052,12 @@ function drawGrowth(){
     ' · '+esc(g.profile.Days.join(', '))+' at '+esc(g.profile.SessionTime)+(g.isOwner?(g.partnerName?' · '+esc(g.partnerName)+' can view':''):' · view only, you can comment')+'</div></div>'+
     (g.isOwner?'':'<div class="actions"><button class="btn secondary sm" onclick="grCommentModal(\'general\')">'+ic('chat')+' Comment</button></div>')+'</div>';
   var tabs=[['now','Now'],['board','Board'],['map','Road map'],['goals','Goals']];
+  if(g.isOwner||(g.projects||[]).length) tabs.push(['projects','Projects']);
   if(g.isOwner) tabs.push(['inbox','Inbox'+(inbox?' ('+inbox+')':'')],['settings','Settings']);
   h+='<div class="tabs">'+tabs.map(function(t){ return '<button class="'+(S.grTab===t[0]?'on':'')+'" onclick="grTab(\''+t[0]+'\')">'+t[1]+'</button>'; }).join('')+'</div><div id="grbody"></div>';
   if(g.isOwner) h+='<button class="grfab" aria-label="Add something that came in" onclick="grCapture()">'+ic('plus')+'</button>';
   target().innerHTML=h;
-  ({now:grNow,board:grBoard,map:grMap,goals:grGoals,inbox:grInbox,settings:grSettings}[S.grTab]||grNow)();
+  ({now:grNow,board:grBoard,map:grMap,goals:grGoals,projects:grProjects,inbox:grInbox,settings:grSettings}[S.grTab]||grNow)();
 }
 
 /* ----- activation ----- */
@@ -2036,7 +2072,7 @@ function grActivationView(){
     'Nothing is created until you press the button. Only you can see it, plus one partner you choose.</p>'+
     '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn gold" onclick="grSetup(false)">'+ic('target')+' '+(g.hadData?'Reactivate My Growth':'Activate My Growth')+'</button>'+
     (g.hadData?'<button class="btn secondary" onclick="grSetup(true)">Start fresh</button>':'')+'</div></div></div></div>'+
-    '<div class="grid2"><div class="card"><h3>What you get</h3><div class="small">Now: tonight\'s session and the 20-minute minimum<br>Board: Inbox, This Week, In Progress (max 3), Done<br>Road map: your milestones as a train line<br>Goals: pick 3 to focus on each quarter<br>Monday email with your week\'s plan</div></div>'+
+    '<div class="grid2"><div class="card"><h3>What you get</h3><div class="small">Now: tonight\'s session and the 20-minute minimum<br>Board: Inbox, This Week, In Progress (max 3), Done<br>Road map: your milestones as a train line<br>Goals: pick 3 to focus on each quarter<br>Projects: partnerships with terms, monthly numbers and a dashboard<br>Monday email with your week\'s plan</div></div>'+
     '<div class="card"><h3>Your privacy</h3><div class="small">Your partner can view and comment, never edit. Items you mark Private are hidden from them and from AI. '+
     'Admins only see that you use it, not what is inside. You can switch it off or delete everything at any time.</div></div></div>';
 }
@@ -2399,7 +2435,7 @@ function grSettings(){
       '<div style="display:flex;gap:8px;margin-top:10px"><button class="btn sm" onclick="grSaveKey()">Save key</button>'+(p.HasAiKey?'<button class="btn danger sm" onclick="grSaveKey(true)">Remove key</button>':'')+'<button class="btn secondary sm" onclick="grSaveProfile({AIModel:val(\'gsmod\')})">Save model</button></div>'+
       '<p class="small muted">The key is stored on the server, never in the Sheet and never shown again.</p>';
   }
-  h+='<div class="grid2"><div><h3 style="margin-top:12px">Never sent to AI</h3><div class="small">Cards, goals and stations you mark Private<br>Money and revenue figures<br>Comments from your partner<br>Anything from the student portal: students, fees, sponsors</div></div>'+
+  h+='<div class="grid2"><div><h3 style="margin-top:12px">Never sent to AI</h3><div class="small">Cards, goals and stations you mark Private<br>Projects: their numbers, money and terms<br>Money and revenue figures<br>Comments from your partner<br>Anything from the student portal: students, fees, sponsors</div></div>'+
     '<div><h3 style="margin-top:12px">Sent log</h3>'+((g.aiLog||[]).length?(g.aiLog||[]).map(function(a){ return '<div class="small">'+dt(a.Date)+' · '+esc(a.Feature)+' · '+a.Chars+' characters</div>'; }).join(''):'<div class="small muted">Nothing has been sent to AI.</div>')+'</div></div></div>';
   if(g.usage) h+='<div class="card"><h3>Who uses My Growth</h3><p class="small muted">You see who has activated it, never what is inside.</p>'+g.usage.map(function(u){ return '<div class="list-item"><span>'+esc(u.name)+'</span><span class="small muted">'+(u.active?'Active since '+d(u.since):'Switched off')+'</span></div>'; }).join('')+'</div>';
   h+='<div class="card"><h3>Switch off or delete</h3><p class="small muted">Switching off hides My Growth and stops emails; your data stays and comes back when you reactivate. Deleting removes everything for good.</p>'+
@@ -2524,6 +2560,722 @@ function grSendAi(kind){
 function grSaveAi(kind){
   var a=val('graians'); if(!a){ closeModal(); return; }
   call('apiGrowthNote',S.token,'ai-'+kind,a).then(function(){ closeModal(); grReload('Saved'); }).catch(function(e){ $('graierr').textContent=e.message; });
+}
+
+var GPW_H=[278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,1015,667,667,722,722,667,611,778,722,278,500,667,556,833,722,778,667,778,722,667,611,722,667,944,667,667,611,278,278,278,469,556,333,556,556,500,556,556,278,556,556,222,222,500,222,833,556,556,556,556,333,500,278,556,500,722,500,500,500,334,260,334,584,761,556,556,222,556,333,1000,556,556,333,1000,667,333,1000,556,611,556,556,222,222,333,333,350,556,1000,333,1000,500,333,944,556,500,667,278,333,556,556,556,556,260,556,333,737,370,556,584,333,737,333,400,584,333,333,333,556,537,278,333,333,365,556,834,834,834,611,667,667,667,667,667,667,1000,722,667,667,667,667,278,278,278,278,722,722,778,778,778,778,778,584,778,722,722,722,722,667,667,611,556,556,556,556,556,556,889,500,556,556,556,556,278,278,278,278,556,556,556,556,556,556,556,584,611,556,556,556,556,500,556,500];
+var GPW_B=[278,333,474,556,556,889,722,238,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,333,333,584,584,584,611,975,722,722,722,722,667,611,778,722,278,556,722,611,833,722,778,667,778,722,667,611,722,667,944,667,667,611,333,278,333,584,556,333,556,611,556,611,556,333,611,611,278,278,556,278,889,611,611,611,611,389,556,333,611,556,778,556,556,500,389,280,389,584,761,556,556,278,556,500,1000,556,556,333,1000,667,333,1000,556,611,556,556,278,278,500,500,350,556,1000,333,1000,556,333,944,556,500,667,278,333,556,556,556,556,280,556,333,737,370,556,584,333,737,333,400,584,333,333,333,611,556,278,333,333,365,556,834,834,834,611,722,722,722,722,722,722,1000,722,667,667,667,667,278,278,278,278,722,722,778,778,778,778,778,584,778,722,722,722,722,667,667,611,556,556,556,556,556,556,889,556,556,556,556,556,278,278,278,278,611,611,611,611,611,611,611,584,611,611,611,611,611,556,611,556];
+
+/* ----- Projects: exports made on the phone (PDF, Excel, WhatsApp). No outside libraries, works offline. ----- */
+var GP_CP1252={8364:128,8218:130,402:131,8222:132,8230:133,8224:134,8225:135,710:136,8240:137,352:138,8249:139,338:140,381:142,8216:145,8217:146,8220:147,8221:148,8226:149,8211:150,8212:151,732:152,8482:153,353:154,8250:155,339:156,382:158,376:159};
+var GP_FALLBACK={'≥':'>=','≤':'<=','→':'->','←':'<-','✓':'v','✔':'v','×':'x','−':'-','₦':'NGN ','…':'...',' ':' '};
+function gpWin(s){
+  s=String(s==null?'':s); var o='';
+  for(var i=0;i<s.length;i++){ var ch=s.charAt(i), c=s.charCodeAt(i);
+    if(GP_FALLBACK[ch]){ o+=GP_FALLBACK[ch]; continue; }
+    if(c>=32&&c<127||c>=160&&c<=255) o+=ch; else if(GP_CP1252[c]) o+=String.fromCharCode(GP_CP1252[c]); else if(c===10||c===9) o+=' '; else if(c>=0xD800&&c<=0xDBFF){ i++; } else o+='?'; }
+  return o;
+}
+/** A tiny PDF writer: A4 pages, Helvetica, text, lines, boxes and circles. Coordinates from the top-left, in points. */
+function GpPdf(){ this.pages=[]; this.W=595.28; this.H=841.89; this.page(); }
+GpPdf.prototype.page=function(){ this.cur=[]; this.pages.push(this.cur); return this; };
+GpPdf.prototype.col=function(hex){ hex=String(hex||'#000').replace('#',''); if(hex.length===3) hex=hex.split('').map(function(x){return x+x;}).join('');
+  return [0,2,4].map(function(i){ return (parseInt(hex.substr(i,2),16)/255).toFixed(3); }).join(' '); };
+GpPdf.prototype.width=function(s,size,bold){ s=gpWin(s); var w=0, t=bold?GPW_B:GPW_H; for(var i=0;i<s.length;i++){ var c=s.charCodeAt(i); w+=(c>=32&&c<=255?t[c-32]:556); } return w*size/1000; };
+GpPdf.prototype.fit=function(s,size,maxw,bold){ s=gpWin(s); if(this.width(s,size,bold)<=maxw) return s; while(s.length>1&&this.width(s+'...',size,bold)>maxw) s=s.slice(0,-1); return s+'...'; };
+GpPdf.prototype.wrap=function(s,size,maxw,bold){
+  var self=this, out=[];
+  String(s==null?'':s).split('\n').forEach(function(par){ var words=par.split(/\s+/), line='';
+    words.forEach(function(w){ var t=line?line+' '+w:w; if(self.width(t,size,bold)<=maxw||!line){ line=t; } else { out.push(line); line=w; } });
+    out.push(line); });
+  return out;
+};
+GpPdf.prototype.text=function(x,y,s,o){
+  o=o||{}; var size=o.size||10, bold=!!o.bold, str=o.maxw?this.fit(s,size,o.maxw,bold):gpWin(s);
+  if(o.align==='right') x-=this.width(str,size,bold); else if(o.align==='center') x-=this.width(str,size,bold)/2;
+  var esc2=str.replace(/\\/g,'\\\\').replace(/\(/g,'\\(').replace(/\)/g,'\\)');
+  this.cur.push('BT /'+(bold?'F2':'F1')+' '+size+' Tf '+this.col(o.color||'#0F172A')+' rg '+x.toFixed(2)+' '+(this.H-y).toFixed(2)+' Td ('+esc2+') Tj ET');
+  return this;
+};
+GpPdf.prototype.rect=function(x,y,w,h,o){
+  o=o||{}; var ops=[];
+  if(o.fill) ops.push(this.col(o.fill)+' rg'); if(o.stroke) ops.push(this.col(o.stroke)+' RG '+(o.lw||0.6)+' w');
+  ops.push(x.toFixed(2)+' '+(this.H-y-h).toFixed(2)+' '+w.toFixed(2)+' '+h.toFixed(2)+' re '+(o.fill&&o.stroke?'B':o.fill?'f':'S'));
+  this.cur.push('q '+ops.join(' ')+' Q'); return this;
+};
+GpPdf.prototype.line=function(x1,y1,x2,y2,o){
+  o=o||{}; this.cur.push('q '+this.col(o.color||'#94A3B8')+' RG '+(o.lw||0.8)+' w '+(o.dash?'['+o.dash+'] 0 d ':'')+x1.toFixed(2)+' '+(this.H-y1).toFixed(2)+' m '+x2.toFixed(2)+' '+(this.H-y2).toFixed(2)+' l S Q'); return this;
+};
+GpPdf.prototype.poly=function(pts,o){
+  if(pts.length<2) return this; o=o||{}; var H=this.H;
+  this.cur.push('q '+this.col(o.color||'#1565D8')+' RG '+(o.lw||1.6)+' w 1 j '+pts.map(function(p,i){ return p[0].toFixed(2)+' '+(H-p[1]).toFixed(2)+(i?' l':' m'); }).join(' ')+' S Q'); return this;
+};
+GpPdf.prototype.circle=function(cx,cy,r,o){
+  o=o||{}; var k=0.5523*r, y=this.H-cy, f=function(n){return n.toFixed(2);};
+  var p=f(cx+r)+' '+f(y)+' m '+f(cx+r)+' '+f(y+k)+' '+f(cx+k)+' '+f(y+r)+' '+f(cx)+' '+f(y+r)+' c '+f(cx-k)+' '+f(y+r)+' '+f(cx-r)+' '+f(y+k)+' '+f(cx-r)+' '+f(y)+' c '+
+    f(cx-r)+' '+f(y-k)+' '+f(cx-k)+' '+f(y-r)+' '+f(cx)+' '+f(y-r)+' c '+f(cx+k)+' '+f(y-r)+' '+f(cx+r)+' '+f(y-k)+' '+f(cx+r)+' '+f(y)+' c';
+  this.cur.push('q '+(o.fill?this.col(o.fill)+' rg ':'')+(o.stroke?this.col(o.stroke)+' RG '+(o.lw||1.2)+' w ':'')+p+' '+(o.fill&&o.stroke?'B':o.fill?'f':'S')+' Q'); return this;
+};
+/** Returns the file as a binary string (one char per byte). */
+GpPdf.prototype.output=function(){
+  var objs=[], n=this.pages.length;
+  objs[1]='<< /Type /Catalog /Pages 2 0 R >>';
+  objs[3]='<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>';
+  objs[4]='<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>';
+  var kids=[];
+  for(var i=0;i<n;i++){
+    var po=5+i*2, co=po+1, body=this.pages[i].join('\n');
+    kids.push(po+' 0 R');
+    objs[po]='<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+this.W+' '+this.H+'] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents '+co+' 0 R >>';
+    objs[co]='<< /Length '+body.length+' >>\nstream\n'+body+'\nendstream';
+  }
+  objs[2]='<< /Type /Pages /Kids ['+kids.join(' ')+'] /Count '+n+' >>';
+  var out='%PDF-1.4\n%âãÏÓ\n', offs=[];
+  for(var j=1;j<objs.length;j++){ offs[j]=out.length; out+=j+' 0 obj\n'+objs[j]+'\nendobj\n'; }
+  var x=out.length; out+='xref\n0 '+objs.length+'\n0000000000 65535 f \n';
+  for(var k=1;k<objs.length;k++) out+=('0000000000'+offs[k]).slice(-10)+' 00000 n \n';
+  return out+'trailer\n<< /Size '+objs.length+' /Root 1 0 R >>\nstartxref\n'+x+'\n%%EOF\n';
+};
+function gpBytes(bin){ var u=new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) u[i]=bin.charCodeAt(i)&255; return u; }
+
+/* ---- .xlsx writer (stored zip, inline strings) ---- */
+var GP_XH='<'+'?xml version="1.0" encoding="UTF-8" standalone="yes"?'+'>'; // split so Apps Script templates don't read it as a scriptlet
+var GP_CRC=(function(){ var t=[]; for(var n=0;n<256;n++){ var c=n; for(var k=0;k<8;k++) c=c&1?0xEDB88320^(c>>>1):c>>>1; t[n]=c>>>0; } return t; })();
+function gpCrc(u){ var c=0xFFFFFFFF; for(var i=0;i<u.length;i++) c=GP_CRC[(c^u[i])&255]^(c>>>8); return (c^0xFFFFFFFF)>>>0; }
+function gpUtf8(s){ if(typeof TextEncoder!=='undefined') return new TextEncoder().encode(s); var b=unescape(encodeURIComponent(s)), u=new Uint8Array(b.length); for(var i=0;i<b.length;i++) u[i]=b.charCodeAt(i); return u; }
+function gpZip(files){
+  var parts=[], central=[], off=0;
+  var w16=function(a,v){ a.push(v&255,(v>>>8)&255); }, w32=function(a,v){ a.push(v&255,(v>>>8)&255,(v>>>16)&255,(v>>>24)&255); };
+  files.forEach(function(f){
+    var name=gpUtf8(f.name), data=gpUtf8(f.data), crc=gpCrc(data), h=[];
+    w32(h,0x04034b50); w16(h,20); w16(h,0x0800); w16(h,0); w16(h,0); w16(h,0x21); w32(h,crc); w32(h,data.length); w32(h,data.length); w16(h,name.length); w16(h,0);
+    parts.push(new Uint8Array(h),name,data);
+    var c=[]; w32(c,0x02014b50); w16(c,20); w16(c,20); w16(c,0x0800); w16(c,0); w16(c,0); w16(c,0x21); w32(c,crc); w32(c,data.length); w32(c,data.length);
+    w16(c,name.length); w16(c,0); w16(c,0); w16(c,0); w16(c,0); w32(c,0); w32(c,off);
+    central.push(new Uint8Array(c),name);
+    off+=h.length+name.length+data.length;
+  });
+  var csize=central.reduce(function(t,p){return t+p.length;},0), e=[];
+  w32(e,0x06054b50); w16(e,0); w16(e,0); w16(e,files.length); w16(e,files.length); w32(e,csize); w32(e,off); w16(e,0);
+  var all=parts.concat(central,[new Uint8Array(e)]), len=all.reduce(function(t,p){return t+p.length;},0), out=new Uint8Array(len), pos=0;
+  all.forEach(function(p){ out.set(p,pos); pos+=p.length; });
+  return out;
+}
+function gpX(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,''); }
+/** sheets = [{name, rows:[[...]], widths:[...]}]; the first row of each sheet is the header (bold). Numbers stay numbers. */
+function gpXlsx(sheets){
+  var colName=function(i){ var s=''; i++; while(i){ var m=(i-1)%26; s=String.fromCharCode(65+m)+s; i=Math.floor((i-1)/26); } return s; };
+  var files=[], ct='', rel='', wb='';
+  sheets.forEach(function(sh,si){
+    var x=GP_XH+'<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>';
+    if(sh.widths) x+='<cols>'+sh.widths.map(function(w,i){ return '<col min="'+(i+1)+'" max="'+(i+1)+'" width="'+w+'" customWidth="1"/>'; }).join('')+'</cols>';
+    x+='<sheetData>'+sh.rows.map(function(r,ri){ return '<row r="'+(ri+1)+'">'+r.map(function(v,ci){
+      var ref=colName(ci)+(ri+1), st=ri===0?' s="1"':(typeof v==='number'&&sh.money&&sh.money.indexOf(ci)>=0?' s="2"':'');
+      if(v===''||v==null) return ri===0?'<c r="'+ref+'"'+st+'/>':'';
+      if(typeof v==='number'&&isFinite(v)) return '<c r="'+ref+'"'+st+'><v>'+v+'</v></c>';
+      return '<c r="'+ref+'"'+st+' t="inlineStr"><is><t xml:space="preserve">'+gpX(v)+'</t></is></c>'; }).join('')+'</row>'; }).join('')+'</sheetData></worksheet>';
+    files.push({name:'xl/worksheets/sheet'+(si+1)+'.xml',data:x});
+    ct+='<Override PartName="/xl/worksheets/sheet'+(si+1)+'.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>';
+    rel+='<Relationship Id="rId'+(si+1)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet'+(si+1)+'.xml"/>';
+    wb+='<sheet name="'+gpX(String(sh.name).replace(/[\[\]*?:\/\\]/g,'').slice(0,31))+'" sheetId="'+(si+1)+'" r:id="rId'+(si+1)+'"/>';
+  });
+  var n=sheets.length;
+  files.unshift(
+    {name:'[Content_Types].xml',data:GP_XH+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>'+ct+'</Types>'},
+    {name:'_rels/.rels',data:GP_XH+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'},
+    {name:'xl/workbook.xml',data:GP_XH+'<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>'+wb+'</sheets></workbook>'},
+    {name:'xl/_rels/workbook.xml.rels',data:GP_XH+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+rel+'<Relationship Id="rId'+(n+1)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'},
+    {name:'xl/styles.xml',data:GP_XH+'<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><numFmts count="1"><numFmt numFmtId="164" formatCode="#,##0.00"/></numFmts><fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF1F3A5F"/></patternFill></fill></fills><borders count="1"><border/></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="3"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1"/><xf numFmtId="164" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>'}
+  );
+  return gpZip(files);
+}
+function gpDownload(bytes,name,type){
+  try{ var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([bytes],{type:type})); a.download=name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ try{ URL.revokeObjectURL(a.href); }catch(e){} },4000); toast('Downloaded: '+name); return true; }
+  catch(e){ toast('Your browser blocked the download. Open the portal in Chrome and try again.'); return false; }
+}
+function gpB64(bin){ return btoa(bin); }
+
+/* ---------- MY GROWTH ▸ PROJECTS (v6.4) ---------- */
+ICO.download='<path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/>';
+ICO.mail='<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>';
+ICO.edit='<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>';
+ICO.folder='<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>';
+ICO.share2='<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.9l7.6-4.6M8.2 13.1l7.6 4.6"/>';
+var GP_TABS=[['dash','Dashboard'],['ms','Milestones'],['months','Monthly log'],['income','Income'],['terms','Terms']];
+var GP_LIGHT={Green:'#12A150',Amber:'#E08A00',Red:'#E5484D','':'#CBD5E1'};
+var GP_LIGHT_PILL={Green:'ok',Amber:'warn',Red:'bad'};
+var GP_FEE_PILL={'On time':'ok','Late':'warn','Not paid':'bad','Due':'info','No fee':''};
+var GP_PAY_PILL={'On time':'ok','Late':'warn','Overdue':'bad','Pending':'info'};
+var GP_MS_PILL={'Done':'ok','In progress':'info','Missed':'bad','Not started':''};
+
+function gpM(n){ n=Number(n||0); var a=Math.abs(n); return (n<0?'-':'')+'US$'+a.toLocaleString(undefined,{minimumFractionDigits:a%1?2:0,maximumFractionDigits:2}); }
+function gpN(n){ return n===''||n==null?'–':Number(n).toLocaleString(); }
+function gpMon(v,long){ var x=new Date(v); return isNaN(x)?'':x.toLocaleDateString(undefined,{month:long?'long':'short',year:'numeric'}); }
+function gpYm(v){ var x=new Date(v); return isNaN(x)?'':x.getFullYear()+'-'+('0'+(x.getMonth()+1)).slice(-2); }
+function gpTerm(k){ var t=(S.gp.terms||[]).filter(function(x){return x.Key===k;})[0]; return t?t.Value:''; }
+function gpDot(s,size){ size=size||12; return '<i class="gpdot" style="width:'+size+'px;height:'+size+'px;background:'+(GP_LIGHT[s||'']||GP_LIGHT[''])+'"></i>'; }
+function gpToday(){ var x=new Date(); return x.getFullYear()+'-'+('0'+(x.getMonth()+1)).slice(-2)+'-'+('0'+x.getDate()).slice(-2); }
+function gpOwner(){ return !!(S.gp&&S.gp.isOwner); }
+
+function grProjects(){
+  if(!S.gpId){ gpList(); return; }
+  if(S.gp && S.gp.project.ProjectId===S.gpId && S.gpFor===S.grOwner){ gpDraw(); return; }
+  $('grbody').innerHTML='<div class="spinner"></div>';
+  call('apiGrowthProject',S.token,S.grOwner,S.gpId).then(function(r){ S.gp=r; S.gpFor=S.grOwner; if(S.view==='Growth'&&S.grTab==='projects') gpDraw(); })
+    .catch(function(e){ S.gpId=null; toast(e.message); gpList(); });
+}
+function gpOpen(id){ S.gpId=id; S.gp=null; S.gpTab='dash'; S.gpMsMonth=undefined; grProjects(); window.scrollTo(0,0); }
+function gpBack(){ S.gpId=null; S.gp=null; gpList(); window.scrollTo(0,0); }
+function gpReload(msg){
+  return call('apiGrowthProject',S.token,S.grOwner,S.gpId).then(function(r){ S.gp=r; S.gpFor=S.grOwner; if(msg) toast(msg); if(S.view==='Growth'&&S.grTab==='projects'&&S.gpId) gpDraw(); })
+    .catch(function(e){ toast(e.message); });
+}
+
+/* ----- list ----- */
+function gpList(){
+  var g=S.gr, list=g.projects||[], h='';
+  h+='<div class="ph" style="margin-top:0"><div><div class="sub">'+(g.isOwner?'Partnerships and side projects, each with its own terms, milestones, monthly numbers and income. Private unless you share one.':'Projects '+esc(g.owner.name.split(' ')[0])+' has shared with you (view only).')+'</div></div>'+
+    (g.isOwner?'<div class="actions"><button class="btn sm" onclick="gpNew()">'+ic('plus')+' New project</button></div>':'')+'</div>';
+  if(!list.length){
+    h+='<div class="card" style="text-align:center;padding:28px 18px">'+ic('folder')+'<h3 style="margin-top:8px">No projects yet</h3><p class="small muted" style="max-width:440px;margin:6px auto 14px">Track a partnership month by month: the agreed terms, who does what, the numbers, the money and a dashboard you can send as a PDF, Excel file or WhatsApp update.</p>'+
+      (g.isOwner?'<button class="btn" onclick="gpNew(\'dan\')">Add the Dan Language partnership</button>':'')+'</div>';
+  }
+  list.forEach(function(p){
+    h+='<button class="card clickable gpproj" onclick="gpOpen(\''+esc(p.ProjectId)+'\')"><div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div style="min-width:0"><b style="font-size:16px">'+esc(p.Name)+'</b>'+
+      '<div class="small muted">'+esc(p.PartnerName||'')+'</div></div><span class="pill '+(p.Status==='Active'?'ok':'')+'">'+esc(p.Status)+'</span></div>'+
+      '<div class="small" style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap"><span>Month '+p.MonthNo+' · started '+gpMon(p.StartMonth)+'</span>'+
+      (g.isOwner?(p.SharedWithPartner?'<span class="pill info">'+ic('share2')+' Shared with '+esc((g.partnerName||'partner').split(' ')[0])+'</span>':'<span class="pill">'+ic('lock')+' Private</span>'):'')+'</div></button>';
+  });
+  if(g.isOwner && list.length) h+='<p class="small muted">'+ic('lock')+' Project numbers and money are never sent to AI.</p>';
+  $('grbody').innerHTML=h;
+}
+function gpNew(tpl){
+  var g=S.gr, others=g.projects||[];
+  modal('<h3>New project</h3><p class="small muted">You can change everything later in the project\'s Terms tab.</p>'+
+    '<label>Start from</label>'+[['dan','Dan Language partnership','Terms, roles and the 6-month milestones from the signed MOU'],['copy','Copy one of my projects','Same terms and milestones, fresh numbers'],['blank','Blank project','Your own terms and milestones']].filter(function(t){ return t[0]!=='copy'||others.length; }).map(function(t,i){
+      return '<label class="grradio"><input type="radio" name="gptpl" value="'+t[0]+'"'+((tpl||'dan')===t[0]?' checked':'')+' onchange="gpNewTpl()"> <span><b>'+t[1]+'</b><br><span class="small muted">'+t[2]+'</span></span></label>'; }).join('')+
+    '<div id="gpcopy" style="display:none"><label>Project to copy</label><select id="gpcf">'+opt(others.map(function(p){return {v:p.ProjectId,t:p.Name};}))+'</select></div>'+
+    '<label>Project name</label><input id="gpnm" maxlength="120" placeholder="Dan Language partnership">'+
+    '<label>Partner</label><input id="gppn" maxlength="160" placeholder="Mr Isaac Barkarkor (Dan Language Empowerment Foundation)">'+
+    '<div class="row"><div><label>Partner\'s WhatsApp (optional)</label><input id="gpph" inputmode="tel" placeholder="+231 77 000 0000"></div>'+
+    '<div><label>Start month (when it was signed)</label><input type="month" id="gpst" value="'+gpYm(new Date())+'"></div></div>'+
+    '<label class="grradio"><input type="checkbox" id="gpsh"> <span>Share with '+esc(g.partnerName||'my accountability partner')+' <span class="small muted">(view only, without my hours, costs or net figures). Leave off if the terms are confidential.</span></span></label>'+
+    '<div class="err" id="gperr"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" id="gpgo" onclick="gpCreate()">Create project</button></div>');
+  gpNewTpl();
+}
+function gpNewTpl(){ var v=(document.querySelector('input[name=gptpl]:checked')||{}).value; var c=$('gpcopy'); if(c) c.style.display=v==='copy'?'':'none';
+  var nm=$('gpnm'), pn=$('gppn'); if(nm) nm.placeholder=v==='dan'?'Dan Language partnership':'e.g. Gospel artist channel'; if(pn) pn.placeholder=v==='dan'?'Mr Isaac Barkarkor (Dan Language Empowerment Foundation)':'Who you are working with'; }
+function gpCreate(){
+  var o={template:(document.querySelector('input[name=gptpl]:checked')||{}).value||'blank',copyFrom:val('gpcf'),Name:val('gpnm'),PartnerName:val('gppn'),PartnerPhone:val('gpph'),StartMonth:val('gpst'),SharedWithPartner:$('gpsh').checked};
+  busy($('gpgo'),true,'Creating…');
+  call('apiGrowthProjectCreate',S.token,o).then(function(id){ closeModal(); toast('Project created'); grReload().then(function(){ gpOpen(id); }); })
+    .catch(function(e){ busy($('gpgo'),false,'Create project'); $('gperr').textContent=e.message; });
+}
+
+/* ----- project shell ----- */
+function gpDraw(){
+  var P=S.gp, p=P.project, d=P.dash, own=gpOwner(), tab=S.gpTab||'dash', h='';
+  h+='<button class="linkbtn" onclick="gpBack()" style="margin:0 0 6px">← All projects</button>'+
+    '<div class="ph" style="margin-top:0"><div><h2 style="margin:0">'+esc(p.Name)+'</h2><div class="sub">'+esc(p.PartnerName||'')+' · Month '+d.cur+' ('+gpMon(d.curStart)+') · '+
+    (p.Status!=='Active'?esc(p.Status)+' · ':'')+(own?(p.SharedWithPartner?ic('share2')+' shared':ic('lock')+' private'):'view only')+'</div></div>'+
+    '<div class="actions"><button class="btn sm" onclick="gpExport()">'+ic('download')+' Export</button></div></div>';
+  h+='<div class="chips" style="margin-top:4px">'+GP_TABS.map(function(t){ return '<button class="chip'+(tab===t[0]?' on':'')+'" onclick="S.gpTab=\''+t[0]+'\';gpDraw()">'+t[1]+'</button>'; }).join('')+'</div><div id="gpbody"></div>';
+  $('grbody').innerHTML=h;
+  ({dash:gpDash,ms:gpMilestones,months:gpMonths,income:gpIncome,terms:gpTerms}[tab]||gpDash)();
+}
+
+/* ----- dashboard ----- */
+function gpDash(){
+  var P=S.gp, d=P.dash, own=gpOwner(), cm=P.months[d.cur-1], h='';
+  (d.alerts||[]).forEach(function(a){ h+='<div class="card gpalert">'+gpDot('Red',10)+' <b>'+esc(a)+'</b></div>'; });
+  var tiles=[
+    ['Data fee', P.terms.some(function(t){return t.Key==='monthlyFee';})&&gpTerm('monthlyFee')>0?'<span class="pill '+(GP_FEE_PILL[d.fee]||'')+'" style="font-size:14px;padding:3px 10px">'+esc(d.fee)+'</span>':'<span class="muted">No fee</span>', d.fee==='Due'?'due by '+grDay(d.feeDue):d.fee==='Not paid'?'was due '+grDay(d.feeDue):''],
+    ['Videos published', d.videos.published+' <span class="gpof">of '+d.videos.planned+'</span>', cm.Logged?'':'not logged yet'],
+    ['YouTube subscribers', gpN(d.subs.value)+' <span class="gpof">of '+gpN(d.subs.target)+'</span>', d.subs.month?'month '+d.subs.month+(cm.SubsGoal?' · goal now '+gpN(cm.SubsGoal):''):'not logged yet'],
+    ['Income this month', gpM(d.income), 'gross received'],
+    ['My share', gpM(d.share), d.share?'30% content · 25% book':''],
+  ];
+  if(own && d.net!==undefined) tiles.push(['Net after costs', '<span style="color:'+(d.net<0?'var(--bad)':'inherit')+'">'+gpM(d.net)+'</span>', 'fee + shares − cash costs']);
+  tiles[4][2]=d.share?Math.round(gpTerm('contentRate')*100)+'% content · '+Math.round(gpTerm('bookRate')*100)+'% book':'';
+  h+='<div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap"><h3>This month · '+gpMon(d.curStart,true)+'</h3>'+
+    (own?'<button class="btn secondary sm" onclick="gpMonthModal('+d.cur+')">'+ic('edit')+' '+(cm.Logged?'Update':'Log')+' month '+d.cur+'</button>':'')+'</div>'+
+    '<div class="gptiles">'+tiles.map(function(t){ return '<div class="gptile"><span class="small muted">'+t[0]+'</span><b>'+t[1]+'</b><span class="small muted">'+(t[2]||'&nbsp;')+'</span></div>'; }).join('')+'</div></div>';
+  // traffic lights
+  var sm=P.months[d.scoreMonth-1];
+  h+='<div class="grid2" style="margin-top:0"><div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline"><h3>Traffic lights</h3><span class="small muted">Month '+d.scoreMonth+(d.scoreMonth!==d.cur?' (last logged)':'')+'</span></div>'+
+    P.lists.areas.map(function(a){ var s=d.lights[a[0]]||'', ov=sm&&sm.Override&&sm.Override[a[0]];
+      return '<div class="gplight">'+gpDot(s,16)+'<div style="flex:1"><b>'+esc(a[1])+'</b><div class="small muted">'+(s?esc(s)+(ov?' · set by you':' · from the numbers'):'Not enough numbers yet')+'</div></div></div>'; }).join('')+
+    '<p class="small muted" style="margin:8px 0 0">Green: on target and paid on time. Amber: 70–99% or a payment up to 7 days late. Red: under 70%, more than 7 days late, or the fee unpaid.</p></div>';
+  // milestone progress
+  h+='<div class="card"><h3>Milestones</h3><div class="gptrack">'+d.progress.map(function(x){
+      var full=x.total&&x.done===x.total, cls=full?'done':x.current?'now':x.MonthNo<d.cur?(x.done<x.total?'late':'done'):'';
+      return '<button class="gpstn '+cls+'" onclick="S.gpTab=\'ms\';S.gpMsMonth='+x.MonthNo+';gpDraw()"><i>'+(full?'✓':x.MonthNo)+'</i><b>'+x.done+'/'+x.total+'</b><span>'+gpMon(x.MonthStart).replace(/ \d{4}$/,'')+'</span></button>'; }).join('')+'</div>'+
+    '<div class="small muted">Month '+d.cur+' is highlighted. Tap a month to see its milestones.</div></div></div>';
+  // charts
+  h+='<div class="grid2"><div class="card"><h3>YouTube subscribers</h3>'+gpChartSubs(P)+'</div><div class="card"><h3>Content revenue by month</h3>'+gpChartRev(P)+'</div></div>';
+  // totals + health
+  var t=d.totals, rows=[['Fees received',gpM(t.feesReceived)],['Shares received',gpM(t.sharesReceived)],['Shares still to be paid',gpM(t.sharesPending)],['Total received',gpM(t.totalReceived),1]];
+  if(own && t.hours!==undefined) rows=[['Hours',gpN(t.hours)+' h'],['Cash costs',gpM(t.cashCosts)]].concat(rows,[['Net after costs',gpM(t.netAfterCosts),1],['Value of my time ('+gpM(gpTerm('hourlyRate'))+'/h)',gpM(t.timeValue)],['Net after costs and time',gpM(t.netAfterTime),1]]);
+  h+='<div class="grid2"><div class="card"><h3>Since the start</h3>'+rows.map(function(r){ return '<div class="gprow'+(r[2]?' strong':'')+'"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>'; }).join('')+'</div>'+
+    '<div class="card"><h3>Health checks</h3>'+
+    '<div class="gprow"><span>Fees late or unpaid</span><b><span class="pill '+(d.health.feesLate?'bad':'ok')+'">'+d.health.feesLate+'</span></b></div>'+
+    '<div class="gprow"><span>Shares paid late or overdue</span><b><span class="pill '+(d.health.sharesLate?'bad':'ok')+'">'+d.health.sharesLate+'</span></b></div>'+
+    (own&&d.review?'<div class="gpreview"><span class="small muted">'+gpTerm('reviewMonth')+'-month review</span><b>'+esc(d.review.text)+'</b>'+(d.review.avg!==undefined?'<span class="small muted">Average content revenue, months '+(gpTerm('reviewMonth')-2)+'–'+gpTerm('reviewMonth')+': '+gpM(d.review.avg)+'</span>':'')+'</div>':'')+
+    '</div></div>';
+  $('gpbody').innerHTML=h;
+}
+function gpChartSubs(P){
+  var ms=P.months.filter(function(m){return !m.Future;}), W=340, H=170, L=38, R=10, T=12, B=26;
+  var vals=ms.map(function(m){return m.YouTubeSubs===''?null:+m.YouTubeSubs;}), goal=+gpTerm('subsTarget')||0;
+  var mx=Math.max.apply(null,[goal,10].concat(vals.filter(function(v){return v!=null;}), ms.map(function(m){return m.SubsGoal||0;})));
+  mx=Math.ceil(mx/100)*100||100;
+  var n=Math.max(ms.length, +gpTerm('reviewMonth')||6), X=function(i){ return L+(n<2?0:i*(W-L-R)/(n-1)); }, Y=function(v){ return T+(1-v/mx)*(H-T-B); };
+  var s='<svg viewBox="0 0 '+W+' '+H+'" class="gpchart" role="img" aria-label="Subscribers by month">';
+  [0,.5,1].forEach(function(f){ var v=Math.round(mx*f); s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="#EEF1F6"/><text x="'+(L-5)+'" y="'+(Y(v)+4)+'" text-anchor="end" class="gpax">'+gpShort(v)+'</text>'; });
+  if(goal){ s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(goal)+'" y2="'+Y(goal)+'" stroke="#E08A00" stroke-dasharray="5 4" stroke-width="1.5"/><text x="'+(W-R)+'" y="'+(Y(goal)-5)+'" text-anchor="end" class="gpax" fill="#B86E00">Goal '+gpN(goal)+'</text>'; }
+  var gp=[]; for(var k=0;k<n;k++){ var m=P.months[k]; if(m&&m.SubsGoal) gp.push(X(k)+','+Y(m.SubsGoal)); }
+  if(gp.length>1) s+='<polyline points="'+gp.join(' ')+'" fill="none" stroke="#E08A00" stroke-opacity=".35" stroke-width="1.5"/>';
+  var pts=[]; vals.forEach(function(v,i){ if(v!=null) pts.push([X(i),Y(v),v]); });
+  if(pts.length>1) s+='<polyline points="'+pts.map(function(p){return p[0]+','+p[1];}).join(' ')+'" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linejoin="round"/>';
+  pts.forEach(function(p){ s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4" fill="#2563EB"/><text x="'+p[0]+'" y="'+(p[1]-8)+'" text-anchor="middle" class="gpax" fill="#1E40AF">'+gpShort(p[2])+'</text>'; });
+  for(var i=0;i<n;i++) s+='<text x="'+X(i)+'" y="'+(H-8)+'" text-anchor="middle" class="gpax">M'+(i+1)+'</text>';
+  s+='</svg>';
+  return (pts.length?'':'<p class="small muted">Log the subscriber count each month to see the line.</p>')+s+'<div class="small muted">Blue: actual · faint orange: the milestone path · dashed: the goal</div>';
+}
+function gpChartRev(P){
+  var ms=P.months.filter(function(m){return !m.Future;}), W=340, H=170, L=38, R=10, T=12, B=26;
+  var be=+gpTerm('breakEvenRevenue')||0, fv=+gpTerm('fullValueRevenue')||0, n=Math.max(ms.length, +gpTerm('reviewMonth')||6);
+  var mx=Math.max.apply(null,[fv*1.1,be*1.2,50].concat(ms.map(function(m){return m.ContentRevenue;}))); mx=Math.ceil(mx/100)*100;
+  var bw=(W-L-R)/n, Y=function(v){ return T+(1-v/mx)*(H-T-B); };
+  var s='<svg viewBox="0 0 '+W+' '+H+'" class="gpchart" role="img" aria-label="Content revenue by month">';
+  [0,.5,1].forEach(function(f){ var v=Math.round(mx*f); s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="#EEF1F6"/><text x="'+(L-5)+'" y="'+(Y(v)+4)+'" text-anchor="end" class="gpax">'+gpShort(v)+'</text>'; });
+  for(var i=0;i<n;i++){ var m=P.months[i], v=m&&!m.Future?m.ContentRevenue:0, x=L+i*bw+bw*.18, w=bw*.64;
+    if(v>0) s+='<rect x="'+x+'" y="'+Y(v)+'" width="'+w+'" height="'+(Y(0)-Y(v))+'" rx="3" fill="'+(v>=fv&&fv?'#12A150':v>=be&&be?'#2563EB':'#93B4F5')+'"/><text x="'+(x+w/2)+'" y="'+(Y(v)-4)+'" text-anchor="middle" class="gpax">'+gpShort(v)+'</text>';
+    s+='<text x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle" class="gpax">M'+(i+1)+'</text>'; }
+  if(be) s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(be)+'" y2="'+Y(be)+'" stroke="#E08A00" stroke-dasharray="5 4" stroke-width="1.5"/><text x="'+(W-R)+'" y="'+(Y(be)-4)+'" text-anchor="end" class="gpax" fill="#B86E00">Break-even '+gpM(be)+'</text>';
+  if(fv) s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(fv)+'" y2="'+Y(fv)+'" stroke="#12A150" stroke-dasharray="5 4" stroke-width="1.5"/><text x="'+(W-R)+'" y="'+(Y(fv)-4)+'" text-anchor="end" class="gpax" fill="#0B7A3B">Full value '+gpM(fv)+'</text>';
+  return s+'</svg><div class="small muted">Sponsorships, brand deals, ads and in-kind support received each month (book profit not included).</div>';
+}
+function gpShort(v){ v=+v||0; return v>=10000?Math.round(v/1000)+'k':v>=1000?(Math.round(v/100)/10)+'k':String(Math.round(v)); }
+
+/* ----- milestones ----- */
+function gpMilestones(){
+  var P=S.gp, own=gpOwner(), d=P.dash, f=S.gpMsMonth, h='';
+  var months=[]; P.milestones.forEach(function(m){ if(months.indexOf(m.MonthNo)<0) months.push(m.MonthNo); }); months.sort(function(a,b){ return (a||99)-(b||99); });
+  h+='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><div class="chips" style="margin:0">'+
+    '<button class="chip'+(f===undefined?' on':'')+'" onclick="S.gpMsMonth=undefined;gpMilestones()">All</button>'+
+    months.map(function(n){ return '<button class="chip'+(f===n?' on':'')+'" onclick="S.gpMsMonth='+n+';gpMilestones()">'+(n?'Month '+n:'Every month')+'</button>'; }).join('')+'</div>'+
+    (own?'<button class="btn sm" onclick="gpMsModal()">'+ic('plus')+' Add milestone</button>':'')+'</div>';
+  months.filter(function(n){ return f===undefined||f===n; }).forEach(function(n){
+    var list=P.milestones.filter(function(m){return m.MonthNo===n;}), done=list.filter(function(m){return m.Status==='Done';}).length;
+    var goal=list[0]&&list[0].SharedGoal, start=n?P.months[n-1]&&P.months[n-1].MonthStart:null;
+    if(!start&&n){ var s0=new Date(P.project.StartMonth); start=new Date(s0.getFullYear(),s0.getMonth()+n-1,1); }
+    h+='<div class="card'+(n===d.cur?' gpcur':'')+'"><div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><div><b>'+(n?'Month '+n+' · '+gpMon(start):'Every month')+'</b>'+(n===d.cur?' <span class="pill info">now</span>':'')+
+      (goal?'<div class="small muted">'+esc(goal)+'</div>':'')+'</div><span class="small muted">'+done+' of '+list.length+' done</span></div>'+
+      '<div class="bar"><div style="width:'+(list.length?Math.round(done/list.length*100):0)+'%"></div></div>'+
+      list.map(function(m){ return '<button class="gpms" onclick="gpMsModal(\''+esc(m.MilestoneId)+'\')"><span class="pill '+(GP_MS_PILL[m.Status]||'')+'">'+esc(m.Status)+'</span>'+
+        '<span class="gpmst">'+esc(m.Milestone)+'<span class="small muted"> · '+esc(m.OwnerRole)+(m.Target?' · target '+esc(m.Target):'')+(m.Actual?' · actual '+esc(m.Actual):'')+'</span></span></button>'; }).join('')+'</div>';
+  });
+  if(!P.milestones.length) h+='<div class="card">'+empty('flag','No milestones yet.')+'</div>';
+  $('gpbody').innerHTML=h;
+}
+function gpMsModal(id){
+  var P=S.gp, own=gpOwner(), dis=own?'':' disabled';
+  var m=id?P.milestones.filter(function(x){return x.MilestoneId===id;})[0]:{MonthNo:S.gpMsMonth||P.dash.cur,OwnerRole:'Me',Status:'Not started',SharedGoal:'',Milestone:'',Measure:'',Target:'',Actual:'',Notes:''};
+  if(!m) return;
+  var monthsOpt=[{v:0,t:'Every month'}]; for(var i=1;i<=Math.max(P.months.length,+gpTerm('reviewMonth')||6, m.MonthNo);i++) monthsOpt.push({v:i,t:'Month '+i});
+  modal('<h3>'+(id?(own?'Milestone':'Milestone'):'New milestone')+'</h3>'+
+    '<label>Status</label><div class="seg gpseg">'+P.lists.msStatus.map(function(s){ return '<button type="button" class="'+(m.Status===s?'on':'')+'" data-v="'+esc(s)+'"'+(own?' onclick="gpSeg(this)"':' disabled')+'>'+esc(s)+'</button>'; }).join('')+'</div>'+
+    '<label>Milestone</label><input id="gmt" value="'+esc(m.Milestone)+'"'+dis+' maxlength="200">'+
+    '<div class="row"><div><label>Month</label><select id="gmm"'+dis+'>'+opt(monthsOpt,m.MonthNo)+'</select></div><div><label>Who</label><select id="gmo"'+dis+'>'+opt(P.lists.roles,m.OwnerRole)+'</select></div></div>'+
+    '<label>Shared goal</label><input id="gmg" value="'+esc(m.SharedGoal||'')+'"'+dis+' maxlength="160">'+
+    '<div class="row"><div><label>Measure</label><input id="gmme" value="'+esc(m.Measure||'')+'"'+dis+'></div><div><label>Target</label><input id="gmta" value="'+esc(m.Target||'')+'"'+dis+'></div><div><label>Actual</label><input id="gmac" value="'+esc(m.Actual||'')+'"'+dis+'></div></div>'+
+    '<label>Notes</label><textarea id="gmn"'+dis+'>'+esc(m.Notes||'')+'</textarea>'+
+    '<div class="err" id="gmerr"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">'+
+    (own&&id?'<button class="btn danger" style="margin-right:auto" onclick="gpMsDelete(\''+esc(id)+'\')">Delete</button>':'')+
+    '<button class="btn secondary" onclick="closeModal()">'+(own?'Cancel':'Close')+'</button>'+(own?'<button class="btn" id="gmsave" onclick="gpMsSave(\''+esc(id||'')+'\')">Save</button>':'')+'</div>');
+}
+function gpSeg(b){ [].forEach.call(b.parentNode.children,function(x){ x.classList.remove('on'); }); b.classList.add('on'); }
+function gpMsSave(id){
+  var st=document.querySelector('.gpseg button.on');
+  var m={MilestoneId:id||undefined,Status:st?st.getAttribute('data-v'):'Not started',Milestone:val('gmt'),MonthNo:val('gmm'),OwnerRole:val('gmo'),SharedGoal:val('gmg'),Measure:val('gmme'),Target:val('gmta'),Actual:val('gmac'),Notes:val('gmn')};
+  busy($('gmsave'),true);
+  call('apiGrowthProjectMilestone',S.token,S.gpId,m).then(function(){ closeModal(); gpReload('Saved'); }).catch(function(e){ busy($('gmsave'),false); $('gmerr').textContent=e.message; });
+}
+function gpMsDelete(id){ if(!confirmBox('Delete this milestone?')) return; call('apiGrowthProjectMilestoneDelete',S.token,S.gpId,id).then(function(){ closeModal(); gpReload('Deleted'); }).catch(function(e){ toast(e.message); }); }
+
+/* ----- monthly log ----- */
+function gpMonths(){
+  var P=S.gp, own=gpOwner(), mode=S.gpMonthMode||(window.innerWidth>900?'table':'list'), h='';
+  var past=P.months.filter(function(m){return !m.Future;}).slice().reverse();
+  h+='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px"><div class="small muted">One row per month. Fee status and money are worked out for you.</div>'+
+    '<div class="seg"><button class="'+(mode==='list'?'on Excused':'')+'" onclick="S.gpMonthMode=\'list\';gpMonths()">Cards</button><button class="'+(mode==='table'?'on Excused':'')+'" onclick="S.gpMonthMode=\'table\';gpMonths()">Table</button></div></div>';
+  if(mode==='table'){
+    var cols=[['Month',function(m){return 'M'+m.MonthNo+' '+gpMon(m.MonthStart);}],['Fee',function(m){return '<span class="pill '+(GP_FEE_PILL[m.FeeStatus]||'')+'">'+esc(m.FeeStatus)+'</span>';}],
+      ['YouTube',function(m){return gpN(m.YouTubeSubs);}],['Facebook',function(m){return gpN(m.FacebookFollowers);}],['TikTok',function(m){return gpN(m.TikTokFollowers);}],['Views',function(m){return gpN(m.Views);}],
+      ['Eng. %',function(m){return gpN(m.EngagementPct);}],['Videos',function(m){return m.VideosPublished===''?'–':m.VideosPublished+'/'+(m.VideosPlanned===''?gpTerm('videosPerMonth'):m.VideosPlanned);}],
+      ['Footage on time',function(m){return gpN(m.FootageOnTime);}],['On schedule %',function(m){return gpN(m.PostsOnSchedulePct);}]];
+    if(own) cols.push(['Hours',function(m){return gpN(m.Hours);}],['Costs',function(m){return m.CashCosts===''?'–':gpM(m.CashCosts);}]);
+    cols.push(['Content rev.',function(m){return gpM(m.ContentRevenue);}],['Book',function(m){return gpM(m.BookProfit);}],['My shares',function(m){return gpM(m.MyShares);}],['Received',function(m){return gpM(m.TotalReceived);}]);
+    if(own) cols.push(['Net',function(m){return '<span style="color:'+(m.NetAfterCosts<0?'var(--bad)':'inherit')+'">'+gpM(m.NetAfterCosts)+'</span>';}]);
+    cols.push(['Lights',function(m){ return P.lists.areas.map(function(a){return gpDot(m.Score[a[0]],10);}).join(''); }]);
+    h+='<div class="card tbl-wrap" style="padding:6px 10px"><table class="gptable"><thead><tr>'+cols.map(function(c){return '<th>'+c[0]+'</th>';}).join('')+'</tr></thead><tbody>'+
+      past.map(function(m){ return '<tr'+(own?' class="clickable" onclick="gpMonthModal('+m.MonthNo+')"':'')+'>'+cols.map(function(c){return '<td>'+c[1](m)+'</td>';}).join('')+'</tr>'; }).join('')+'</tbody></table></div>';
+  } else {
+    past.forEach(function(m){
+      var planned=m.VideosPlanned===''?gpTerm('videosPerMonth'):m.VideosPlanned;
+      h+='<div class="card'+(m.MonthNo===P.dash.cur?' gpcur':'')+'"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div><b>Month '+m.MonthNo+' · '+gpMon(m.MonthStart)+'</b>'+
+        '<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap"><span class="pill '+(GP_FEE_PILL[m.FeeStatus]||'')+'">Fee: '+esc(m.FeeStatus)+(m.FeeStatus==='Late'?' ('+m.FeeLateDays+' days)':'')+'</span>'+(m.Logged?'':'<span class="pill">Not logged</span>')+'</div></div>'+
+        '<div class="gplights" title="Growth · Revenue · Work · Partner">'+P.lists.areas.map(function(a){return gpDot(m.Score[a[0]],12);}).join('')+'</div></div>'+
+        (m.Logged?'<div class="gpmini"><div><span>YouTube</span><b>'+gpN(m.YouTubeSubs)+'</b></div><div><span>Views</span><b>'+gpN(m.Views)+'</b></div><div><span>Videos</span><b>'+(m.VideosPublished===''?'–':m.VideosPublished+'/'+planned)+'</b></div>'+
+          '<div><span>Received</span><b>'+gpM(m.TotalReceived)+'</b></div>'+(own&&m.CashCosts!==undefined?'<div><span>Net</span><b style="color:'+(m.NetAfterCosts<0?'var(--bad)':'inherit')+'">'+gpM(m.NetAfterCosts)+'</b></div>':'')+'</div>':'')+
+        (m.Notes?'<div class="small" style="margin-top:6px;white-space:pre-line">'+esc(m.Notes)+'</div>':'')+
+        (own?'<div style="margin-top:10px"><button class="btn '+(m.Logged?'secondary ':'')+'sm" onclick="gpMonthModal('+m.MonthNo+')">'+(m.Logged?'Edit':'Log numbers')+'</button></div>':'')+'</div>';
+    });
+  }
+  $('gpbody').innerHTML=h;
+}
+function gpMonthModal(n){
+  var P=S.gp, m=P.months[n-1]; if(!m||!gpOwner()) return;
+  var f=function(id,lab,v,ph){ return '<div><label>'+lab+'</label><input id="gmo_'+id+'" type="number" inputmode="decimal" min="0" step="any" value="'+(v===''||v==null?'':esc(v))+'" placeholder="'+esc(ph||'')+'"></div>'; };
+  var sc=function(a){ return '<div><label>'+esc(a[1])+'</label><select id="gms_'+a[0]+'">'+opt([{v:'',t:'Automatic'+(m.Auto[a[0]]?' ('+m.Auto[a[0]]+')':'')},'Green','Amber','Red'],m.Override[a[0]]||'')+'</select></div>'; };
+  var prev=P.months[n-2];
+  modal('<h3>Month '+n+' · '+gpMon(m.MonthStart,true)+'</h3><p class="small muted">Leave a box empty if you don\'t know yet. Money comes from the Income log.</p>'+
+    '<div class="gpcalc"><div><span>Content revenue</span><b>'+gpM(m.ContentRevenue)+'</b></div><div><span>Book profit</span><b>'+gpM(m.BookProfit)+'</b></div><div><span>My shares</span><b>'+gpM(m.MyShares)+'</b></div><div><span>Fee</span><b>'+esc(m.FeeStatus)+'</b></div></div>'+
+    '<h4>Data fee</h4><div class="row"><div><label>Paid on</label><input type="date" id="gmo_fee" value="'+(m.FeePaidOn?isoDay(m.FeePaidOn):'')+'"></div><div style="flex:0 0 auto;min-width:0"><button class="btn secondary sm" onclick="$(\'gmo_fee\').value=gpToday()">Paid today</button> <button class="btn secondary sm" onclick="$(\'gmo_fee\').value=\'\'">Not paid</button></div></div>'+
+    '<h4>Channel growth</h4><div class="row">'+f('YouTubeSubs','YouTube subscribers',m.YouTubeSubs,prev&&prev.YouTubeSubs!==''?'last: '+prev.YouTubeSubs:'')+f('FacebookFollowers','Facebook followers',m.FacebookFollowers,prev&&prev.FacebookFollowers!==''?'last: '+prev.FacebookFollowers:'')+'</div>'+
+    '<div class="row">'+f('TikTokFollowers','TikTok followers',m.TikTokFollowers,prev&&prev.TikTokFollowers!==''?'last: '+prev.TikTokFollowers:'')+f('Views','Views, all platforms',m.Views)+f('EngagementPct','Engagement %',m.EngagementPct,'e.g. 5')+'</div>'+
+    '<h4>Videos and work</h4><div class="row">'+f('VideosPlanned','Videos planned',m.VideosPlanned,String(gpTerm('videosPerMonth')))+f('VideosPublished','Videos published',m.VideosPublished)+f('FootageOnTime','Footage on time (videos)',m.FootageOnTime)+'</div>'+
+    '<div class="row">'+f('PostsOnSchedulePct','Posts on schedule %',m.PostsOnSchedulePct,'e.g. 90')+f('Hours','My hours',m.Hours,'estimate '+gpTerm('hoursEstimate'))+f('CashCosts','Cash costs (US$)',m.CashCosts,'data, transport…')+'</div>'+
+    '<h4>Traffic lights</h4><p class="small muted" style="margin:0">Automatic uses the numbers. Choose a colour only if you see it differently.</p><div class="row">'+P.lists.areas.map(sc).join('')+'</div>'+
+    '<label>Notes</label><textarea id="gmo_notes" placeholder="What happened this month">'+esc(m.Notes||'')+'</textarea>'+
+    '<div class="err" id="gmoerr"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" id="gmosave" onclick="gpMonthSave('+n+')">Save month '+n+'</button></div>');
+}
+function gpMonthSave(n){
+  var f={FeePaidOn:val('gmo_fee'),Notes:val('gmo_notes')};
+  ['YouTubeSubs','FacebookFollowers','TikTokFollowers','Views','EngagementPct','VideosPlanned','VideosPublished','FootageOnTime','PostsOnSchedulePct','Hours','CashCosts'].forEach(function(k){ f[k]=val('gmo_'+k); });
+  [['growth','GrowthScore'],['revenue','RevenueScore'],['work','WorkScore'],['partner','PartnerScore']].forEach(function(a){ f[a[1]]=val('gms_'+a[0]); });
+  busy($('gmosave'),true);
+  call('apiGrowthProjectMonth',S.token,S.gpId,n,f).then(function(){ closeModal(); gpReload('Month '+n+' saved'); }).catch(function(e){ busy($('gmosave'),false); $('gmoerr').textContent=e.message; });
+}
+
+/* ----- income ----- */
+function gpIncome(){
+  var P=S.gp, own=gpOwner(), list=P.income.slice().reverse(), t=P.dash.totals, h='';
+  var due=P.income.filter(function(x){return x.PaymentStatus==='Pending'||x.PaymentStatus==='Overdue';}), over=due.filter(function(x){return x.PaymentStatus==='Overdue';});
+  h+='<div class="card"><div class="gpmini"><div><span>Gross received</span><b>'+gpM(t.grossIncome)+'</b></div><div><span>My shares paid</span><b>'+gpM(t.sharesReceived)+'</b></div><div><span>Still to be paid</span><b>'+gpM(t.sharesPending)+'</b></div><div><span>Overdue</span><b style="color:'+(over.length?'var(--bad)':'inherit')+'">'+over.length+'</b></div></div>'+
+    '<p class="small muted" style="margin:8px 0 0">My share: '+Math.round(gpTerm('contentRate')*100)+'% of sponsorships, brand deals, ads and in-kind; '+Math.round(gpTerm('bookRate')*100)+'% of book profit. Paid within '+gpTerm('paymentDays')+' days.</p>'+
+    (own?'<div style="margin-top:12px"><button class="btn sm" onclick="gpIncomeModal()">'+ic('plus')+' Add income</button></div>':'')+'</div>';
+  if(!list.length) h+='<div class="card">'+empty('wallet','No income yet. Add each payment the partner receives (sponsorship, ads, book sales).')+'</div>';
+  list.forEach(function(x){
+    var st=x.PaymentStatus==='Pending'?'Pending · due by '+grDay(x.DueBy):x.PaymentStatus==='Overdue'?'Overdue · '+x.LateBy+' days':x.PaymentStatus==='Late'?'Paid late · '+x.DaysToPay+' days':'Paid on time · '+x.DaysToPay+' days';
+    h+='<button class="card clickable gpinc" onclick="gpIncomeModal(\''+esc(x.IncomeId)+'\')"><div style="display:flex;justify-content:space-between;gap:10px"><div style="min-width:0"><b>'+esc(x.Source||x.Type)+'</b>'+
+      '<div class="small muted">'+grDay(x.DateReceived)+' · '+esc(x.Type)+' · gross '+gpM(x.GrossAmount)+'</div></div><div style="text-align:right"><b>'+gpM(x.MyShare)+'</b><div class="small muted">my share</div></div></div>'+
+      '<div style="margin-top:6px"><span class="pill '+(GP_PAY_PILL[x.PaymentStatus]||'')+'">'+esc(st)+'</span></div></button>';
+  });
+  $('gpbody').innerHTML=h;
+}
+function gpIncomeModal(id){
+  var P=S.gp, own=gpOwner(), dis=own?'':' disabled';
+  var x=id?P.income.filter(function(r){return r.IncomeId===id;})[0]:{DateReceived:gpToday(),Type:'Sponsorship',GrossAmount:'',Source:'',DatePaidToMe:'',Notes:''};
+  if(!x) return;
+  modal('<h3>'+(id?'Income':'Add income')+'</h3><p class="small muted">One row per payment the partner receives.</p>'+
+    '<div class="row"><div><label>Date received</label><input type="date" id="gir" value="'+(x.DateReceived?isoDay(x.DateReceived):'')+'"'+dis+' onchange="gpSharePreview()"></div><div><label>Type</label><select id="git"'+dis+' onchange="gpSharePreview()">'+opt(P.lists.incomeTypes,x.Type)+'</select></div></div>'+
+    '<label>Source</label><input id="gis" value="'+esc(x.Source||'')+'"'+dis+' placeholder="e.g. Lonestar Cell sponsorship, YouTube ads, book sales via link">'+
+    '<label>Gross amount (US$)'+(x.Type==='In-kind'?'':'')+'</label><input id="gig" type="number" inputmode="decimal" min="0" step="any" value="'+esc(x.GrossAmount)+'"'+dis+' oninput="gpSharePreview()">'+
+    '<div class="hint" id="gishare"></div>'+
+    '<div class="row"><div><label>My share paid to me on</label><input type="date" id="gip" value="'+(x.DatePaidToMe?isoDay(x.DatePaidToMe):'')+'"'+dis+'></div>'+(own?'<div style="flex:0 0 auto;min-width:0"><button class="btn secondary sm" onclick="$(\'gip\').value=gpToday()">Paid today</button></div>':'')+'</div>'+
+    '<label>Notes</label><textarea id="gin"'+dis+'>'+esc(x.Notes||'')+'</textarea>'+
+    '<div class="err" id="gierr"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">'+(own&&id?'<button class="btn danger" style="margin-right:auto" onclick="gpIncomeDelete(\''+esc(id)+'\')">Delete</button>':'')+
+    '<button class="btn secondary" onclick="closeModal()">'+(own?'Cancel':'Close')+'</button>'+(own?'<button class="btn" id="gisave" onclick="gpIncomeSave(\''+esc(id||'')+'\')">Save</button>':'')+'</div>');
+  gpSharePreview();
+}
+function gpSharePreview(){
+  var el=$('gishare'); if(!el) return; var g=parseFloat(val('gig')), book=val('git')==='Book profit', rate=book?gpTerm('bookRate'):gpTerm('contentRate');
+  var r=val('gir'), due=''; if(r){ var dd=new Date(r); dd.setDate(dd.getDate()+(+gpTerm('paymentDays')||14)); due=' · due by '+grDay(dd); }
+  el.textContent=isNaN(g)?'':'My share: '+Math.round(rate*100)+'% = '+gpM(Math.round(g*rate*100)/100)+due;
+}
+function gpIncomeSave(id){
+  var r={IncomeId:id||undefined,DateReceived:val('gir'),Type:val('git'),Source:val('gis'),GrossAmount:val('gig'),DatePaidToMe:val('gip'),Notes:val('gin')};
+  busy($('gisave'),true);
+  call('apiGrowthProjectIncome',S.token,S.gpId,r).then(function(){ closeModal(); gpReload('Saved'); }).catch(function(e){ busy($('gisave'),false); $('gierr').textContent=e.message; });
+}
+function gpIncomeDelete(id){ if(!confirmBox('Delete this income row?')) return; call('apiGrowthProjectIncomeDelete',S.token,S.gpId,id).then(function(){ closeModal(); gpReload('Deleted'); }).catch(function(e){ toast(e.message); }); }
+
+/* ----- terms + project details ----- */
+function gpTerms(){
+  var P=S.gp, p=P.project, own=gpOwner(), h='';
+  if(p.TermsText||own) h+='<div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3>Agreed terms</h3>'+(own?'<button class="linkbtn" onclick="gpTermsTextModal()">Edit text</button>':'')+'</div>'+
+    (p.TermsText?'<div class="gpterms">'+esc(p.TermsText)+'</div>':'<p class="small muted">Write down what was agreed, so it is always at hand.</p>')+'</div>';
+  var nums=P.terms.filter(function(t){return t.Kind==='n';}), txt=P.terms.filter(function(t){return t.Kind==='t';});
+  h+='<div class="card"><h3>Numbers used in the calculations</h3>'+(own?'<p class="small muted">Change one when the agreement changes; every month is recalculated.</p>':'')+
+    '<div class="gptermgrid">'+nums.map(function(t){ return '<label class="gpterm"><span>'+esc(t.Label)+'</span>'+(own?'<input type="number" step="any" min="0" data-k="'+esc(t.Key)+'" data-o="'+esc(t.Value)+'" value="'+esc(t.Value)+'">':'<b>'+esc(t.Value)+'</b>')+'</label>'; }).join('')+'</div>';
+  if(own && txt.length) h+='<h4 style="margin-top:14px">'+gpTerm('reviewMonth')+'-month review advice</h4>'+txt.map(function(t){ return '<label>'+esc(t.Label.replace(/^Review advice: /,''))+'</label><input data-k="'+esc(t.Key)+'" data-o="'+esc(t.Value)+'" value="'+esc(t.Value)+'" maxlength="300">'; }).join('');
+  if(own) h+='<div class="err" id="gterr"></div><div style="margin-top:12px"><button class="btn" id="gtsave" onclick="gpTermsSave()">Save numbers</button></div>';
+  h+='</div>';
+  if(own){
+    h+='<div class="card"><h3>Project details</h3><div class="row"><div><label>Name</label><input id="gdn" value="'+esc(p.Name)+'" maxlength="120"></div><div><label>Status</label><select id="gds">'+opt(['Active','Paused','Closed'],p.Status)+'</select></div></div>'+
+      '<label>Partner</label><input id="gdp" value="'+esc(p.PartnerName||'')+'" maxlength="160">'+
+      '<div class="row"><div><label>Partner\'s WhatsApp</label><input id="gdw" inputmode="tel" value="'+esc(p.PartnerPhone||'')+'" placeholder="+231…"></div><div><label>Start month</label><input type="month" id="gdm" value="'+gpYm(p.StartMonth)+'"></div></div>'+
+      '<label class="grradio"><input type="checkbox" id="gdsh"'+(p.SharedWithPartner?' checked':'')+'> <span>Share with '+esc(S.gr.partnerName||'my accountability partner')+' <span class="small muted">(view only; never shows my hours, costs, net figures or the review advice)</span></span></label>'+
+      '<p class="small muted">Paused and Closed projects send no reminders.</p>'+
+      '<div class="err" id="gderr"></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><button class="btn" id="gdsave" onclick="gpDetailsSave()">Save details</button><button class="btn danger" style="margin-left:auto" onclick="gpDelete()">Delete project</button></div></div>';
+  }
+  $('gpbody').innerHTML=h;
+}
+function gpTermsSave(){
+  var v={}, n=0; [].forEach.call(document.querySelectorAll('#gpbody [data-k]'),function(i){ if(String(i.value)!==String(i.getAttribute('data-o'))){ v[i.getAttribute('data-k')]=i.value; n++; } });
+  if(!n){ toast('Nothing changed'); return; }
+  busy($('gtsave'),true);
+  call('apiGrowthProjectTerms',S.token,S.gpId,v).then(function(){ gpReload('Saved. Every month is recalculated.'); }).catch(function(e){ busy($('gtsave'),false); $('gterr').textContent=e.message; });
+}
+function gpTermsTextModal(){
+  modal('<h3>Agreed terms</h3><p class="small muted">The written terms, for reference. The numbers used in calculations are set below this box.</p><textarea id="gtt" style="min-height:260px">'+esc(S.gp.project.TermsText||'')+'</textarea>'+
+    '<div class="err" id="gtterr"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" onclick="gpDetails({TermsText:val(\'gtt\')},true)">Save</button></div>');
+}
+function gpDetailsSave(){ busy($('gdsave'),true); gpDetails({Name:val('gdn'),Status:val('gds'),PartnerName:val('gdp'),PartnerPhone:val('gdw'),StartMonth:val('gdm'),SharedWithPartner:$('gdsh').checked}); }
+function gpDetails(f,inModal){
+  call('apiGrowthProjectSave',S.token,S.gpId,f).then(function(){ if(inModal) closeModal(); grReload(); gpReload('Saved'); })
+    .catch(function(e){ var el=$(inModal?'gtterr':'gderr'); if(el) el.textContent=e.message; busy($('gdsave'),false,'Save details'); });
+}
+function gpDelete(){
+  var name=S.gp.project.Name, w=window.prompt?window.prompt('This deletes "'+name+'" with all its months, income and milestones.\n\nType the project name to confirm.'):'';
+  if(!w) return;
+  call('apiGrowthProjectDelete',S.token,S.gpId,w).then(function(){ S.gpId=null; S.gp=null; grReload('Project deleted'); }).catch(function(e){ toast(e.message); });
+}
+
+/* ----- export ----- */
+function gpExport(){
+  var own=gpOwner(); S.gpVer='Partner';
+  modal('<h3>Export</h3>'+
+    (own?'<label>Version</label><div class="seg gpver"><button type="button" class="on" data-v="Partner" onclick="gpSeg(this);S.gpVer=\'Partner\';gpVerNote()">Partner version</button><button type="button" data-v="Full" onclick="gpSeg(this);S.gpVer=\'Full\';gpVerNote()">Full version</button></div>':'')+
+    '<div class="hint" id="gpvnote"></div>'+
+    '<div class="sheetnav" style="margin-top:12px">'+
+      '<button onclick="gpPdfDownload()">'+ic('download')+'<span>PDF report<br><span class="small muted">1–2 pages: tiles, lights, charts, tables</span></span></button>'+
+      (own?'<button onclick="gpPdfEmail()">'+ic('mail')+'<span>Email the PDF to me<br><span class="small muted">'+esc(S.gr.profile.Email||'add your email in My Growth ▸ Settings')+'</span></span></button>':'')+
+      '<button onclick="gpXlsxDownload()">'+ic('download')+'<span>Excel file<br><span class="small muted">Monthly log, Income log, Milestones, Terms</span></span></button>'+
+      (own?'<button onclick="closeModal();gpWhatsApp()">'+ic('chat')+'<span>WhatsApp update<br><span class="small muted">Ready-to-send monthly summary</span></span></button>':'')+
+    '</div><div class="err" id="gpxerr"></div><div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="btn secondary" onclick="closeModal()">Close</button></div>');
+  gpVerNote();
+}
+function gpVerNote(){ var el=$('gpvnote'); if(!el) return;
+  el.textContent=S.gpVer==='Full'?'Full version: includes your hours, cash costs, net figures, value of your time and the review advice. Keep it to yourself.':
+    'Partner version: safe to share. Leaves out your hours, cash costs, net after costs, value of your time and the review advice.'; }
+function gpFile(ext){ return (S.gp.project.Name+' '+gpYm(new Date())+' '+(S.gpVer==='Full'&&gpOwner()?'FULL':'partner')).replace(/[^\w \-]/g,'')+'.'+ext; }
+function gpPdfDownload(){ try{ gpDownload(gpBytes(gpReportPdf(S.gp,gpOwner()?S.gpVer:'Partner')),gpFile('pdf'),'application/pdf'); }catch(e){ $('gpxerr').textContent='Could not make the PDF: '+e.message; } }
+function gpPdfEmail(){
+  var bin; try{ bin=gpReportPdf(S.gp,S.gpVer); }catch(e){ $('gpxerr').textContent='Could not make the PDF: '+e.message; return; }
+  toast('Sending…');
+  call('apiGrowthProjectEmailPdf',S.token,S.gpId,gpB64(bin),gpFile('pdf'),S.gpVer).then(function(to){ toast('Emailed to '+to); }).catch(function(e){ $('gpxerr').textContent=e.message; });
+}
+function gpXlsxDownload(){ try{ gpDownload(gpReportXlsx(S.gp,gpOwner()?S.gpVer:'Partner'),gpFile('xlsx'),'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); }catch(e){ $('gpxerr').textContent='Could not make the Excel file: '+e.message; } }
+
+/** shared table data for the PDF and Excel file */
+function gpCols(P,full){
+  var c=[['Month','MonthNo'],['Month start',function(m){return gpMon(m.MonthStart);}],['Fee paid on',function(m){return m.FeePaidOn?isoDay(m.FeePaidOn):'';}],['Fee status','FeeStatus'],
+    ['YouTube subs','YouTubeSubs'],['Facebook','FacebookFollowers'],['TikTok','TikTokFollowers'],['Views','Views'],['Engagement %','EngagementPct'],
+    ['Videos planned',function(m){return m.VideosPlanned===''?(+gpTerm('videosPerMonth')||''):m.VideosPlanned;}],['Videos published','VideosPublished'],['Footage on time','FootageOnTime'],['Posts on schedule %','PostsOnSchedulePct']];
+  if(full) c.push(['Hours','Hours'],['Cash costs','CashCosts']);
+  c.push(['Content revenue','ContentRevenue'],['Book profit','BookProfit'],['My shares','MyShares'],['Fee received','FeeReceived'],['Total received','TotalReceived']);
+  if(full) c.push(['Net after costs','NetAfterCosts']);
+  c.push(['Growth',function(m){return m.Score.growth;}],['Revenue',function(m){return m.Score.revenue;}],['Work',function(m){return m.Score.work;}],['Partner',function(m){return m.Score.partner;}],['Notes','Notes']);
+  return c.map(function(x){ return {h:x[0],f:typeof x[1]==='function'?x[1]:function(m){ var v=m[x[1]]; return v===undefined?'':v; }}; });
+}
+function gpReportXlsx(P,ver){
+  var full=ver==='Full'&&!P.partnerView, p=P.project, d=P.dash, t=d.totals;
+  var past=P.months.filter(function(m){return !m.Future;});
+  var cols=gpCols(P,full);
+  var monthly={name:'Monthly log',rows:[cols.map(function(c){return c.h;})].concat(past.map(function(m){ return cols.map(function(c){ return c.f(m); }); })),
+    widths:cols.map(function(c){ return c.h==='Notes'?40:Math.max(10,c.h.length+2); }),money:cols.map(function(c,i){ return /revenue|profit|shares|received|costs|Net/i.test(c.h)?i:-1; }).filter(function(i){return i>=0;})};
+  var inc={name:'Income log',rows:[['Date received','Source','Type','Gross amount','My rate','My share','Due by','Date paid to me','Days to pay','Payment status','Notes']].concat(P.income.map(function(x){
+    return [isoDay(x.DateReceived),x.Source||'',x.Type,x.GrossAmount,x.MyRate,x.MyShare,x.DueBy?isoDay(x.DueBy):'',x.DatePaidToMe?isoDay(x.DatePaidToMe):'',x.DaysToPay===''?'':x.DaysToPay,x.PaymentStatus,x.Notes||'']; })),
+    widths:[13,30,13,13,9,11,12,15,11,15,40],money:[3,5]};
+  var ms={name:'Milestones',rows:[['Month','Shared goal','Milestone','Owner','Measure','Target','Actual','Status','Notes']].concat(P.milestones.map(function(m){
+    return [m.MonthNo?m.MonthNo:'Every month',m.SharedGoal||'',m.Milestone,m.OwnerRole,m.Measure||'',m.Target||'',m.Actual||'',m.Status,m.Notes||'']; })),widths:[12,26,52,9,18,9,9,12,40]};
+  var terms=P.terms.filter(function(x){ return full||(x.Kind==='n'&&['hourlyRate','cashCostCap','hoursEstimate'].indexOf(x.Key)<0); });
+  var tr={name:'Terms',rows:[['Term','Value','Key']].concat(terms.map(function(x){ return [x.Label,x.Value,x.Key]; })),widths:[52,50,20]};
+  if(p.TermsText){ tr.rows.push(['',''],['Agreed terms','']); p.TermsText.split('\n').forEach(function(l){ tr.rows.push([l,'']); }); }
+  var sum=[['Item','Value'],[p.Name+' — '+(full?'Full':'Partner')+' version',''],['Partner',p.PartnerName||''],['Period','Month 1 to '+d.cur+' ('+gpMon(p.StartMonth)+' – '+gpMon(d.curStart)+')'],['Exported',isoDay(new Date())],['',''],
+    ['Fees received',t.feesReceived],['Shares received',t.sharesReceived],['Shares still to be paid',t.sharesPending],['Total received',t.totalReceived]];
+  if(full) sum.push(['Hours',t.hours],['Cash costs',t.cashCosts],['Net after costs',t.netAfterCosts],['Value of time ('+gpM(gpTerm('hourlyRate'))+'/h)',t.timeValue],['Net after costs and time',t.netAfterTime]);
+  sum.push(['Fees late or unpaid',d.health.feesLate],['Shares paid late or overdue',d.health.sharesLate]);
+  if(full&&d.review) sum.push([gpTerm('reviewMonth')+'-month review',d.review.text]);
+  return gpXlsx([{name:'Summary',rows:sum,widths:[40,60]},monthly,inc,ms,tr]);
+}
+
+/** The PDF report (1–2 pages). */
+function gpReportPdf(P,ver){
+  var full=ver==='Full'&&!P.partnerView, p=P.project, d=P.dash, t=d.totals, pdf=new GpPdf(), M=36, W=pdf.W-2*M;
+  var navy='#1F3A5F', muted='#64748B', line='#E5E9F2', L={Green:'#12A150',Amber:'#E08A00',Red:'#E5484D','':'#CBD5E1'};
+  var verTxt=(full?'Full':'Partner')+' version';
+  // header
+  pdf.rect(0,0,pdf.W,74,{fill:navy});
+  pdf.text(M,32,p.Name,{size:18,bold:true,color:'#FFFFFF',maxw:W-120});
+  pdf.text(M,52,'Monthly report · Month 1 to '+d.cur+' ('+gpMon(p.StartMonth)+' – '+gpMon(d.curStart)+')',{size:10,color:'#C9D4E5'});
+  pdf.text(pdf.W-M,32,verTxt.toUpperCase(),{size:9,bold:true,color:full?'#FFD58A':'#A7F3C4',align:'right'});
+  var y=96;
+  pdf.text(M,y,'With '+(p.PartnerName||'the partner')+' · prepared by '+((S.gr&&S.gr.owner&&S.gr.owner.name)||'')+' · '+grDay(new Date()),{size:9,color:muted,maxw:W});
+  // tiles
+  y+=22; pdf.text(M,y,'This month · Month '+d.cur+' ('+gpMon(d.curStart,true)+')',{size:12,bold:true});
+  var tiles=[['Data fee',d.fee||'–'],['Videos published',d.videos.published+' of '+d.videos.planned],['YouTube subscribers',gpN(d.subs.value)+' of '+gpN(d.subs.target)],
+    ['Income this month',gpM(d.income)],['My share',gpM(d.share)]];
+  if(full) tiles.push(['Net after costs',gpM(d.net)]);
+  var tw=(W-2*8)/3; y+=10;
+  tiles.forEach(function(tl,i){ var x=M+(i%3)*(tw+8), yy=y+Math.floor(i/3)*50;
+    pdf.rect(x,yy,tw,42,{fill:'#F7F9FC',stroke:line}); pdf.text(x+10,yy+15,tl[0],{size:8,color:muted});
+    pdf.text(x+10,yy+33,tl[1],{size:14,bold:true,color:tl[0]==='Data fee'?({'On time':'#0B7A3B','Late':'#B86E00','Not paid':'#C62828'}[tl[1]]||'#0F172A'):'#0F172A',maxw:tw-20}); });
+  y+=Math.ceil(tiles.length/3)*50+12;
+  // lights + milestones side by side
+  var half=(W-16)/2;
+  pdf.text(M,y,'Traffic lights · month '+d.scoreMonth+(d.scoreMonth!==d.cur?' (last logged)':''),{size:12,bold:true});
+  pdf.text(M+half+16,y,'Milestones by month',{size:12,bold:true});
+  var ly=y+18;
+  P.lists.areas.forEach(function(a,i){ var s=d.lights[a[0]]||''; pdf.circle(M+8,ly+i*20-3,6,{fill:L[s]});
+    pdf.text(M+22,ly+i*20,a[1],{size:10,bold:true}); pdf.text(M+half,ly+i*20,s||'Not enough numbers',{size:9,color:muted,align:'right'}); });
+  var pr=d.progress, sx=M+half+16, sw=half/Math.max(pr.length,1);
+  pdf.line(sx+sw/2,ly+12,sx+sw*(pr.length-.5),ly+12,{color:'#CBD5E1',lw:3});
+  pr.forEach(function(x,i){ var cx=sx+sw*(i+.5), fullDone=x.total&&x.done===x.total;
+    pdf.circle(cx,ly+12,9,{fill:fullDone?'#12A150':x.current?'#2563EB':'#FFFFFF',stroke:fullDone?'#12A150':x.current?'#2563EB':x.MonthNo<d.cur&&x.done<x.total?'#E08A00':'#94A3B8',lw:2});
+    pdf.text(cx,ly+15.5,String(x.MonthNo),{size:8,bold:true,color:fullDone||x.current?'#FFFFFF':'#0F172A',align:'center'});
+    pdf.text(cx,ly+34,x.done+'/'+x.total,{size:9,bold:true,align:'center'}); pdf.text(cx,ly+46,gpMon(x.MonthStart).replace(/ \d{4}$/,''),{size:7.5,color:muted,align:'center'}); });
+  pdf.text(sx,ly+66,'Blue: this month · green: all done · orange: open from a past month',{size:7.5,color:muted});
+  y=ly+4*20+12;
+  // charts
+  var ch=150, cw=half;
+  pdf.text(M,y,'YouTube subscribers',{size:12,bold:true}); pdf.text(M+half+16,y,'Content revenue by month (US$)',{size:12,bold:true});
+  gpPdfChart(pdf,P,M,y+10,cw,ch,'subs'); gpPdfChart(pdf,P,M+half+16,y+10,cw,ch,'rev');
+  y+=ch+30;
+  // totals + health
+  pdf.text(M,y,'Since the start',{size:12,bold:true}); pdf.text(M+half+16,y,'Health checks',{size:12,bold:true});
+  var rows=[['Fees received',gpM(t.feesReceived)],['Shares received',gpM(t.sharesReceived)],['Shares still to be paid',gpM(t.sharesPending)],['Total received',gpM(t.totalReceived),1]];
+  if(full) rows=[['Hours',gpN(t.hours)+' h'],['Cash costs',gpM(t.cashCosts)]].concat(rows,[['Net after costs',gpM(t.netAfterCosts),1],['Value of my time ('+gpM(gpTerm('hourlyRate'))+'/h)',gpM(t.timeValue)],['Net after costs and time',gpM(t.netAfterTime),1]]);
+  var ty=y+16;
+  rows.forEach(function(r,i){ var yy=ty+i*15; if(r[2]) pdf.rect(M,yy-10.5,half,14,{fill:'#F1F5F9'}); pdf.text(M+4,yy,r[0],{size:9,bold:!!r[2]}); pdf.text(M+half-4,yy,r[1],{size:9,bold:true,align:'right'}); });
+  var hy=y+16, hx=M+half+16;
+  [['Fees late or unpaid',d.health.feesLate],['Shares paid late or overdue',d.health.sharesLate]].forEach(function(r,i){ var yy=hy+i*15;
+    pdf.text(hx+4,yy,r[0],{size:9}); pdf.text(hx+half-4,yy,String(r[1]),{size:9,bold:true,color:r[1]?'#C62828':'#0B7A3B',align:'right'}); });
+  var ay=hy+40;
+  (d.alerts||[]).forEach(function(a){ pdf.wrap(a,8.5,half-8).forEach(function(l){ pdf.text(hx+4,ay,l,{size:8.5,color:'#C62828'}); ay+=11; }); ay+=3; });
+  if(full&&d.review){ pdf.rect(hx,ay-2,half,48,{fill:'#EEF2FF'}); pdf.text(hx+8,ay+11,gpTerm('reviewMonth')+'-month review',{size:8,color:muted});
+    pdf.wrap(d.review.text,9.5,half-16,true).slice(0,2).forEach(function(l,i){ pdf.text(hx+8,ay+25+i*12,l,{size:9.5,bold:true}); }); }
+  // page 2: tables
+  pdf.page(); y=44;
+  pdf.text(M,y,'Monthly log',{size:13,bold:true}); y+=10;
+  var past=P.months.filter(function(m){return !m.Future;});
+  var mc=[['Month',44,function(m){return 'M'+m.MonthNo+' '+gpMon(m.MonthStart).replace(/ \d{4}$/,'');}],['Fee',38,function(m){return m.FeeStatus;}],['Subs',30,function(m){return gpN(m.YouTubeSubs);}],
+    ['FB',28,function(m){return gpN(m.FacebookFollowers);}],['TikTok',32,function(m){return gpN(m.TikTokFollowers);}],['Views',34,function(m){return gpN(m.Views);}],['Eng%',28,function(m){return gpN(m.EngagementPct);}],
+    ['Videos',32,function(m){return m.VideosPublished===''?'–':m.VideosPublished+'/'+(m.VideosPlanned===''?gpTerm('videosPerMonth'):m.VideosPlanned);}]];
+  if(full) mc.push(['Hrs',24,function(m){return gpN(m.Hours);}],['Costs',34,function(m){return m.CashCosts===''?'–':gpM(m.CashCosts);}]);
+  mc.push(['Content',36,function(m){return gpM(m.ContentRevenue);}],['Book',32,function(m){return gpM(m.BookProfit);}],['Shares',36,function(m){return gpM(m.MyShares);}],['Received',38,function(m){return gpM(m.TotalReceived);}]);
+  if(full) mc.push(['Net',38,function(m){return gpM(m.NetAfterCosts);}]);
+  mc.push(['Lights',32,null]);
+  var tot=mc.reduce(function(a,c){return a+c[1];},0), k=W/tot; mc.forEach(function(c){ c[1]*=k; });
+  var tableHead=function(cols,yy){ pdf.rect(M,yy,W,16,{fill:navy}); var x=M; cols.forEach(function(c){ pdf.text(x+3,yy+11,c[0],{size:7,bold:true,color:'#FFFFFF',maxw:c[1]-4}); x+=c[1]; }); return yy+16; };
+  y=tableHead(mc,y);
+  past.forEach(function(m,i){ if(y>pdf.H-60){ pdf.page(); y=tableHead(mc,44); }
+    if(i%2) pdf.rect(M,y,W,15,{fill:'#F7F9FC'}); var x=M;
+    mc.forEach(function(c){ if(c[2]) pdf.text(x+3,y+10.5,c[2](m),{size:7.5,maxw:c[1]-5,color:c[0]==='Fee'?({'On time':'#0B7A3B','Late':'#B86E00','Not paid':'#C62828'}[m.FeeStatus]||'#0F172A'):'#0F172A'});
+      else P.lists.areas.forEach(function(a,j){ pdf.circle(x+6+j*8,y+7.5,3,{fill:L[m.Score[a[0]]||'']}); }); x+=c[1]; });
+    y+=15; });
+  pdf.text(M,y+11,'Lights in order: channel growth, revenue & payouts, my work & costs, partner\'s commitments.',{size:7.5,color:muted});
+  y+=30;
+  if(P.income.length){
+    if(y>pdf.H-120){ pdf.page(); y=44; }
+    pdf.text(M,y,'Income log',{size:13,bold:true}); y+=10;
+    var ic2=[['Received',60,function(x){return isoDay(x.DateReceived);}],['Source',150,function(x){return x.Source||'';}],['Type',70,function(x){return x.Type;}],['Gross',55,function(x){return gpM(x.GrossAmount);}],
+      ['My share',55,function(x){return gpM(x.MyShare);}],['Paid to me',60,function(x){return x.DatePaidToMe?isoDay(x.DatePaidToMe):'';}],['Status',60,function(x){return x.PaymentStatus;}]];
+    var t2=ic2.reduce(function(a,c){return a+c[1];},0); ic2.forEach(function(c){ c[1]*=W/t2; });
+    y=tableHead(ic2,y);
+    P.income.forEach(function(x,i){ if(y>pdf.H-60){ pdf.page(); y=tableHead(ic2,44); } if(i%2) pdf.rect(M,y,W,15,{fill:'#F7F9FC'}); var xx=M;
+      ic2.forEach(function(c){ pdf.text(xx+3,y+10.5,c[2](x),{size:7.5,maxw:c[1]-5,color:c[0]==='Status'?({'On time':'#0B7A3B','Late':'#B86E00','Overdue':'#C62828'}[x.PaymentStatus]||'#0F172A'):'#0F172A'}); xx+=c[1]; }); y+=15; });
+    y+=24;
+  }
+  if(y>pdf.H-120){ pdf.page(); y=44; }
+  pdf.text(M,y,'Milestones',{size:13,bold:true}); y+=10;
+  var mm=[['Month',46,function(m){return m.MonthNo?'Month '+m.MonthNo:'Every month';}],['Milestone',230,function(m){return m.Milestone;}],['Who',44,function(m){return m.OwnerRole;}],
+    ['Target',44,function(m){return m.Target||'';}],['Actual',44,function(m){return m.Actual||'';}],['Status',60,function(m){return m.Status;}]];
+  var t3=mm.reduce(function(a,c){return a+c[1];},0); mm.forEach(function(c){ c[1]*=W/t3; });
+  y=tableHead(mm,y);
+  P.milestones.forEach(function(m,i){ if(y>pdf.H-60){ pdf.page(); y=tableHead(mm,44); } if(i%2) pdf.rect(M,y,W,15,{fill:'#F7F9FC'}); var xx=M;
+    mm.forEach(function(c){ pdf.text(xx+3,y+10.5,c[2](m),{size:7.5,maxw:c[1]-5,bold:c[0]==='Status'&&m.Status==='Done',color:c[0]==='Status'?({'Done':'#0B7A3B','Missed':'#C62828','In progress':'#1D4ED8'}[m.Status]||'#64748B'):'#0F172A'}); xx+=c[1]; }); y+=15; });
+  // footer on every page
+  var n=pdf.pages.length;
+  pdf.pages.forEach(function(pg,i){ pdf.cur=pg; pdf.line(M,pdf.H-34,pdf.W-M,pdf.H-34,{color:line});
+    pdf.text(M,pdf.H-22,verTxt+(full?' · includes hours, costs and net figures. Do not forward.':' · safe to share with the partner.')+' Confidential.',{size:7.5,color:full?'#B45309':muted});
+    pdf.text(pdf.W-M,pdf.H-22,'My Growth · '+isoDay(new Date())+' · page '+(i+1)+' of '+n,{size:7.5,color:muted,align:'right'}); });
+  return pdf.output();
+}
+function gpPdfChart(pdf,P,x,y,w,h,kind){
+  var ms=P.months.filter(function(m){return !m.Future;}), n=Math.max(ms.length,+gpTerm('reviewMonth')||6), L=30, B=16, muted='#64748B';
+  pdf.rect(x,y,w,h,{stroke:'#E5E9F2'});
+  var px=x+L, pw=w-L-8, py=y+10, ph=h-B-14;
+  var vals, mx, lines=[];
+  if(kind==='subs'){ var goal=+gpTerm('subsTarget')||0; vals=ms.map(function(m){return m.YouTubeSubs===''?null:+m.YouTubeSubs;});
+    mx=Math.max.apply(null,[goal,10].concat(vals.filter(function(v){return v!=null;}))); lines=goal?[[goal,'Goal '+gpN(goal),'#E08A00']]:[]; }
+  else { var be=+gpTerm('breakEvenRevenue')||0, fv=+gpTerm('fullValueRevenue')||0; vals=ms.map(function(m){return m.ContentRevenue;});
+    mx=Math.max.apply(null,[fv*1.1,be*1.2,50].concat(vals)); if(be) lines.push([be,'Break-even '+gpM(be),'#E08A00']); if(fv) lines.push([fv,'Full value '+gpM(fv),'#12A150']); }
+  mx=Math.ceil(mx/100)*100||100;
+  var Y=function(v){ return py+(1-v/mx)*ph; }, X=function(i){ return px+(i+.5)*pw/n; };
+  [0,.5,1].forEach(function(f){ var v=Math.round(mx*f); pdf.line(px,Y(v),px+pw,Y(v),{color:'#EEF1F6',lw:.6}); pdf.text(px-4,Y(v)+3,gpShort(v),{size:7,color:muted,align:'right'}); });
+  for(var i=0;i<n;i++) pdf.text(X(i),y+h-5,'M'+(i+1),{size:7,color:muted,align:'center'});
+  if(kind==='subs'){
+    var pts=[]; vals.forEach(function(v,i){ if(v!=null) pts.push([X(i),Y(v),v]); });
+    pdf.poly(pts,{color:'#2563EB',lw:2});
+    pts.forEach(function(p){ pdf.circle(p[0],p[1],2.6,{fill:'#2563EB'}); pdf.text(p[0],p[1]-6,gpShort(p[2]),{size:7,bold:true,color:'#1E40AF',align:'center'}); });
+    if(!pts.length) pdf.text(px+pw/2,py+ph/2,'No subscriber counts logged yet',{size:8,color:muted,align:'center'});
+  } else {
+    var bw=pw/n*.6;
+    vals.forEach(function(v,i){ if(v>0){ pdf.rect(X(i)-bw/2,Y(v),bw,Y(0)-Y(v),{fill:v>=fv&&fv?'#12A150':v>=be&&be?'#2563EB':'#93B4F5'}); pdf.text(X(i),Y(v)-3,gpShort(v),{size:7,bold:true,align:'center'}); } });
+  }
+  lines.forEach(function(l){ pdf.line(px,Y(l[0]),px+pw,Y(l[0]),{color:l[2],lw:1,dash:'3 2'}); pdf.text(px+pw-3,Y(l[0])-3,l[1],{size:7,color:l[2],align:'right'}); });
+}
+
+/* ----- WhatsApp summary ----- */
+function gpWhatsApp(n){
+  var P=S.gp; n=n||P.dash.cur;
+  var opts=[]; P.months.filter(function(m){return !m.Future;}).forEach(function(m){ opts.unshift({v:m.MonthNo,t:'Month '+m.MonthNo+' · '+gpMon(m.MonthStart)}); });
+  var phone=intlPhone(P.project.PartnerPhone||'');
+  modal('<h3>WhatsApp update</h3><p class="small muted">Check and edit before sending. Your hours and costs are never included.</p>'+
+    '<label>Month</label><select id="gwm" onchange="$(\'gwt\').value=gpWaText(S.gp,+this.value);gpWaLink()">'+opt(opts,n)+'</select>'+
+    '<textarea id="gwt" style="min-height:300px;font-size:13.5px" oninput="gpWaLink()">'+esc(gpWaText(P,n))+'</textarea>'+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><a class="btn wa" id="gwa" target="_blank" rel="noopener" href="#">'+ic('chat')+' Open WhatsApp'+(phone?'':' (choose chat)')+'</a>'+
+    '<button class="btn secondary" onclick="copyText(val(\'gwt\'))">Copy</button><button class="btn secondary" style="margin-left:auto" onclick="closeModal()">Close</button></div>'+
+    (phone?'':'<p class="small muted">Add the partner\'s WhatsApp number in Terms ▸ Project details to open their chat directly.</p>'));
+  gpWaLink();
+}
+function gpWaLink(){ var a=$('gwa'); if(!a) return; var ph=intlPhone(S.gp.project.PartnerPhone||''); a.href='https://wa.me/'+(ph||'')+'?text='+encodeURIComponent($('gwt').value); }
+function gpWaText(P,n){
+  var m=P.months[n-1], prev=P.months[n-2], next=P.months[n], fee=+gpTerm('monthlyFee')||0, me=(S.gr&&S.gr.owner&&S.gr.owner.name||'').split(' ')[0];
+  var diff=function(k){ return prev&&m[k]!==''&&prev[k]!==''?' ('+(m[k]-prev[k]>=0?'+':'')+gpN(m[k]-prev[k])+')':''; };
+  var L=[];
+  L.push('*'+P.project.Name+': month '+n+' update ('+gpMon(m.MonthStart,true)+')*','');
+  L.push('*Growth*');
+  if(m.Logged){
+    if(m.YouTubeSubs!=='') L.push('• YouTube: '+gpN(m.YouTubeSubs)+' subscribers'+diff('YouTubeSubs')+(m.SubsGoal?', goal '+gpN(m.SubsGoal)+' by now':''));
+    if(m.FacebookFollowers!=='') L.push('• Facebook: '+gpN(m.FacebookFollowers)+' followers'+diff('FacebookFollowers'));
+    if(m.TikTokFollowers!=='') L.push('• TikTok: '+gpN(m.TikTokFollowers)+' followers'+diff('TikTokFollowers'));
+    if(m.Views!=='') L.push('• Views (all platforms): '+gpN(m.Views));
+    if(m.EngagementPct!=='') L.push('• Engagement: '+m.EngagementPct+'%');
+  } else L.push('• Numbers for this month are not recorded yet.');
+  var planned=m.VideosPlanned===''?(+gpTerm('videosPerMonth')||0):m.VideosPlanned;
+  L.push('','*Videos*','• Published: '+(m.VideosPublished===''?'–':m.VideosPublished)+' of '+planned+' planned'+(m.FootageOnTime!==''?' (footage on time for '+m.FootageOnTime+')':''));
+  var inc=P.income.filter(function(x){ var d=new Date(x.DateReceived), s=new Date(m.MonthStart), e=new Date(s.getFullYear(),s.getMonth()+1,1); return d>=s&&d<e; });
+  L.push('','*Income and payments*');
+  if(inc.length) inc.forEach(function(x){ L.push('• '+(x.Source||x.Type)+': '+gpM(x.GrossAmount)+' received. My share '+gpM(x.MyShare)+' ('+(x.PaymentStatus==='Pending'?'due by '+grDay(x.DueBy):x.PaymentStatus==='Overdue'?'overdue by '+x.LateBy+' days':'paid, thank you')+')'); });
+  else L.push('• No income received this month yet.');
+  var older=P.income.filter(function(x){ return inc.indexOf(x)<0 && (x.PaymentStatus==='Overdue'||x.PaymentStatus==='Pending'); });
+  older.forEach(function(x){ L.push('• Still open: my share of '+gpM(x.MyShare)+' from '+(x.Source||x.Type)+' ('+grDay(x.DateReceived)+')'); });
+  if(fee) L.push('• Data fee ('+gpM(fee)+'): '+(m.FeeStatus==='On time'?'received on time, thank you':m.FeeStatus==='Late'?'received, thank you':m.FeeStatus==='Due'?'due by '+grDay(m.FeeDue):'not received yet'));
+  var need=[];
+  if(fee&&(m.FeeStatus==='Not paid'||m.FeeStatus==='Due')) need.push('The '+gpM(fee)+' data fee for '+gpMon(m.MonthStart,true).split(' ')[0]);
+  P.income.filter(function(x){return x.PaymentStatus==='Overdue';}).forEach(function(x){ need.push('My share of '+gpM(x.MyShare)+' from '+(x.Source||x.Type)); });
+  var nextPlanned=next&&next.VideosPlanned!==''?next.VideosPlanned:(+gpTerm('videosPerMonth')||0);
+  if(nextPlanned) need.push('Footage for '+nextPlanned+' videos for next month');
+  P.milestones.filter(function(x){ return (x.MonthNo===n||(x.MonthNo===n+1&&n===P.dash.cur))&&x.Status!=='Done'&&(x.OwnerRole==='Partner'||x.OwnerRole==='Both'); })
+    .forEach(function(x){ need.push(x.Milestone+(x.Target&&x.Target!=='Yes'?' (target '+x.Target+')':'')); });
+  if(need.length){ L.push('','*What I need from you*'); need.forEach(function(x){ L.push('• '+x); }); }
+  L.push('','Thank you'+(me?'. '+me:'')+'!');
+  return L.join('\n');
 }
 
 /* ---------- start ---------- */
