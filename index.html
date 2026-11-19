@@ -1,19 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base target="_top">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#070C33">
-<title>LightOn Academy Portal</title>
-<meta name="description" content="LightOn Academy portal: courses, assignments, attendance, progress, fees and registration.">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="LightOn">
-<script>document.write('<script src="config.js?v=6.1.1&t='+Date.now()+'"><\/script>');</script>
 <style>
   /* Plus Jakarta Sans (variable, weights 200-800), bundled inside the app — SIL Open Font License 1.1 */
   @font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-display:swap;font-weight:200 800;
@@ -355,6 +346,7 @@ function closeModal(){ var m=document.querySelector('.modal-bg'); if(m) m.remove
 
 
 var ICO={
+ globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/>',
  home:'<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/>',
  inbox:'<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/>',
  userplus:'<circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="M19 8v6M16 11h6"/>',
@@ -399,9 +391,9 @@ function skel(){ return '<div style="padding-top:8px"><div class="sk" style="hei
 function empty(icn,msg){ return '<div class="empty">'+ic(icn)+'<div>'+msg+'</div></div>'; }
 
 /* ---------- chrome: sidebar, top bar, bottom tabs ---------- */
-var NAV_META={Overview:['home','Overview'],Leads:['inbox','Leads'],Register:['userplus','Register'],Students:['cap','Students'],Sponsors:['heart','Sponsors'],Fees:['receipt','Fees'],Finance:['wallet','Finance'],Courses:['book','Courses'],Staff:['users','Staff & roles'],Settings:['cog','Settings']};
-var MOBILE_ORDER=['Overview','Leads','Students','Finance','Fees','Register','Sponsors','Courses','Staff','Settings'];
-var NAV_GROUPS=[['',['Overview']],['Admissions',['Leads','Register','Students','Sponsors']],['Money',['Fees','Finance']],['Academy',['Courses','Staff','Settings']]];
+var NAV_META={Overview:['home','Overview'],Leads:['inbox','Leads'],Register:['userplus','Register'],Students:['cap','Students'],Sponsors:['heart','Sponsors'],Fees:['receipt','Fees'],Finance:['wallet','Finance'],Courses:['book','Courses'],Website:['globe','Website'],Staff:['users','Staff & roles'],Settings:['cog','Settings']};
+var MOBILE_ORDER=['Overview','Leads','Students','Finance','Fees','Register','Sponsors','Courses','Website','Staff','Settings'];
+var NAV_GROUPS=[['',['Overview']],['Admissions',['Leads','Register','Students','Sponsors']],['Money',['Fees','Finance']],['Academy',['Courses','Website','Staff','Settings']]];
 function navBtn(v){ var n=S.data.summary&&S.data.summary.leadStatus&&S.data.summary.leadStatus.New;
   return '<button class="'+(S.view===v?'on':'')+'" onclick="go(\''+v+'\')">'+ic(NAV_META[v][0])+'<span>'+NAV_META[v][1]+'</span>'+(v==='Leads'&&n?'<span class="badge">'+n+'</span>':'')+'</button>'; }
 function chrome(){
@@ -511,17 +503,20 @@ function doLogin(){
     S.token=r.token; store('lo_token',r.token); store('lo_last',id); boot();
   }).catch(function(e){ $('lerr').textContent=e.message; $('lbtn').disabled=false; });
 }
-function logout(){ var t=S.token; S.token=null; S.view=null; store('lo_token',null); store('lo_cache',null); if(t) call('apiLogout',t).catch(function(){}); renderLogin(); }
+function logout(){ closeModal(); var t=S.token; S.token=null; S.view=null; store('lo_token',null); store('lo_cache',null); if(t) call('apiLogout',t).catch(function(){}); renderLogin(); }
 function openChangePin(){
   modal('<h3>Change PIN</h3><label>Current PIN</label><input id="op" type="password" inputmode="numeric">'+
-    '<label>New PIN (4–8 digits)</label><input id="np" type="password" inputmode="numeric">'+
+    '<label>New PIN (6–8 digits)</label><input id="np" type="password" inputmode="numeric" maxlength="8"><div class="small muted">Avoid easy PINs like 123456, 111111 or your birthday.</div>'+
     '<label>Repeat new PIN</label><input id="np2" type="password" inputmode="numeric"><div class="err" id="perr"></div>'+
     '<div class="row" style="margin-top:10px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" onclick="savePin()">Save</button></div>');
 }
 function savePin(){
   if($('np').value!==$('np2').value){ $('perr').textContent='New PINs do not match.'; return; }
-  call('apiChangePin',S.token,$('op').value,$('np').value).then(function(){ closeModal(); toast('PIN changed'); })
-   .catch(function(e){ $('perr').textContent=e.message; });
+  call('apiChangePin',S.token,$('op').value,$('np').value).then(function(r){
+    if(r&&r.token){ S.token=r.token; store('lo_token',r.token); }
+    if(S.data) S.data.mustChangePin=false;
+    S.forcePin=false; closeModal(); toast('PIN changed. Your other devices were logged out.');
+  }).catch(function(e){ $('perr').textContent=e.message; });
 }
 
 /* ---------- boot ---------- */
@@ -540,8 +535,20 @@ function boot(){
       '<p class="small muted" style="margin-top:14px">Admins: send this message to your developer, or check that Apps Script contains only Code.gs and Index.html and that a new version was deployed.</p></div></div>';
   });
 }
+/* An easy PIN (or one set before v6.2) must be changed before using the portal. */
+function forcePinModal(){
+  if(document.querySelector('.modal-bg.force')) return;
+  var bg=modal('<h3>'+ic('shield')+' Please choose a new PIN</h3><p class="small">Your PIN is too easy to guess. To keep your account safe, choose a new one now. '+esc(S.data.pinRule||'')+'</p>'+
+    '<label>Current PIN</label><input id="op" type="password" inputmode="numeric">'+
+    '<label>New PIN (6–8 digits)</label><input id="np" type="password" inputmode="numeric" maxlength="8">'+
+    '<label>Repeat new PIN</label><input id="np2" type="password" inputmode="numeric" maxlength="8"><div class="err" id="perr"></div>'+
+    '<div class="row" style="margin-top:10px"><button class="btn secondary" onclick="logout()">Log out</button><button class="btn" onclick="savePin()">Save new PIN</button></div>');
+  bg.classList.add('force');
+  var fresh=bg.cloneNode(true); bg.parentNode.replaceChild(fresh,bg); // can't be closed by tapping outside
+}
 function render(){
   var u=S.data.user;
+  if(S.data.mustChangePin && !S.offline) setTimeout(forcePinModal,50);
   if(isStaff()){ var v=myViews(); if(v && v.indexOf(S.view)<0) S.view=v[0]; }
   chrome();
   if(u.role==='Parent') return renderParent();
@@ -641,10 +648,10 @@ function doSubmit(aid){
 
 /* ---------- STAFF (Teacher + Admin) ---------- */
 var VIEW_PERM={Overview:null,Leads:['leads.view','leads.edit'],Register:['students.register'],Students:['students.view','students.edit'],Sponsors:['sponsors.manage'],
-  Fees:['fees.view','fees.collect'],Finance:['finance.view','finance.edit'],Courses:['courses.manage'],Staff:['staff.manage'],Settings:['settings.manage']};
+  Fees:['fees.view','fees.collect'],Finance:['finance.view','finance.edit'],Courses:['courses.manage'],Website:['website.edit'],Staff:['staff.manage'],Settings:['settings.manage']};
 var PORTAL_ROLES=['Student','Parent','Sponsor'];
-var ALL_PERMS=['overview.view','leads.view','leads.edit','students.register','students.view','students.edit','sponsors.manage','fees.view','fees.collect','finance.view','finance.edit','courses.manage','courses.teach_all','staff.manage','settings.manage'];
-var CLIENT_VERSION='6.1.0';
+var ALL_PERMS=['overview.view','leads.view','leads.edit','students.register','students.view','students.edit','sponsors.manage','fees.view','fees.collect','finance.view','finance.edit','courses.manage','courses.teach_all','staff.manage','settings.manage','website.edit'];
+var CLIENT_VERSION='6.2.0';
 function myPermList(){
   if(!S.data) return [];
   if(S.data.perms) return S.data.perms;
@@ -678,7 +685,7 @@ function renderStaff(){
   if(views.indexOf(S.view)<0) S.view=views[0];
   chrome();
   $('app').innerHTML=offlineBanner()+'<div id="view"></div>';
-  ({Overview:renderOverview,Leads:vLeads,Register:vRegister,Students:vStudents,Sponsors:vSponsors,Fees:vFees,Finance:vFinance,Courses:vCourses,Staff:vStaff,Settings:vSettings})[S.view]();
+  ({Overview:renderOverview,Leads:vLeads,Register:vRegister,Students:vStudents,Sponsors:vSponsors,Fees:vFees,Finance:vFinance,Courses:vCourses,Website:vWebsite,Staff:vStaff,Settings:vSettings})[S.view]();
 }
 function go(v){ if(S.offline && v!=='Overview' && v!=='Finance'){ toast('Connect to the internet first.'); return; } S.view=v; S.tab=null; S.studentId=null; window.scrollTo(0,0); if(v==='Overview' && !S.offline) boot(); else renderStaff(); }
 function renderOverview(){
@@ -1221,14 +1228,144 @@ function editCourse(i){
     '<div><label>Status</label><select id="cf_Status">'+opt(['Open','Running','Completed','Closed'],c.Status)+'</select></div></div>'+
     '<div class="row"><div><label>Min attendance % to graduate</label><input type="number" id="cf_MinAttendancePct" placeholder="default" value="'+esc(c.MinAttendancePct)+'"></div>'+
     '<div><label>Pass mark %</label><input type="number" id="cf_PassMarkPct" placeholder="default" value="'+esc(c.PassMarkPct)+'"></div></div>'+
-    '<label>Description (shown on the registration page)</label><textarea id="cf_Description">'+esc(c.Description)+'</textarea><div class="err" id="cferr"></div>'+
+    '<label>Description (shown on the registration page)</label><textarea id="cf_Description">'+esc(c.Description)+'</textarea>'+
+    (c.WebID&&can('website.edit')?'<label class="perm" style="margin-top:12px"><input type="checkbox" id="cf_syncweb" checked> Also change the price on the website if I change the fee</label>':'')+'<div class="err" id="cferr"></div>'+
     '<div class="row" style="margin-top:10px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" id="cfbtn" onclick="saveCourse('+isNew+')">Save</button></div>');
 }
 function saveCourse(isNew){
   var o={}; ['CourseID','CourseName','TeacherLogin','StartDate','EndDate','Fee','FeeCurrency','Status','MinAttendancePct','PassMarkPct','Description'].forEach(function(f){ o[f]=val('cf_'+f); });
+  if($('cf_syncweb')) o.syncWebsite=$('cf_syncweb').checked;
   busy($('cfbtn'),true);
-  call('apiSaveCourse',S.token,o,isNew).then(function(){ closeModal(); toast('Course saved'); vCourses(); })
+  call('apiSaveCourse',S.token,o,isNew).then(function(r){ closeModal(); toast(r&&r.websiteUpdated?'Course saved · website price updated':'Course saved'); vCourses(); })
     .catch(function(e){ $('cferr').textContent=e.message; busy($('cfbtn'),false); });
+}
+
+/* ================================================================== */
+/* WEBSITE — edit lightonacademy.com from the portal                   */
+/* ================================================================== */
+var WEB_SECTIONS=[['Web Courses','Courses'],['Web Stats','Home numbers'],['Web Centers','Centers'],['Web Services','Services'],['Web Media','Videos & news'],['Web Stories','Case studies'],['Web Team','Team'],['Web Gallery','Gallery'],['Web Paths','Learning paths']];
+var WEB_CATS={professional:'Professional Skills',tech:'Tech Bootcamps',ai:'AI Training',youth:'Youth & Graduates',kids:'Kids & Teens',educators:'Teachers & Educators',ministry:'Ministries & Organizations',masterclass:'Masterclass'};
+var WEB_ICONS=['laptop','spark','cal','award','video','cloud','bot','chart','path','pin','mail','phone'];
+var WEB_FIELD={
+  active:['check','Show on the website'],featured:['check','Also show on the home page ("Programs starting soon")'],show_price:['check','Show the price (untick to show "Fees on request")'],
+  title:['text','Title'],level:['text','Level line','e.g. Beginner · Level 1 of 3'],tagline:['area','Short description'],audience:['area','Who it is for'],
+  duration:['text','Duration','e.g. 6 weeks'],format:['text','Format','e.g. Onsite · Online'],start:['text','Start badge','e.g. Starting in January'],
+  schedule:['list','Days & times','One center per line, e.g. Paynesville: Saturday, 2–5 PM. Leave empty for "times confirmed when you register".'],
+  price:['text','Price','e.g. $60 or L$ 8,500'],regular_price:['text','Old price (shown crossed out)','Leave empty if there is no discount'],price_note:['text','Price note','Small green line under the price'],
+  payment_plan:['list','Payment plan','One per line'],learn:['list','What you will learn','One per line'],projects:['list','What you will build','One per line'],outcomes:['list','What you leave with','One per line'],
+  requirements:['text','Requirements'],image:['text','Picture','A file like photos/class.jpg or a full https:// link'],
+  category:['select','Category'],path:['select','Learning path'],step:['number','Step in the path'],order:['number','Order','1 shows first'],
+  number:['text','Number','e.g. 250+ (type centers to count your training centers)'],label:['text','Label','e.g. Students trained'],
+  name:['text','Name'],venue:['text','Venue'],address:['area','Address'],map_link:['text','Map link (optional)'],note:['text','Note (optional)'],
+  icon:['select','Icon'],description:['area','Description'],points:['list','Points','One per line'],button_label:['text','Button text'],whatsapp_message:['area','WhatsApp message','What the visitor sends when they tap the button'],
+  role:['text','Role'],photo:['text','Photo','A full https:// link or a file like team/name.jpg'],caption:['text','Caption (optional)'],
+  type:['select','Type'],link:['text','Link','YouTube, Facebook or news link (https://…)'],date:['text','Date','e.g. March 2026'],
+  client:['text','Who it was for'],challenge:['area','The challenge'],solution:['area','What we did'],result:['area','The result','Use real numbers where you can'],quote:['area','Quote (optional)'],quote_by:['text','Quote by','Name, role']
+};
+var WEB_FIELD_ORDER=['active','featured','title','name','label','number','category','type','level','tagline','audience','client','duration','format','start','schedule','price','regular_price','show_price','price_note','payment_plan','learn','projects','outcomes','requirements','challenge','solution','result','quote','quote_by','venue','address','map_link','note','role','icon','description','points','button_label','whatsapp_message','link','date','image','photo','caption','path','step','order'];
+function webTitle(r){ return r.title||r.name||r.label||r.caption||String(r.image||'').replace(/^.*\//,'')||r.id; }
+function vWebsite(){
+  S.webTab=S.webTab||'Web Courses';
+  loading();
+  call('apiWebsite',S.token).then(function(w){ S.web=w; drawWebsite(); }).catch(function(e){
+    target().innerHTML='<h1>Website</h1><div class="card"><p class="err">'+esc(e.message)+'</p></div>';
+  });
+}
+function drawWebsite(q){
+  var w=S.web, tab=S.webTab, t=w.tabs[tab]||{rows:[],cols:[]};
+  var secs=WEB_SECTIONS.filter(function(x){ return w.tabs[x[0]]; });
+  var rows=t.rows.slice().sort(function(a,b){ return (Number(a.order)||999)-(Number(b.order)||999); });
+  S.webRows=rows;
+  q=q===undefined?(S.webQ||''):q; S.webQ=q;
+  var shown=rows.filter(function(r){ return !q || JSON.stringify(r).toLowerCase().indexOf(q.toLowerCase())>=0; });
+  var url=w.websiteUrl||S.data.websiteUrl||'';
+  target().innerHTML='<div class="row" style="align-items:center"><h1 style="flex:2">Website</h1><div class="actions">'+
+      (url?'<a class="btn sm secondary" href="'+esc(url)+'" target="_blank" rel="noopener">'+ic('globe')+' Open website</a>':'')+
+      '<button class="btn sm secondary" id="wpub" onclick="webPublish(this)">'+ic('upload')+' Publish now</button>'+
+      '<button class="btn sm" onclick="webEdit(-1)">'+ic('plus')+' Add</button></div></div>'+
+    '<p class="small muted" style="margin-top:-4px">Changes appear on your website within a minute (or straight away with <b>Publish now</b>). Hidden items stay saved, so you can show them again later.</p>'+
+    (t.exists===false?'<div class="banner">The "'+esc(tab)+'" tab isn\'t in your Google Sheet yet. Open the Sheet and choose <b>LightOn Website ▸ Set up / repair tabs</b>.</div>':'')+
+    '<div class="tabs">'+secs.map(function(x){ return '<button class="'+(tab===x[0]?'on':'')+'" onclick="S.webTab=\''+x[0]+'\';S.webQ=\'\';drawWebsite()">'+esc(x[1])+'</button>'; }).join('')+'</div>'+
+    (rows.length>6?'<input id="wq" placeholder="Search…" value="'+esc(q)+'" oninput="drawWebsite(this.value)" style="max-width:340px;margin-bottom:12px">':'')+
+    '<div class="card">'+(shown.length?shown.map(function(r){ var i=rows.indexOf(r); return webRow(tab,r,i); }).join(''):'<div class="muted">Nothing here yet. Click <b>Add</b>.</div>')+'</div>'+
+    (tab==='Web Stats'?'<p class="small muted">These are the numbers on your home page. Type <b>centers</b> as the number to count your training centers automatically.</p>':'')+
+    (tab==='Web Courses'?'<p class="small muted">🔗 = linked to a portal course. When you change its price here, you can update the portal fee too (registration page and new enrollments).</p>':'');
+  if($('wq')&&q){ $('wq').focus(); $('wq').setSelectionRange(q.length,q.length); }
+}
+function webRow(tab,r,i){
+  var on=r.active===true||String(r.active).toUpperCase()==='TRUE', meta=[];
+  if(tab==='Web Courses'){
+    meta.push(esc(WEB_CATS[r.category]||r.category||''));
+    var showP=!(r.show_price===false||String(r.show_price).toUpperCase()==='FALSE');
+    meta.push(showP&&r.price?'<b>'+esc(r.price)+'</b>':'Fees on request');
+    if(r.start) meta.push(esc(r.start));
+    var l=S.web.linked&&S.web.linked[r.id]; if(l) meta.push('🔗 portal fee '+(Number(l.Fee)?money(l.Fee,l.FeeCurrency):'not set'));
+  } else if(tab==='Web Stats') meta.push('<b style="font-size:16px">'+esc(r.number)+'</b>');
+  else if(tab==='Web Centers') meta.push(esc([r.venue,r.address].filter(Boolean).join(', ')));
+  else if(tab==='Web Team') meta.push(esc(r.role||''));
+  else if(tab==='Web Media') meta.push(esc([r.type,r.date].filter(Boolean).join(' · ')));
+  else if(tab==='Web Stories') meta.push(esc([r.category,r.client].filter(Boolean).join(' · ')));
+  else if(tab==='Web Services'||tab==='Web Paths') meta.push(esc(String(r.description||'').slice(0,90)));
+  var star=r.featured===true||String(r.featured).toUpperCase()==='TRUE';
+  return '<div class="list-item"><div style="min-width:0;flex:1"><b>'+esc(webTitle(r))+'</b> '+(on?'':'<span class="pill warn">Hidden</span>')+(star?' <span class="pill info">⭐ Home page</span>':'')+
+    '<div class="small muted">'+meta.filter(Boolean).join(' · ')+'</div></div>'+
+    '<div class="actions" style="align-items:center"><button class="btn sm secondary" onclick="webToggle('+i+',this)">'+(on?'Hide':'Show')+'</button><button class="btn sm" onclick="webEdit('+i+')">Edit</button></div></div>';
+}
+function webToggle(i,btn){
+  var r=S.webRows[i], on=r.active===true||String(r.active).toUpperCase()==='TRUE';
+  busy(btn,true);
+  call('apiWebsiteToggle',S.token,S.webTab,r.id,!on).then(function(){ r.active=!on; toast(!on?'Shown on the website':'Hidden from the website'); drawWebsite(); })
+    .catch(function(e){ toast(e.message); busy(btn,false); });
+}
+function webField(c,v,tab){
+  var f=WEB_FIELD[c]||['text',c.replace(/_/g,' ').replace(/^./,function(x){return x.toUpperCase();})], id='wf_'+c, hint=f[2]?'<div class="small muted">'+esc(f[2])+'</div>':'';
+  if(f[0]==='check'){ var on=v===undefined||v===''?(c==='active'||c==='show_price'):(v===true||String(v).toUpperCase()==='TRUE'); return '<label class="perm"><input type="checkbox" id="'+id+'"'+(on?' checked':'')+'> '+esc(f[1])+'</label>'; }
+  var lab='<label>'+esc(f[1])+'</label>';
+  if(f[0]==='select'){
+    var list=c==='category'?Object.keys(WEB_CATS).map(function(k){ return {v:k,t:WEB_CATS[k]}; }):c==='icon'?WEB_ICONS:c==='type'?['video','photo','article','news','post']:
+      [{v:'',t:'— none —'}].concat(((S.web.tabs['Web Paths']||{}).rows||[]).map(function(p){ return p.name; }));
+    var vals=list.map(function(o){ return typeof o==='object'?o.v:o; });
+    if(v&&vals.indexOf(v)<0) list=list.concat([v]);
+    return lab+'<select id="'+id+'">'+opt(list,v||'')+'</select>'+hint;
+  }
+  if(f[0]==='list') return lab+'<textarea id="'+id+'" rows="4">'+esc(String(v||'').split(/\s*\|\s*/).filter(String).join('\n'))+'</textarea>'+hint;
+  if(f[0]==='area') return lab+'<textarea id="'+id+'" rows="3">'+esc(v)+'</textarea>'+hint;
+  if(f[0]==='number') return lab+'<input type="number" id="'+id+'" value="'+esc(v)+'" step="any">'+hint;
+  return lab+'<input id="'+id+'" value="'+esc(v)+'">'+hint;
+}
+function webCols(tab){
+  var cols=(S.web.tabs[tab].cols||[]).filter(function(c){ return c&&c!=='id'; });
+  return cols.sort(function(a,b){ var x=WEB_FIELD_ORDER.indexOf(a), y=WEB_FIELD_ORDER.indexOf(b); return (x<0?99:x)-(y<0?99:y); });
+}
+function webEdit(i){
+  var tab=S.webTab, isNew=i<0, r=isNew?{}:S.webRows[i], name=(WEB_SECTIONS.filter(function(x){return x[0]===tab;})[0]||[])[1]||'item';
+  var linked=!isNew&&tab==='Web Courses'&&S.web.linked&&S.web.linked[r.id];
+  modal('<h3>'+(isNew?'Add to '+esc(name):'Edit '+esc(webTitle(r)))+'</h3>'+(isNew?'':'<div class="small muted">Id: '+esc(r.id)+' (used in links, never changes)</div>')+
+    webCols(tab).map(function(c){ return webField(c,r[c],tab); }).join('')+
+    (linked?'<label class="perm" style="margin-top:12px;background:var(--line-2,#F1F4F9);padding:10px;border-radius:10px"><input type="checkbox" id="wf__syncfee" checked> Also set the portal fee for <b>'+esc(linked.CourseName)+'</b> to this price (now '+esc(money(linked.Fee,linked.FeeCurrency))+'). This is the fee on the registration page and for new enrollments.</label>':'')+
+    '<div class="err" id="wferr"></div>'+
+    '<div class="row" style="margin-top:12px">'+(isNew?'':'<button class="btn secondary" style="color:var(--bad)" onclick="webDelete('+i+')">Delete</button>')+
+    '<button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" id="wfbtn" onclick="webSave('+i+')">Save</button></div>');
+}
+function webSave(i){
+  var tab=S.webTab, isNew=i<0, r=isNew?{}:S.webRows[i], o={};
+  webCols(tab).forEach(function(c){ var el=$('wf_'+c); if(!el) return; o[c]=el.type==='checkbox'?el.checked:el.value; });
+  var syncFee=$('wf__syncfee')?$('wf__syncfee').checked:false;
+  if(isNew&&!webTitle(o)){ $('wferr').textContent='Fill in the title or name first.'; return; }
+  busy($('wfbtn'),true,'Saving…');
+  call('apiWebsiteSave',S.token,tab,o,isNew?'':r.id,{syncFee:syncFee}).then(function(res){
+    closeModal(); toast('Saved'+(res&&res.feeNote?' · '+res.feeNote:'')+'. Live on the website within a minute.'); vWebsite();
+  }).catch(function(e){ $('wferr').textContent=e.message; busy($('wfbtn'),false,'Save'); });
+}
+function webDelete(i){
+  var r=S.webRows[i];
+  if(!confirmBox('Delete "'+webTitle(r)+'" for good?\n\nTip: to take it off the website but keep it for later, use Hide instead.')) return;
+  call('apiWebsiteDelete',S.token,S.webTab,r.id).then(function(){ closeModal(); toast('Deleted'); vWebsite(); }).catch(function(e){ $('wferr').textContent=e.message; });
+}
+function webPublish(btn){
+  busy(btn,true,'Publishing…');
+  call('apiWebsitePublish',S.token).then(function(){ toast('Published. Refresh your website to see the changes.'); busy(btn,false); btn.innerHTML=ic('upload')+' Publish now'; })
+    .catch(function(e){ toast(e.message); busy(btn,false); });
 }
 
 /* ---------- Staff ---------- */
@@ -1238,7 +1375,7 @@ function setActive(id,on){ call('apiSetUserActive',S.token,id,on).then(function(
 var SETTING_LABELS={ACADEMY_NAME:'Academy name',ACADEMY_PHONE:'Phone (receipts & registration page)',ACADEMY_ADDRESS:'Address (receipts)',ADMIN_EMAIL:'Admin email (alerts)',
   CURRENCY:'Main currency for reports & totals',HARD_CURRENCY:'Hard currency (e.g. US$)',LOCAL_CURRENCY:'Local currency (e.g. L$)',EXCHANGE_RATE:'Exchange rate — local units for 1 hard unit (1 US$ = ? L$)',SEND_EMAILS:'Send emails',NOTIFY_NEW_LEAD:'Email me about new online registrations',DEFAULT_MIN_ATTENDANCE:'Default min attendance % to graduate',
   DEFAULT_PASS_MARK:'Default pass mark %',WEIGHT_ATTENDANCE:'Attendance share of progress bar (%)',LOW_ATTENDANCE_ALERT:'Alert me when attendance falls below (%)',
-  STUDENT_ID_PREFIX:'Student ID prefix',PORTAL_URL:'Portal link'};
+  STUDENT_ID_PREFIX:'Student ID prefix',PORTAL_URL:'Portal link',WEBSITE_URL:'Your website address'};
 function vSettings(){
   loading();
   call('apiGetSettings',S.token).then(function(r){
@@ -1289,7 +1426,7 @@ function renderPublic(){
   document.body.className='bare';
   $('app').innerHTML='<div class="spinner" style="margin-top:30vh"></div>';
   call('apiPublicInfo').then(function(p){
-    S.pub=p;
+    S.pub=p; S.pubT=Date.now();
     $('app').innerHTML='<div class="pub-hero"><div class="brand"><img src="'+LOGO.light+'" alt="'+esc(p.academy)+'" style="height:60px"></div>'+
       '<h1>Start your journey in tech</h1><p>Register in two minutes. Our team will contact you'+(p.phone?' — or call us on <b style="color:#fff">'+esc(p.phone)+'</b>':'')+'.</p></div>'+
       '<div class="card pub-card"><h3 style="font-size:18px">Your details</h3>'+
@@ -1311,7 +1448,7 @@ function renderPublic(){
 function submitPublic(){
   var c=document.querySelector('input[name=pfc]:checked');
   var data={FullName:val('pf_FullName'),Phone:val('pf_Phone'),Email:val('pf_Email'),Gender:val('pf_Gender'),Age:val('pf_Age'),Location:val('pf_Location'),
-    CourseID:c?c.value:'',HeardFrom:val('pf_HeardFrom'),Message:val('pf_Message'),website:val('pf_website')};
+    CourseID:c?c.value:'',HeardFrom:val('pf_HeardFrom'),Message:val('pf_Message'),website:val('pf_website'),ms:Date.now()-(S.pubT||0)};
   if(!data.FullName){ $('pferr').textContent='Please enter your full name.'; return; }
   if(!data.Phone && !data.Email){ $('pferr').textContent='Please enter your phone number.'; return; }
   if(S.pub.courses.length && !data.CourseID){ $('pferr').textContent='Please choose a course.'; return; }
