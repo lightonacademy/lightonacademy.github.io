@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LightOn">
-<script>document.write('<script src="config.js?v=6.4.0&t='+Date.now()+'"><\/script>');</script>
+<script>document.write('<script src="config.js?v=6.5.0&t='+Date.now()+'"><\/script>');</script>
 <style>
   /* Plus Jakarta Sans (variable, weights 200-800), bundled inside the app — SIL Open Font License 1.1 */
   @font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-display:swap;font-weight:200 800;
@@ -377,6 +377,46 @@
   .gpseg{display:flex;flex-wrap:wrap} .gpseg button.on,.gpver button.on{background:var(--navy-3);color:#fff}
   .modal h4{margin:16px 0 0;font-size:14px;color:var(--navy-2)}
   @media (max-width:640px){ .gpcalc{grid-template-columns:repeat(2,1fr)} .gptile b{font-size:18px} .gpterm input{width:84px} }
+
+  /* Course Kits (v6.5) */
+  .kcard{display:block;width:100%;text-align:left;font:inherit;color:inherit;margin:0}
+  .kimport{border:2px dashed #C9D6EC;background:#F8FAFE}
+  .kdraft{display:flex;gap:8px;align-items:flex-start;background:#FFF4E5;border-color:#F5C77E;color:#7A4B00}
+  .kflow{display:flex;gap:2px;margin:12px 0 4px;overflow-x:auto;position:relative}
+  .kflow:before{content:'';position:absolute;left:22px;right:22px;top:13px;height:3px;background:#E3E8F2}
+  .kflow .kstep{padding:0;text-align:center}
+  .kstep{flex:1;min-width:58px;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative;font-size:11.5px;color:var(--muted)}
+  .kstep i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#fff;border:3px solid #CBD5E1;font-style:normal;font-weight:700;font-size:11px;box-sizing:border-box}
+  .kstep.done i{background:var(--ok);border-color:var(--ok);color:#fff} .kstep.now i{background:var(--navy-3,#1F3A5F);border-color:var(--navy-3,#1F3A5F);color:#fff;box-shadow:0 0 0 4px #DCE6F6}
+  .kstep.now span{color:var(--text);font-weight:700}
+  .kpart{padding:0;overflow:hidden} .kphead{display:flex;gap:10px;align-items:center;padding:14px 16px;cursor:pointer}
+  .kphead b{flex:1;font-size:15px} .kpnum{width:24px;height:24px;border-radius:7px;background:#EEF2F8;display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--navy-2,#1F3A5F);flex:none}
+  .kpchev{color:var(--muted);display:flex} .kpprev{padding:0 16px 14px 50px;margin-top:-6px}
+  .kpart.open .kphead{border-bottom:1px solid var(--line-2)}
+  .kptools{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:10px 16px;border-top:1px solid var(--line-2);background:#FAFBFD}
+  .kmd{padding:4px 16px 14px;font-size:14.5px;line-height:1.6;overflow-wrap:break-word}
+  .kmd p{margin:8px 0} .kmd ol,.kmd ul{margin:8px 0;padding-left:22px} .kmd li{margin:4px 0}
+  .kmd .kmh{margin:16px 0 4px;color:var(--navy-2,#1F3A5F)} .kmd h3.kmh{font-size:16px} .kmd h4.kmh{font-size:15px} .kmd h5.kmh{font-size:14px}
+  .kmtable{overflow-x:auto;margin:10px 0;border:1px solid var(--line-2);border-radius:10px}
+  .kmtable table{border-collapse:collapse;width:100%;font-size:13px} .kmtable th{background:#1F3A5F;color:#fff;text-align:left;font-weight:600}
+  .kmtable th,.kmtable td{padding:7px 9px;vertical-align:top;border-bottom:1px solid var(--line-2);word-break:normal;overflow-wrap:normal;hyphens:manual}
+  .kmtable td:first-child{min-width:92px} .kmtable th{text-transform:none;letter-spacing:0;white-space:nowrap} .kmtable tr:nth-child(even) td{background:#F8FAFD}
+  .kmini td,.kmini th{font-size:13px}
+  .modal.kmwide{max-width:1060px}
+  .kmhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .kmseg button.on{background:var(--navy-3,#1F3A5F);color:#fff}
+  .kmbar{display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin:10px 0 6px}
+  .kmbar button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer;color:var(--text)}
+  .kmbar button:active{background:#EEF2F8}
+  .kmpanes{display:grid;gap:10px} .kmpanes.both{grid-template-columns:1fr 1fr}
+  .kmpanes textarea{min-height:52vh;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.5;white-space:pre-wrap}
+  .kmprev{border:1px solid var(--line);border-radius:12px;min-height:52vh;max-height:60vh;overflow:auto;background:#fff}
+  .kcc{border-left:4px solid var(--gold,#E0A100)}
+  .kccbtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+  .kccrep{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid var(--line-2)}
+  .krate{display:flex} .krate button{flex:1} .krate button.on{background:var(--navy-3,#1F3A5F);color:#fff}
+  .krep{border-bottom:1px solid var(--line-2);padding:8px 0} .krep summary{cursor:pointer;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  @media (max-width:760px){ .kmpanes.both{grid-template-columns:1fr} .kmboth{display:none} .kmpanes textarea,.kmprev{min-height:46vh} .kpprev{padding-left:16px} }
 </style>
 </head>
 <body class="bare">
@@ -481,9 +521,9 @@ function skel(){ return '<div style="padding-top:8px"><div class="sk" style="hei
 function empty(icn,msg){ return '<div class="empty">'+ic(icn)+'<div>'+msg+'</div></div>'; }
 
 /* ---------- chrome: sidebar, top bar, bottom tabs ---------- */
-var NAV_META={Overview:['home','Overview'],Leads:['inbox','Leads'],Register:['userplus','Register'],Students:['cap','Students'],Sponsors:['heart','Sponsors'],Fees:['receipt','Fees'],Finance:['wallet','Finance'],Courses:['book','Courses'],Website:['globe','Website'],Staff:['users','Staff & roles'],Settings:['cog','Settings'],Growth:['target','My Growth']};
-var MOBILE_ORDER=['Overview','Growth','Leads','Students','Finance','Fees','Register','Sponsors','Courses','Website','Staff','Settings'];
-var NAV_GROUPS=[['',['Overview','Growth']],['Admissions',['Leads','Register','Students','Sponsors']],['Money',['Fees','Finance']],['Academy',['Courses','Website','Staff','Settings']]];
+var NAV_META={Overview:['home','Overview'],Leads:['inbox','Leads'],Register:['userplus','Register'],Students:['cap','Students'],Sponsors:['heart','Sponsors'],Fees:['receipt','Fees'],Finance:['wallet','Finance'],Courses:['book','Courses'],Website:['globe','Website'],Staff:['users','Staff & roles'],Settings:['cog','Settings'],Growth:['target','My Growth'],Kits:['kit','Course Kits']};
+var MOBILE_ORDER=['Overview','Growth','Leads','Students','Finance','Fees','Register','Sponsors','Courses','Kits','Website','Staff','Settings'];
+var NAV_GROUPS=[['',['Overview','Growth']],['Admissions',['Leads','Register','Students','Sponsors']],['Money',['Fees','Finance']],['Academy',['Courses','Kits','Website','Staff','Settings']]];
 function navBtn(v){ var n=S.data.summary&&S.data.summary.leadStatus&&S.data.summary.leadStatus.New;
   return '<button class="'+(S.view===v?'on':'')+'" onclick="go(\''+v+'\')">'+ic(NAV_META[v][0])+'<span>'+NAV_META[v][1]+'</span>'+(v==='Leads'&&n?'<span class="badge">'+n+'</span>':'')+'</button>'; }
 function chrome(){
@@ -671,6 +711,7 @@ function studentPage(st,parentMode){
       '<div style="margin-top:6px">'+(s.eligible?'<span class="pill ok">'+ic('cap')+' Ready to graduate</span>':statusPill(c.EnrollmentStatus))+'</div></div></div>'+
       '<div class="mini"><div><b>'+pct(s.attendancePct)+'</b><span>Attendance · need '+s.minAttendance+'%</span></div><div><b>'+s.requiredDone+'/'+s.requiredTotal+'</b><span>Assignments done</span></div><div><b>'+pct(s.avgScorePct)+'</b><span>Average · pass '+s.passMark+'%</span></div></div>'+
       (next?'<div class="nextdue">'+ic('clock')+'<span>Next due: <b>'+esc(next.Title)+'</b> · '+d(next.DueDate)+'</span></div>':'')+
+      (!parentMode&&c.Handbook?'<div style="margin-top:10px"><button class="btn sm secondary" onclick="kitHandbook(\''+esc(c.CourseID)+'\',this)">'+ic('download')+' Learner handbook (PDF)</button></div>':'')+
       (s.reasons.length?'<details style="margin-top:10px"><summary class="small">What I still need to graduate</summary><ul class="checklist small">'+
         s.reasons.map(function(r){return '<li class="n">'+esc(r)+'</li>';}).join('')+'</ul></details>':'')+
       '<div class="tabs" id="ctabs'+i+'">'+
@@ -738,10 +779,10 @@ function doSubmit(aid){
 
 /* ---------- STAFF (Teacher + Admin) ---------- */
 var VIEW_PERM={Overview:null,Leads:['leads.view','leads.edit'],Register:['students.register'],Students:['students.view','students.edit'],Sponsors:['sponsors.manage'],
-  Fees:['fees.view','fees.collect'],Finance:['finance.view','finance.edit'],Courses:['courses.manage'],Website:['website.edit'],Staff:['staff.manage'],Settings:['settings.manage'],Growth:['growth.activate']};
+  Fees:['fees.view','fees.collect'],Finance:['finance.view','finance.edit'],Courses:['courses.manage'],Website:['website.edit'],Staff:['staff.manage'],Settings:['settings.manage'],Growth:['growth.activate'],Kits:['kits.manage']};
 var PORTAL_ROLES=['Student','Parent','Sponsor'];
-var ALL_PERMS=['overview.view','leads.view','leads.edit','students.register','students.view','students.edit','sponsors.manage','fees.view','fees.collect','finance.view','finance.edit','courses.manage','courses.teach_all','staff.manage','settings.manage','website.edit','growth.activate'];
-var CLIENT_VERSION='6.4.0';
+var ALL_PERMS=['overview.view','leads.view','leads.edit','students.register','students.view','students.edit','sponsors.manage','fees.view','fees.collect','finance.view','finance.edit','courses.manage','courses.teach_all','staff.manage','settings.manage','website.edit','growth.activate','kits.manage'];
+var CLIENT_VERSION='6.5.0';
 function myPermList(){
   if(!S.data) return [];
   if(S.data.perms) return S.data.perms;
@@ -775,9 +816,9 @@ function renderStaff(){
   if(views.indexOf(S.view)<0) S.view=views[0];
   chrome();
   $('app').innerHTML=offlineBanner()+'<div id="view"></div>';
-  ({Overview:renderOverview,Leads:vLeads,Register:vRegister,Students:vStudents,Sponsors:vSponsors,Fees:vFees,Finance:vFinance,Courses:vCourses,Website:vWebsite,Staff:vStaff,Settings:vSettings,Growth:vGrowth})[S.view]();
+  ({Overview:renderOverview,Leads:vLeads,Register:vRegister,Students:vStudents,Sponsors:vSponsors,Fees:vFees,Finance:vFinance,Courses:vCourses,Website:vWebsite,Staff:vStaff,Settings:vSettings,Growth:vGrowth,Kits:vKits})[S.view]();
 }
-function go(v){ if(S.offline && v!=='Overview' && v!=='Finance'){ toast('Connect to the internet first.'); return; } S.view=v; S.tab=null; S.studentId=null; window.scrollTo(0,0); if(v==='Overview' && !S.offline) boot(); else renderStaff(); }
+function go(v){ if(S.offline && v!=='Overview' && v!=='Finance'){ toast('Connect to the internet first.'); return; } S.view=v; S.tab=null; S.studentId=null; S.kitCode=null; S.kitFromCourse=null; window.scrollTo(0,0); if(v==='Overview' && !S.offline) boot(); else renderStaff(); }
 function renderOverview(){
   var u=S.data.user, first=String(u.name||u.loginId).split(' ')[0];
   var h=(myViews()?'':offlineBanner())+'<div class="greet"><div><p>'+greeting()+'</p><h1>'+esc(first)+'</h1></div>';
@@ -819,7 +860,7 @@ function renderCourse(){
   var c=S.course;
   var tabs=['Roster','Attendance','Assignments','Grading'];
   target().innerHTML='<a href="#" onclick="backFromCourse();return false;" class="small">← Back</a>'+
-    '<h1>'+esc(c.course.CourseName)+'</h1><p class="muted small">'+esc(c.course.CourseID)+' · '+c.roster.length+' students</p>'+
+    '<h1>'+esc(c.course.CourseName)+'</h1><p class="muted small">'+esc(c.course.CourseID)+' · '+c.roster.length+' students</p>'+kitCourseCard(c)+
     '<div class="tabs">'+tabs.map(function(t){return '<button class="'+(S.tab===t?'on':'')+'" onclick="S.tab=\''+t+'\';renderCourse()">'+t+
       (t==='Grading'?' ('+c.submissions.filter(function(s){return s.Status==='Submitted'||s.Status==='Late';}).length+')':'')+'</button>';}).join('')+'</div>'+
     '<div id="tbody"></div>';
@@ -1285,7 +1326,7 @@ function vCourses(){
     target().innerHTML='<div class="row" style="align-items:center"><h1 style="flex:2">Courses</h1><div class="actions"><button class="btn sm secondary" id="syncbtn" onclick="syncWebCourses(this)">'+ic('upload')+' Sync from website</button><button class="btn sm" onclick="editCourse()">＋ New course</button></div></div>'+
       (r.courses.length?'<div class="grid">'+r.courses.map(function(c,i){
         var t=r.staff.filter(function(s){return String(s.LoginID).toLowerCase()===String(c.TeacherLogin).toLowerCase();})[0];
-        return '<div class="card"><h3>'+esc(c.CourseName)+'</h3><div class="small muted">'+esc(c.CourseID)+' · '+statusPill(c.Status||'Open')+(c.WebID?' <span class="pill info" title="Linked to the website course &quot;'+esc(c.WebID)+'&quot;">🌐 Website</span>':'')+'</div>'+
+        return '<div class="card"><h3>'+esc(c.CourseName)+'</h3><div class="small muted">'+esc(c.CourseID)+' · '+statusPill(c.Status||'Open')+(c.WebID?' <span class="pill info" title="Linked to the website course &quot;'+esc(c.WebID)+'&quot;">🌐 Website</span>':'')+(c.KitCode?' <span class="pill" title="Course Kit '+esc(c.KitCode)+'">'+ic('kit')+' Kit</span>':'')+'</div>'+
           '<div class="small" style="margin-top:6px">Teacher: '+esc(t?t.Name:(c.TeacherLogin||'— not set —'))+'<br>'+d(c.StartDate)+' – '+d(c.EndDate)+'<br>Fee '+money(c.Fee,c.FeeCurrency)+' · '+c.students+' students</div>'+
           '<div style="display:flex;gap:6px;margin-top:10px"><button class="btn sm secondary" onclick="editCourse('+i+')">Edit</button><button class="btn sm secondary" onclick="openCourse(\''+esc(c.CourseID)+'\')">Open class</button></div></div>';
       }).join('')+'</div>':'<div class="card muted">No courses yet. Click “New course”.</div>');
@@ -1313,6 +1354,7 @@ function editCourse(i){
     '<div class="row"><div><label>Course code *</label><input id="cf_CourseID" placeholder="WEB101" value="'+esc(c.CourseID)+'"'+(isNew?'':' disabled')+'></div>'+
     '<div style="flex:2"><label>Course name *</label><input id="cf_CourseName" value="'+esc(c.CourseName)+'"></div></div>'+
     '<label>Teacher</label><select id="cf_TeacherLogin">'+opt(teachers,c.TeacherLogin)+'</select><div class="small muted">Add teachers under Staff first.</div>'+
+    (r.kits?'<label>Course Kit</label><select id="cf_KitCode">'+opt([{v:'',t:'— none —'}].concat(r.kits.map(function(k){ return {v:k.Code,t:k.Course+' ('+k.Code+' · '+k.Status+')'}; })),c.KitCode||'')+'</select><div class="small muted">The teacher sees the kit on the course page once it is Pilot, Approved or Active.</div>':'')+
     '<div class="row"><div><label>Start date</label><input type="date" id="cf_StartDate" value="'+(c.StartDate?isoDay(c.StartDate):'')+'"></div><div><label>End date</label><input type="date" id="cf_EndDate" value="'+(c.EndDate?isoDay(c.EndDate):'')+'"></div></div>'+
     '<div class="row"><div><label>Fee</label><input type="number" id="cf_Fee" value="'+esc(c.Fee)+'"></div><div><label>Fee currency</label><select id="cf_FeeCurrency">'+opt(CI().list,c.FeeCurrency||cur())+'</select></div>'+
     '<div><label>Status</label><select id="cf_Status">'+opt(['Open','Running','Completed','Closed'],c.Status)+'</select></div></div>'+
@@ -1325,6 +1367,7 @@ function editCourse(i){
 function saveCourse(isNew){
   var o={}; ['CourseID','CourseName','TeacherLogin','StartDate','EndDate','Fee','FeeCurrency','Status','MinAttendancePct','PassMarkPct','Description'].forEach(function(f){ o[f]=val('cf_'+f); });
   if($('cf_syncweb')) o.syncWebsite=$('cf_syncweb').checked;
+  if($('cf_KitCode')) o.KitCode=val('cf_KitCode');
   busy($('cfbtn'),true);
   call('apiSaveCourse',S.token,o,isNew).then(function(r){ closeModal(); toast(r&&r.websiteUpdated?'Course saved · website price updated':'Course saved'); vCourses(); })
     .catch(function(e){ $('cferr').textContent=e.message; busy($('cfbtn'),false); });
@@ -3276,6 +3319,424 @@ function gpWaText(P,n){
   if(need.length){ L.push('','*What I need from you*'); need.forEach(function(x){ L.push('• '+x); }); }
   L.push('','Thank you'+(me?'. '+me:'')+'!');
   return L.join('\n');
+}
+
+/* ---------- Course Kits: Markdown reader shared by the screens and the Google Doc export ---------- */
+/**
+ * Splits kit Markdown into blocks: {t:'h', level, text} · {t:'p', text} · {t:'ol'|'ul', items:[text]} · {t:'table', rows:[[cell]]} · {t:'hr'}.
+ * Supports what the kits use: #/##/### headings, pipe tables (the --- row is skipped), "1." lists, "-", "*" and "•" lists, paragraphs.
+ */
+function kmdBlocks(text) {
+  var lines = String(text == null ? '' : text).replace(/\r\n?/g, '\n').split('\n'), out = [], para = [], i = 0;
+  var flush = function () { if (para.length) { out.push({ t: 'p', text: para.join(' ').replace(/\s+/g, ' ').trim() }); para = []; } };
+  var isRow = function (l) { return /^\s*\|.*\|\s*$/.test(l); };
+  var isSep = function (l) { return /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/.test(l); };
+  var cells = function (l) { return l.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(function (c) { return c.trim(); }); };
+  while (i < lines.length) {
+    var l = lines[i], m;
+    if (!l.trim()) { flush(); i++; continue; }
+    if ((m = l.match(/^\s*(#{1,6})\s+(.*)$/))) { flush(); out.push({ t: 'h', level: Math.min(m[1].length, 3), text: m[2].trim() }); i++; continue; }
+    if (/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(l)) { flush(); out.push({ t: 'hr' }); i++; continue; }
+    if (isRow(l)) {
+      flush();
+      var rows = [];
+      while (i < lines.length && (isRow(lines[i]) || isSep(lines[i]))) { if (!isSep(lines[i])) rows.push(cells(lines[i])); i++; }
+      var w = Math.max.apply(null, rows.map(function (r) { return r.length; }));
+      rows.forEach(function (r) { while (r.length < w) r.push(''); });
+      out.push({ t: 'table', rows: rows });
+      continue;
+    }
+    if ((m = l.match(/^\s*(\d+)[.)]\s+(.*)$/)) || (m = l.match(/^\s*([-*•])\s+(.*)$/))) {
+      flush();
+      var ordered = /\d/.test(m[1]), items = [], start = ordered ? parseInt(m[1], 10) : 1;
+      while (i < lines.length) {
+        var mm = ordered ? lines[i].match(/^\s*(\d+)[.)]\s+(.*)$/) : lines[i].match(/^\s*([-*•])\s+(.*)$/);
+        if (mm) { items.push(mm[2].trim()); i++; continue; }
+        // a following plain line (not blank, not a new block) continues the item
+        if (lines[i].trim() && items.length && !isRow(lines[i]) && !/^\s*#/.test(lines[i]) && !/^\s*(\d+[.)]|[-*•])\s+/.test(lines[i])) { items[items.length - 1] += ' ' + lines[i].trim(); i++; continue; }
+        break;
+      }
+      out.push({ t: ordered ? 'ol' : 'ul', items: items, start: start });
+      continue;
+    }
+    para.push(l.trim()); i++;
+  }
+  flush();
+  return out;
+}
+/** Inline marks: returns [{text, b, i, link}] for **bold**, *italic* / _italic_ and [text](https://…). */
+function kmdInline(s) {
+  var out = [], re = /(\*\*([^*]+)\*\*|\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(^|[\s(])\*([^*\s][^*]*)\*(?=[\s).,;:!?]|$)|(^|[\s(])_([^_\s][^_]*)_(?=[\s).,;:!?]|$))/g, last = 0, m;
+  s = String(s == null ? '' : s);
+  while ((m = re.exec(s))) {
+    var pre = m[5] || m[7] || '', start = m.index + pre.length;
+    if (start > last) out.push({ text: s.slice(last, start) });
+    if (m[2] !== undefined) out.push({ text: m[2], b: true });
+    else if (m[3] !== undefined) out.push({ text: m[3], link: m[4] });
+    else out.push({ text: m[6] !== undefined ? m[6] : m[8], i: true });
+    last = m.index + m[0].length;
+  }
+  if (last < s.length) out.push({ text: s.slice(last) });
+  return out;
+}
+/** For the "version log" part: drop its pasted table (the live table is built from the Version log rows), keep any notes. */
+function kmdWithoutTables(text) {
+  return kmdBlocks(text).filter(function (b) { return b.t !== 'table'; });
+}
+function kmdIsVersionPart(title) { return /version log/i.test(String(title || '')); }
+function kmdIsSessionPart(title) { return /session plan|term plan|weekly plan|lesson plan/i.test(String(title || '')); }
+function kmdIsHandbook(title) { return /learner handbook/i.test(String(title || '')); }
+
+/* ---------- COURSE KITS (v6.5) ---------- */
+ICO.kit='<path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1z"/><path d="M8 6H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2"/><path d="m9 14 2 2 4-4"/>';
+ICO.slides='<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/>';
+ICO.word='<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m8.5 12 1.2 5 1.8-4 1.8 4 1.2-5"/>';
+ICO.up='<path d="m6 14 6-6 6 6"/>'; ICO.dn='<path d="m6 10 6 6 6-6"/>';
+ICO.trash=ICO.trash||'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>';
+var KIT_PILL={Draft:'',Pilot:'warn',Approved:'info',Active:'ok',Paused:'bad',Retired:''};
+var KIT_TABS=[['profile','Profile'],['parts','Parts'],['sessions','Sessions'],['log','Version log']];
+
+/* Markdown → HTML (escaped) */
+function kmdHtml(text){
+  var inl=function(s){ return kmdInline(s).map(function(r){ var t=esc(r.text); if(r.b) t='<b>'+t+'</b>'; if(r.i) t='<i>'+t+'</i>'; if(r.link) t='<a href="'+esc(r.link)+'" target="_blank" rel="noopener">'+t+'</a>'; return t; }).join(''); };
+  return kmdBlocksHtml(kmdBlocks(text),inl);
+}
+function kmdBlocksHtml(blocks,inl){
+  inl=inl||function(s){ return kmdInline(s).map(function(r){ var t=esc(r.text); if(r.b) t='<b>'+t+'</b>'; if(r.i) t='<i>'+t+'</i>'; if(r.link) t='<a href="'+esc(r.link)+'" target="_blank" rel="noopener">'+t+'</a>'; return t; }).join(''); };
+  return blocks.map(function(b){
+    if(b.t==='h') return '<h'+(b.level+2)+' class="kmh">'+inl(b.text)+'</h'+(b.level+2)+'>';
+    if(b.t==='hr') return '<hr>';
+    if(b.t==='p') return '<p>'+inl(b.text)+'</p>';
+    if(b.t==='ul') return '<ul>'+b.items.map(function(x){return '<li>'+inl(x)+'</li>';}).join('')+'</ul>';
+    if(b.t==='ol') return '<ol start="'+b.start+'">'+b.items.map(function(x){return '<li>'+inl(x)+'</li>';}).join('')+'</ol>';
+    if(b.t==='table') return '<div class="kmtable"><table style="min-width:'+(b.rows[0].length>2?Math.min(b.rows[0].length*150,1100):0)+'px"><thead><tr>'+b.rows[0].map(function(c){return '<th>'+inl(c)+'</th>';}).join('')+'</tr></thead><tbody>'+
+      b.rows.slice(1).map(function(r){ return '<tr>'+r.map(function(c){return '<td>'+inl(c)+'</td>';}).join('')+'</tr>'; }).join('')+'</tbody></table></div>';
+    return '';
+  }).join('');
+}
+function kmdLogTable(log){ return {t:'table',rows:[['Date','Version','Change','Approved by']].concat(log.slice().reverse().map(function(r){ return [r.Date&&!isNaN(new Date(r.Date))?d(r.Date):String(r.Date||''),r.Version||'',r.Change||'',r.ApprovedBy||'']; }))}; }
+function kitPartHtml(p,log){
+  if(kmdIsVersionPart(p.Title)) return '<p class="small muted">This table comes from the Version log tab, so it is always up to date.</p>'+kmdBlocksHtml([kmdLogTable(log||[])].concat(kmdWithoutTables(p.Content)));
+  return kmdHtml(p.Content);
+}
+function kitPill(st){ return '<span class="pill '+(KIT_PILL[st]||'')+'">'+esc(st)+'</span>'; }
+function kitB64Download(r){
+  var bin=atob(r.b64), u=new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) u[i]=bin.charCodeAt(i);
+  gpDownload(u,r.name,r.mime);
+}
+function kitFile(code,format,btn){
+  var lab=btn?btn.innerHTML:''; if(btn){ btn.disabled=true; btn.textContent='Making…'; }
+  toast('Making the '+(format==='pdf'?'PDF':'Word file')+' from the latest kit. This can take up to a minute.');
+  call('apiKitExport',S.token,code,format).then(function(r){ kitB64Download(r); }).catch(function(e){ toast(e.message); })
+    .then(function(){ if(btn){ btn.disabled=false; btn.innerHTML=lab; } });
+}
+function kitExcel(code,btn){
+  var lab=btn?btn.innerHTML:''; if(btn){ btn.disabled=true; btn.textContent='Making…'; }
+  call('apiKitData',S.token,code||'').then(function(r){
+    var sheets=['CourseKits','KitParts','KitSessions','KitVersionLog'].map(function(n){
+      var cols=r.columns[n];
+      return {name:n,rows:[cols].concat(r[n].map(function(o){ return cols.map(function(c){ var v=o[c]; return c==='Order'&&v!==''&&!isNaN(v)?Number(v):(v==null?'':String(v)); }); })),
+        widths:cols.map(function(c){ return c==='Content'?100:c==='Summary'?70:c==='Change'?60:/Course|Part|Session/.test(c)?40:c==='Code'?18:14; })};
+    });
+    gpDownload(gpXlsx(sheets),(code?code+'_Course-Kit':'LightOn_Course_Kits')+'_'+isoDay()+'.xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  }).catch(function(e){ toast(e.message); }).then(function(){ if(btn){ btn.disabled=false; btn.innerHTML=lab; } });
+}
+
+/* ----- Course Kits screen ----- */
+function vKits(){
+  if(S.kitCode){ kitOpen(S.kitCode); return; }
+  loading();
+  call('apiKits',S.token).then(function(r){ S.kits=r; kitList(); }).catch(failView);
+}
+function kitList(){
+  var r=S.kits, f=S.kitFilter||'All', q=String(S.kitQ||'').toLowerCase(), h='';
+  h+='<div class="row" style="align-items:center"><div style="flex:2"><h1 style="margin-bottom:0">Course Kits</h1><div class="small muted">Course Standardization Kits · Academic Lead: <b>'+esc(r.lead.name)+'</b>'+
+    (r.isAdmin?' <button class="linkbtn" onclick="kitLeadModal()">change</button>':'')+'</div></div>'+
+    '<div class="actions">'+(r.imported?'<button class="btn sm secondary" onclick="kitExcel(\'\',this)">'+ic('download')+' Excel (all kits)</button>':'')+'<button class="btn sm" onclick="kitNew()">＋ New Course Kit</button></div></div>';
+  if(!r.imported){
+    h+='<div class="card kimport"><h3>'+ic('upload')+' Import the starter kits</h3><p class="small">Load <b>LightOn_Course_Kits_Import.xlsx</b> once. It fills the CourseKits, KitParts, KitSessions and KitVersionLog tabs and links each kit to its course. After that, every change is made here in the app.</p>'+
+      '<label class="btn" style="display:inline-flex;cursor:pointer">'+ic('upload')+' Choose the .xlsx file<input type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="display:none" onchange="kitImportFile(this)"></label>'+
+      '<div class="err" id="kierr"></div></div>';
+  }
+  if(r.kits.length){
+    var counts={}; r.kits.forEach(function(k){ counts[k.Status]=(counts[k.Status]||0)+1; });
+    h+='<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0"><div class="chips" style="margin:0">'+['All'].concat(r.statuses).filter(function(s){ return s==='All'||counts[s]; }).map(function(s){
+      return '<button class="chip'+(f===s?' on':'')+'" onclick="S.kitFilter=\''+s+'\';kitList()">'+s+' '+(s==='All'?r.kits.length:counts[s])+'</button>'; }).join('')+'</div>'+
+      '<input id="kq" placeholder="Search kits" value="'+esc(S.kitQ||'')+'" oninput="S.kitQ=this.value;kitList();var e=$(\'kq\');e.focus();e.setSelectionRange(e.value.length,e.value.length)" style="max-width:220px;margin-left:auto"></div>';
+    var list=r.kits.filter(function(k){ return (f==='All'||k.Status===f)&&(!q||(k.Course+' '+k.Code+' '+k.Summary).toLowerCase().indexOf(q)>=0); });
+    h+='<div class="grid">'+list.map(function(k){
+      return '<button class="card clickable kcard" onclick="S.kitTab=\'profile\';kitOpen(\''+esc(k.Code)+'\')"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><b style="font-size:15.5px">'+esc(k.Course)+'</b>'+kitPill(k.Status)+'</div>'+
+        '<div class="small muted">'+esc(k.Code)+' · v'+esc(k.Version)+' · '+esc(k.Type||'')+'</div>'+
+        '<div class="small" style="margin-top:8px">'+k.parts+' parts · '+k.sessions+' sessions'+(k.reports?' · '+k.reports+' report'+(k.reports>1?'s':''):'')+'</div>'+
+        '<div class="small muted" style="margin-top:4px">'+(k.courses.length?ic('book')+' '+k.courses.map(function(c){return esc(c.CourseName);}).join(', '):'Not linked to a course yet')+'</div>'+
+        (k.handbook?'':'<div class="small" style="margin-top:4px;color:var(--warn)">No learner handbook page</div>')+'</button>';
+    }).join('')+'</div>'+(list.length?'':'<div class="card muted">No kits match.</div>');
+  }
+  target().innerHTML=h;
+}
+function kitImportFile(inp){
+  var f=inp.files&&inp.files[0]; if(!f) return;
+  if(f.size>15*1024*1024){ $('kierr').textContent='That file is too big.'; return; }
+  var rd=new FileReader();
+  rd.onload=function(){ var b64=String(rd.result).split(',')[1]; S.kitImport=b64; $('kierr').textContent=''; toast('Reading the workbook…');
+    call('apiKitImport',S.token,b64,false).then(kitImportPreview).catch(function(e){ $('kierr').textContent=e.message; }); };
+  rd.readAsDataURL(f);
+}
+function kitImportPreview(r){
+  modal('<h3>Import '+r.counts.kits+' Course Kits?</h3>'+
+    '<div class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin:10px 0">'+kpi(r.counts.kits,'Kits','kit','navy')+kpi(r.counts.parts,'Parts','book','')+kpi(r.counts.sessions,'Sessions','calendar','')+kpi(r.counts.log,'Log entries','check','')+'</div>'+
+    '<div class="tbl-wrap" style="max-height:240px;overflow:auto"><table class="kmini"><tr><th>Kit</th><th>Status</th><th>Parts</th><th>Sessions</th><th>Handbook</th></tr>'+r.kits.map(function(k){
+      return '<tr><td><b>'+esc(k.Course)+'</b><div class="small muted">'+esc(k.Code)+'</div></td><td>'+kitPill(k.Status)+'</td><td>'+k.parts+'</td><td>'+k.sessions+'</td><td>'+(k.handbook?'✓':'<span style="color:var(--warn)">none</span>')+'</td></tr>'; }).join('')+'</table></div>'+
+    (r.links.length?'<p class="small"><b>Courses that will be linked:</b><br>'+r.links.map(function(l){ return esc(l.CourseName)+' → '+esc(l.Code); }).join('<br>')+'</p>':'<p class="small muted">No courses matched a kit. Link them later in Courses ▸ Edit.</p>')+
+    (r.warnings.length?'<div class="banner small" style="display:block"><b>Check after importing</b><ul style="margin:4px 0 0;padding-left:18px">'+r.warnings.map(function(w){return '<li>'+esc(w)+'</li>';}).join('')+'</ul></div>':'')+
+    '<div class="err" id="kperr"></div><div class="row" style="margin-top:12px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" id="kpgo" onclick="kitImportGo()">Import '+r.counts.kits+' kits</button></div>');
+}
+function kitImportGo(){
+  busy($('kpgo'),true,'Importing…');
+  call('apiKitImport',S.token,S.kitImport,true).then(function(r){ closeModal(); S.kitImport=null; toast(r.counts.kits+' kits imported'+(r.links.length?' · '+r.links.length+' course'+(r.links.length>1?'s':'')+' linked':'')); vKits(); })
+    .catch(function(e){ busy($('kpgo'),false,'Import'); $('kperr').textContent=e.message; });
+}
+function kitLeadModal(){
+  var r=S.kits;
+  modal('<h3>Academic Lead</h3><p class="small muted">Approves Course Kits and receives facilitator reports. Admins can always approve too.</p>'+
+    '<select id="klead">'+opt(r.staff.map(function(s){ return {v:s.LoginID,t:s.Name+' ('+s.Role+')'}; }),r.lead.login)+'</select>'+
+    '<div class="err" id="klerr"></div><div class="row" style="margin-top:12px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" onclick="call(\'apiKitSetLead\',S.token,val(\'klead\')).then(function(n){closeModal();toast(\'Academic Lead: \'+n);vKits();}).catch(function(e){$(\'klerr\').textContent=e.message;})">Save</button></div>');
+}
+function kitNew(){
+  modal('<h3>New Course Kit</h3><p class="small muted">It starts as a Draft. Teachers see it only once it is Pilot, Approved or Active.</p>'+
+    '<div class="row"><div><label>Kit code</label><input id="kn_code" placeholder="LOA-PRG-WEB1" style="text-transform:uppercase"></div><div><label>Type</label><select id="kn_type">'+opt(((S.kits||{}).types)||['Programme','Course'],'Programme')+'</select></div></div>'+
+    '<label>Course name</label><input id="kn_course" placeholder="Web Development Bootcamp">'+
+    '<label>Summary</label><textarea id="kn_sum" placeholder="One or two lines on what the course is"></textarea>'+
+    '<div class="err" id="knerr"></div><div class="row" style="margin-top:12px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" id="kngo" onclick="kitCreate()">Create kit</button></div>');
+}
+function kitCreate(){
+  busy($('kngo'),true);
+  call('apiKitSave',S.token,val('kn_code'),{Course:val('kn_course'),Type:val('kn_type'),Summary:val('kn_sum')},true).then(function(code){ closeModal(); toast('Kit created'); S.kitTab='parts'; kitOpen(code); })
+    .catch(function(e){ busy($('kngo'),false); $('knerr').textContent=e.message; });
+}
+
+/* ----- one kit (editors, and read-only for teachers) ----- */
+function kitOpen(code,fromCourse){
+  if(fromCourse!==undefined) S.kitFromCourse=fromCourse;
+  S.kitCode=code; S.kitOpenPart=S.kitOpenPart||{};
+  target().innerHTML=skel();
+  call('apiKit',S.token,code).then(function(k){ S.kit=k; kitDraw(); window.scrollTo(0,0); }).catch(function(e){ toast(e.message); S.kitCode=null; if(S.kitFromCourse) openCourse(S.kitFromCourse); else vKits(); });
+}
+function kitReload(msg){ return call('apiKit',S.token,S.kitCode).then(function(k){ S.kit=k; if(msg) toast(msg); if(S.kitCode) kitDraw(); }).catch(function(e){ toast(e.message); }); }
+function kitBack(){ var c=S.kitFromCourse; S.kitCode=null; S.kit=null; S.kitFromCourse=null; if(c) openCourse(c); else vKits(); }
+function kitDraw(){
+  var K=S.kit, k=K.kit, tab=S.kitTab||'profile', h='';
+  h+='<a href="#" class="small" onclick="kitBack();return false;">← '+(S.kitFromCourse?'Back to the course':'All Course Kits')+'</a>'+
+    '<div class="ph" style="margin-top:6px"><div><h1 style="margin:0">'+esc(k.Course)+'</h1><div class="sub">'+esc(k.Code)+' · Version '+esc(k.Version)+' · '+kitPill(k.Status)+(K.can.edit?'':' · view only')+'</div></div>'+
+    '<div class="actions"><button class="btn sm secondary" onclick="kitFile(\''+esc(k.Code)+'\',\'pdf\',this)">'+ic('download')+' PDF</button><button class="btn sm secondary" onclick="kitFile(\''+esc(k.Code)+'\',\'docx\',this)">'+ic('word')+' Word</button>'+
+    (K.can.edit?'<button class="btn sm secondary" onclick="kitExcel(\''+esc(k.Code)+'\',this)">'+ic('download')+' Excel</button>':'')+
+    (k.SlidesLink?'<a class="btn sm secondary" href="'+esc(k.SlidesLink)+'" target="_blank" rel="noopener">'+ic('slides')+' Slides</a>':'')+'</div></div>';
+  if(!K.visible&&(K.leadAdmin||K.can.edit)) h+='<div class="banner kdraft">'+ic('lock')+' <span><b>'+esc(k.Status)+':</b> teachers cannot see this kit. It shows to teachers once it is Pilot, Approved or Active.</span></div>';
+  h+='<div class="chips" style="margin-top:6px">'+KIT_TABS.map(function(t){ var n=t[0]==='parts'?K.parts.length:t[0]==='sessions'?K.sessions.length:t[0]==='log'?K.log.length:'';
+    return '<button class="chip'+(tab===t[0]?' on':'')+'" onclick="S.kitTab=\''+t[0]+'\';kitDraw()">'+t[1]+(n!==''?' <span class="muted">'+n+'</span>':'')+'</button>'; }).join('')+'</div><div id="kbody"></div>';
+  target().innerHTML=h;
+  ({profile:kitProfile,parts:function(){kitItems('part');},sessions:function(){kitItems('session');},log:kitLogTab}[tab]||kitProfile)();
+}
+function kitProfile(){
+  var K=S.kit, k=K.kit, h='';
+  // status flow
+  var i=K.statuses.indexOf(k.Status);
+  h+='<div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap"><h3>Status</h3>'+(k.ApprovedBy?'<span class="small muted">Approved by <b>'+esc(k.ApprovedBy)+'</b>'+(k.ApprovedOn?' on '+d(k.ApprovedOn):'')+'</span>':'')+'</div>'+
+    '<div class="kflow">'+K.statuses.map(function(s,j){ return '<div class="kstep'+(j<i?' done':'')+(j===i?' now':'')+'"><i>'+(j<i?'✓':j+1)+'</i><span>'+s+'</span></div>'; }).join('')+'</div>';
+  if(K.can.edit){
+    var nx=K.can.next;
+    h+='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">'+nx.map(function(s){
+      var primary=(s==='Approved'||s==='Active'||(s==='Pilot'&&k.Status==='Draft'));
+      return '<button class="btn sm'+(primary?'':' secondary')+(s==='Retired'?' danger':'')+'" onclick="kitStatus(\''+s+'\')">'+(s==='Approved'?ic('check')+' Approve':s==='Draft'?'Back to Draft':'Move to '+s)+'</button>'; }).join('')+'</div>';
+    if(K.can.approveBlocked) h+='<p class="small muted" style="margin:8px 0 0">Approving is done by the Academic Lead ('+esc(K.lead)+') or an Admin.</p>';
+  }
+  h+='<p class="small muted" style="margin:10px 0 0">Draft → Pilot → Approved → Active → Paused → Retired. Teachers see Pilot, Approved and Active kits.</p></div>';
+  // profile fields
+  var row=function(l,v){ return v?'<div class="gprow"><span>'+l+'</span><b style="text-align:right;font-weight:500">'+v+'</b></div>':''; };
+  h+='<div class="grid2" style="margin-top:0"><div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline"><h3>Profile</h3>'+(K.can.edit?'<button class="btn sm secondary" onclick="kitEditProfile()">'+ic('edit')+' Edit</button>':'')+'</div>'+
+    (k.Summary?'<p style="margin:6px 0 10px">'+esc(k.Summary)+'</p>':'')+
+    row('Kit code',esc(k.Code))+row('Type',esc(k.Type))+row('Version',esc(k.Version))+row('Owner',esc(k.Owner))+row('Academic Lead',esc(K.lead))+
+    row('Updated',k.Updated?d(k.Updated)+(k.UpdatedBy?' by '+esc(k.UpdatedBy):''):'')+
+    row('Kit document',k.KitLink?'<a href="'+esc(k.KitLink)+'" target="_blank" rel="noopener">Open</a>':'')+row('Slides',k.SlidesLink?'<a href="'+esc(k.SlidesLink)+'" target="_blank" rel="noopener">Open</a>':'')+
+    row('Last PDF',esc(k.PdfFile||''))+row('Last Word file',esc(k.WordFile||''))+'</div>'+
+    '<div class="card"><h3>Courses using this kit</h3>'+(K.courses.length?K.courses.map(function(c){ return '<div class="gprow"><span>'+esc(c.CourseName)+'</span><span class="small muted">'+esc(c.CourseID)+' · '+esc(c.Status||'')+'</span></div>'; }).join(''):'<p class="small muted">None yet. Link a course in Courses ▸ Edit ▸ Course Kit.</p>')+'</div></div>';
+  if(K.reports){
+    h+='<div class="card"><h3>Facilitator reports</h3>'+(K.reports.length?K.reports.map(function(r){
+      return '<details class="krep"><summary><b>'+esc(r.CourseName)+'</b> <span class="small muted">· '+esc(r.FacilitatorName)+' · '+d(r.Submitted)+' · v'+esc(r.KitVersion)+'</span> <span class="pill '+(r.Rating>=4?'ok':r.Rating>=3?'warn':'bad')+'">'+esc(r.Rating)+'/5</span></summary>'+
+        '<div class="small" style="margin-top:6px">'+[['Sessions delivered',r.SessionsDelivered],['Learners started',r.LearnersStarted],['Learners completed',r.LearnersCompleted]].filter(function(x){return x[1]!==''&&x[1]!==undefined;}).map(function(x){return x[0]+': <b>'+esc(x[1])+'</b>';}).join(' · ')+'</div>'+
+        [['What worked',r.WhatWorked],['What should change',r.WhatToChange],['Parts or sessions to fix',r.PartsToFix],['Materials and setup',r.Materials],['Other notes',r.Notes]].filter(function(x){return x[1];}).map(function(x){ return '<div class="small" style="margin-top:6px"><b>'+x[0]+'</b><div style="white-space:pre-line">'+esc(x[1])+'</div></div>'; }).join('')+'</details>';
+    }).join(''):'<p class="small muted">Teachers send a short report at the end of each course. They will show here and are emailed to the Academic Lead.</p>')+'</div>';
+  }
+  $('kbody').innerHTML=h;
+}
+function kitStatus(st){
+  var K=S.kit, k=K.kit, ask=st==='Approved'||st==='Paused'||st==='Retired'||st==='Draft';
+  var go=function(note){ call('apiKitStatus',S.token,k.Code,st,note||'').then(function(){ closeModal(); kitReload(st==='Approved'?'Approved. Recorded in the version log.':'Moved to '+st); }).catch(function(e){ var el=$('kserr'); if(el){ el.textContent=e.message; if($('ksgo')) $('ksgo').disabled=false; } else toast(e.message); }); };
+  if(!ask){ go(''); return; }
+  modal('<h3>'+(st==='Approved'?'Approve '+esc(k.Course)+' v'+esc(k.Version)+'?':'Move to '+st+'?')+'</h3>'+
+    '<p class="small muted">'+(st==='Approved'?'Records you as the approver with today\'s date and adds a row to the version log. Then move it to Active when classes start.':st==='Retired'?'Teachers will no longer see it. You can bring it back as a Draft later.':st==='Paused'?'Teachers will not see it until it is Active again.':'Teachers will no longer see it while it is a Draft.')+'</p>'+
+    '<label>Note (optional, goes into the version log)</label><input id="ksnote" maxlength="300" placeholder="'+(st==='Approved'?'e.g. Pilot went well; ready for all centres':'Why?')+'">'+
+    '<div class="err" id="kserr"></div><div class="row" style="margin-top:12px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn'+(st==='Retired'?' danger':'')+'" id="ksgo" onclick="this.disabled=true;kitStatusGo()">'+(st==='Approved'?'Approve':'Move to '+st)+'</button></div>');
+  S.kitStatusFn=go;
+}
+function kitStatusGo(){ S.kitStatusFn(val('ksnote')); }
+function kitEditProfile(){
+  var k=S.kit.kit;
+  modal('<h3>Edit profile</h3>'+
+    '<div class="row"><div style="flex:2"><label>Course name</label><input id="kp_course" value="'+esc(k.Course)+'"></div><div><label>Type</label><select id="kp_type">'+opt(S.kit.types,k.Type)+'</select></div></div>'+
+    '<div class="row"><div><label>Version</label><input id="kp_ver" value="'+esc(k.Version)+'" oninput="$(\'kp_chg\').style.display=this.value.replace(/^v/i,\'\')!==\''+esc(k.Version)+'\'?\'\':\'none\'"></div><div style="flex:2"><label>Owner</label><input id="kp_owner" value="'+esc(k.Owner)+'"></div></div>'+
+    '<div id="kp_chg" style="display:none"><label>What changed in this version? (goes into the version log)</label><input id="kp_note" maxlength="500"></div>'+
+    '<label>Summary</label><textarea id="kp_sum">'+esc(k.Summary)+'</textarea>'+
+    '<label>Kit document link (optional)</label><input id="kp_link" value="'+esc(k.KitLink)+'" placeholder="https://">'+
+    '<label>Slides link (teachers\' Slides button)</label><input id="kp_slides" value="'+esc(k.SlidesLink)+'" placeholder="https://docs.google.com/presentation/…">'+
+    '<div class="err" id="kperr2"></div><div class="row" style="margin-top:12px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" id="kpsave" onclick="kitSaveProfile()">Save</button></div>');
+}
+function kitSaveProfile(){
+  var f={Course:val('kp_course'),Type:val('kp_type'),Version:val('kp_ver'),Owner:val('kp_owner'),Summary:val('kp_sum'),KitLink:val('kp_link'),SlidesLink:val('kp_slides'),change:val('kp_note')};
+  busy($('kpsave'),true);
+  call('apiKitSave',S.token,S.kitCode,f,false).then(function(){ closeModal(); kitReload('Saved'); }).catch(function(e){ busy($('kpsave'),false); $('kperr2').textContent=e.message; });
+}
+
+/* parts and sessions */
+function kitItems(kind){
+  var K=S.kit, list=kind==='part'?K.parts:K.sessions, ed=K.can.edit, open=S.kitOpenPart, h='';
+  h+='<div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px"><div class="small muted">'+(kind==='part'?'Parts of the kit, in order.':'One plan per session, week or term, in teaching order.')+' Tap one to read it.</div>'+
+    '<div style="display:flex;gap:6px"><button class="btn sm secondary" onclick="kitExpandAll(\''+kind+'\','+(list.every(function(p){return open[p.Id];})?'false':'true')+')">'+(list.length&&list.every(function(p){return open[p.Id];})?'Close all':'Open all')+'</button>'+
+    (ed?'<button class="btn sm" onclick="kitEditor(\''+kind+'\')">＋ Add '+kind+'</button>':'')+'</div></div>';
+  if(!list.length) h+='<div class="card">'+empty('book',kind==='part'?'No parts yet.':'No session plans yet. Some kits keep their plans inside Part 4 instead.')+'</div>';
+  list.forEach(function(p,i){
+    var isOpen=!!open[p.Id];
+    h+='<div class="card kpart'+(isOpen?' open':'')+'" id="kp_'+esc(p.Id)+'"><div class="kphead" onclick="kitToggle(\''+esc(p.Id)+'\')"><span class="kpnum">'+(i+1)+'</span><b>'+esc(p.Title)+'</b><span class="kpchev">'+ic(isOpen?'up':'dn')+'</span></div>'+
+      (isOpen?'<div class="kmd">'+kitPartHtml(p,K.log)+'</div>'+
+        (ed?'<div class="kptools"><button class="btn sm" onclick="kitEditor(\''+kind+'\',\''+esc(p.Id)+'\')">'+ic('edit')+' Edit</button>'+
+          '<button class="btn sm secondary" title="Move up" '+(i?'':'disabled')+' onclick="kitMove(\''+kind+'\',\''+esc(p.Id)+'\',-1)">'+ic('up')+'</button><button class="btn sm secondary" title="Move down" '+(i<list.length-1?'':'disabled')+' onclick="kitMove(\''+kind+'\',\''+esc(p.Id)+'\',1)">'+ic('dn')+'</button>'+
+          '<span class="small muted" style="margin-left:auto">'+(p.UpdatedBy?'Last edit: '+esc(p.UpdatedBy)+', '+d(p.Updated):'')+'</span><button class="btn sm danger" onclick="kitDeleteItem(\''+kind+'\',\''+esc(p.Id)+'\')">Delete</button></div>':''):
+        '<div class="kpprev small muted">'+esc(kmdPreviewText(p.Content))+'</div>')+'</div>';
+  });
+  $('kbody').innerHTML=h;
+}
+function kmdPreviewText(t){ return String(t||'').replace(/^#+\s*/gm,'').replace(/\|/g,' ').replace(/-{3,}/g,'').replace(/\*\*/g,'').replace(/\s+/g,' ').trim().slice(0,170)+(String(t||'').length>170?'…':''); }
+function kitToggle(id){ S.kitOpenPart[id]=!S.kitOpenPart[id]; kitDraw(); var el=$('kp_'+id); if(el&&el.scrollIntoView&&S.kitOpenPart[id]) el.scrollIntoView({block:'start',behavior:'smooth'}); }
+function kitExpandAll(kind,on){ (kind==='part'?S.kit.parts:S.kit.sessions).forEach(function(p){ S.kitOpenPart[p.Id]=on; }); kitDraw(); }
+function kitMove(kind,id,dir){ call('apiKitPartMove',S.token,S.kitCode,kind,id,dir).then(function(){ kitReload(); }).catch(function(e){ toast(e.message); }); }
+function kitDeleteItem(kind,id){
+  var p=(kind==='part'?S.kit.parts:S.kit.sessions).filter(function(x){return x.Id===id;})[0];
+  if(!confirmBox('Delete "'+p.Title+'"? This cannot be undone. (Tip: download the Excel file first if you may want it back.)')) return;
+  call('apiKitPartDelete',S.token,S.kitCode,kind,id).then(function(){ kitReload('Deleted'); }).catch(function(e){ toast(e.message); });
+}
+
+/* Markdown editor with preview */
+function kitEditor(kind,id){
+  var K=S.kit, p=id?(kind==='part'?K.parts:K.sessions).filter(function(x){return x.Id===id;})[0]:{Title:'',Content:'',Updated:''};
+  if(!p) return;
+  S.kmEdit={kind:kind,id:id||'',updated:p.Updated||'',orig:p.Content,origTitle:p.Title};
+  var bg=modal('<div class="kmhead"><h3 style="margin:0">'+(id?'Edit '+kind:'New '+kind)+'</h3><div class="seg kmseg"><button class="on" onclick="kmMode(\'write\',this)">Write</button><button onclick="kmMode(\'preview\',this)">Preview</button><button class="kmboth" onclick="kmMode(\'both\',this)">Side by side</button></div></div>'+
+    '<label>Title</label><input id="km_title" value="'+esc(p.Title)+'" maxlength="300" placeholder="'+(kind==='part'?'Part 13. Assessment rubric':'Session 7 — Graduation')+'">'+
+    (S.kit.kit.Status==='Active'||S.kit.kit.Status==='Approved'?'<div class="banner small" style="display:block;margin-top:8px">This kit is '+esc(S.kit.kit.Status)+': teachers see your change straight away. For a big change, raise the version in Profile.</div>':'')+
+    (kmdIsVersionPart(p.Title)?'<div class="banner small" style="display:block;margin-top:8px">The table in this part is built from the Version log tab. Write only notes here.</div>':'')+
+    '<div class="kmbar"><button type="button" title="Heading" onclick="kmWrap(\'### \',\'\',\'Heading\')"><b>H</b></button><button type="button" title="Bold" onclick="kmWrap(\'**\',\'**\',\'bold text\')"><b>B</b></button>'+
+    '<button type="button" title="Bullet list" onclick="kmWrap(\'- \',\'\',\'item\')">• List</button><button type="button" title="Numbered list" onclick="kmWrap(\'1. \',\'\',\'step\')">1. List</button>'+
+    '<button type="button" title="Table" onclick="kmTable()">Table</button><button type="button" title="Link" onclick="kmWrap(\'[\',\'](https://)\',\'link text\')">Link</button><span class="small muted" id="km_count" style="margin-left:auto"></span></div>'+
+    '<div class="kmpanes" id="km_panes"><textarea id="km_text" spellcheck="true" oninput="kmChanged()">'+esc(p.Content)+'</textarea><div class="kmd kmprev" id="km_prev" style="display:none"></div></div>'+
+    '<p class="small muted" style="margin:6px 0 0">### heading · **bold** · "- " bullets · "1. " steps · tables: | Column | Column | then | --- | --- |</p>'+
+    '<div class="err" id="km_err"></div><div class="row" style="margin-top:10px"><button class="btn secondary" onclick="kmClose()">Cancel</button><button class="btn" id="km_save" onclick="kmSave()">Save</button></div>');
+  bg.querySelector('.modal').classList.add('kmwide');
+  bg.addEventListener('click',function(e){ if(e.target===bg && kmDirty() && !confirmBox('Close without saving your changes?')){ e.stopImmediatePropagation(); } },true);
+  kmChanged();
+  setTimeout(function(){ var t=$('km_text'); if(t&&!id) $('km_title').focus(); },50);
+}
+function kmDirty(){ return !!(S.kmEdit && $('km_text') && ($('km_text').value!==S.kmEdit.orig || $('km_title').value!==S.kmEdit.origTitle)); }
+function kmClose(){ if(kmDirty() && !confirmBox('Close without saving your changes?')) return; closeModal(); }
+function kmChanged(){ var t=$('km_text'), c=$('km_count'); if(!t) return; var n=t.value.length; c.textContent=n.toLocaleString()+' / 45,000'; c.style.color=n>45000?'var(--bad)':''; if($('km_prev').style.display!=='none') $('km_prev').innerHTML=kmdHtml(t.value)||'<p class="muted">Nothing to show yet.</p>'; }
+function kmMode(m,b){
+  gpSeg(b); var t=$('km_text'), p=$('km_prev'), panes=$('km_panes');
+  t.style.display=m==='preview'?'none':''; p.style.display=m==='write'?'none':''; panes.classList.toggle('both',m==='both');
+  if(m!=='write') p.innerHTML=kmdHtml(t.value)||'<p class="muted">Nothing to show yet.</p>';
+}
+function kmWrap(a,b,ph){
+  var t=$('km_text'), s=t.selectionStart, e=t.selectionEnd, v=t.value, sel=v.slice(s,e)||ph;
+  if(!b && /^(### |- |1\. )$/.test(a)){ // line prefixes: apply to every selected line
+    var ls=v.lastIndexOf('\n',s-1)+1, block=v.slice(ls,e)||ph, n=0;
+    var out=block.split('\n').map(function(l){ n++; return (a==='1. '?n+'. ':a)+l.replace(/^(#+ |- |\d+\. )/,''); }).join('\n');
+    t.value=v.slice(0,ls)+out+v.slice(Math.max(e,ls+(v.slice(ls,e)?block.length:0))); t.selectionStart=ls; t.selectionEnd=ls+out.length;
+  } else { t.value=v.slice(0,s)+a+sel+b+v.slice(e); t.selectionStart=s+a.length; t.selectionEnd=s+a.length+sel.length; }
+  t.focus(); kmChanged();
+}
+function kmTable(){
+  var t=$('km_text'), s=t.selectionStart, v=t.value, tbl=(s&&v.charAt(s-1)!=='\n'?'\n\n':'')+'| Column 1 | Column 2 | Column 3 |\n| --- | --- | --- |\n|  |  |  |\n|  |  |  |\n';
+  t.value=v.slice(0,s)+tbl+v.slice(s); t.selectionStart=t.selectionEnd=s+tbl.length; t.focus(); kmChanged();
+}
+function kmSave(){
+  var E=S.kmEdit, item={Id:E.id||undefined,Title:val('km_title'),Content:$('km_text').value,Updated:E.updated};
+  busy($('km_save'),true,'Saving…');
+  call('apiKitPart',S.token,S.kitCode,E.kind,item).then(function(r){ S.kmEdit=null; closeModal(); S.kitOpenPart[r.Id]=true; kitReload('Saved'); })
+    .catch(function(e){ busy($('km_save'),false,'Save');
+      $('km_err').innerHTML=esc(String(e.message).replace(/^CONFLICT:\s*/,''))+(/^CONFLICT/.test(e.message)?' <button class="linkbtn" onclick="copyText($(\'km_text\').value)">Copy my text</button>':''); });
+}
+
+/* version log */
+function kitLogTab(){
+  var K=S.kit, ed=K.can.edit, h='';
+  h+='<div style="display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap"><div class="small muted">Newest first. Approving a kit adds a row here; so does changing the version in Profile.</div>'+(ed?'<button class="btn sm" onclick="kitLogModal()">＋ Add row</button>':'')+'</div>';
+  h+='<div class="card tbl-wrap" style="padding:6px 10px"><table class="stack kmini"><tr><th>Date</th><th>Version</th><th>Change</th><th>Approved by</th>'+(ed?'<th></th>':'')+'</tr>'+
+    (K.log.length?K.log.map(function(r){ return '<tr><td data-l="Date">'+(r.Date&&!isNaN(new Date(r.Date))?d(r.Date):esc(r.Date||''))+'</td><td data-l="Version"><b>'+esc(r.Version)+'</b></td><td data-l="Change">'+esc(r.Change)+'</td><td data-l="Approved by">'+
+      (/^pending/i.test(r.ApprovedBy)?'<span class="pill warn">'+esc(r.ApprovedBy)+'</span>':esc(r.ApprovedBy))+'</td>'+(ed?'<td><button class="linkbtn" onclick="kitLogModal(\''+esc(r.Id)+'\')">Edit</button></td>':'')+'</tr>'; }).join(''):'<tr><td colspan="5" class="muted">No entries yet.</td></tr>')+'</table></div>';
+  $('kbody').innerHTML=h;
+}
+function kitLogModal(id){
+  var r=id?S.kit.log.filter(function(x){return x.Id===id;})[0]:{Date:isoDay(),Version:'v'+S.kit.kit.Version,Change:'',ApprovedBy:'Pending (Academic Lead)'};
+  modal('<h3>'+(id?'Edit':'Add')+' version log row</h3><div class="row"><div><label>Date</label><input type="date" id="kl_date" value="'+(r.Date&&!isNaN(new Date(r.Date))?isoDay(r.Date):isoDay())+'"></div><div><label>Version</label><input id="kl_ver" value="'+esc(r.Version)+'"></div></div>'+
+    '<label>Change</label><textarea id="kl_chg">'+esc(r.Change)+'</textarea><label>Approved by</label><input id="kl_by" value="'+esc(r.ApprovedBy)+'">'+
+    '<div class="err" id="klerr2"></div><div class="row" style="margin-top:12px">'+(id?'<button class="btn danger" onclick="if(confirmBox(\'Delete this row?\'))call(\'apiKitLogDelete\',S.token,S.kitCode,\''+esc(id)+'\').then(function(){closeModal();kitReload(\'Deleted\');}).catch(function(e){toast(e.message);})">Delete</button>':'')+
+    '<button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" onclick="call(\'apiKitLog\',S.token,S.kitCode,{Id:\''+esc(id||'')+'\'||undefined,Date:val(\'kl_date\'),Version:val(\'kl_ver\'),Change:val(\'kl_chg\'),ApprovedBy:val(\'kl_by\')}).then(function(){closeModal();kitReload(\'Saved\');}).catch(function(e){$(\'klerr2\').textContent=e.message;})">Save</button></div>');
+}
+
+/* ----- teacher: Course Kit card on the course page ----- */
+function kitCourseCard(c){
+  var k=c.kit; if(!k) return '';
+  var cid=c.course.CourseID, sent=k.reports||[];
+  return '<div class="card kcc"><div style="display:flex;gap:12px;align-items:flex-start"><div class="kpi" style="padding:0;border:0;box-shadow:none;background:none"><div class="ic gold">'+ic('kit')+'</div></div>'+
+    '<div style="flex:1;min-width:0"><div class="small muted">Course Kit</div><b style="font-size:15.5px">'+esc(k.Course)+'</b><div class="small muted">'+esc(k.Code)+' · v'+esc(k.Version)+' · '+kitPill(k.Status)+'</div></div></div>'+
+    (k.hidden?'<div class="banner kdraft small" style="margin:10px 0 0">'+ic('lock')+' <span><b>'+esc(k.Status)+'</b>: only the Academic Lead and Admins see this card. Teachers will see it once the kit is Pilot, Approved or Active.</span></div>':'')+
+    (k.Status==='Pilot'?'<div class="small" style="margin-top:8px;color:var(--warn)">Pilot kit: note what works and what does not for your facilitator report.</div>':'')+
+    '<div class="kccbtns"><button class="btn sm" onclick="S.kitTab=\'parts\';kitOpen(\''+esc(k.Code)+'\',\''+esc(cid)+'\')">'+ic('kit')+' Open</button>'+
+    '<button class="btn sm secondary" onclick="kitFile(\''+esc(k.Code)+'\',\'pdf\',this)">'+ic('download')+' PDF</button><button class="btn sm secondary" onclick="kitFile(\''+esc(k.Code)+'\',\'docx\',this)">'+ic('word')+' Word</button>'+
+    (k.SlidesLink?'<a class="btn sm secondary" href="'+esc(k.SlidesLink)+'" target="_blank" rel="noopener">'+ic('slides')+' Slides</a>':
+      k.slideOutline?'<button class="btn sm secondary" title="No slide deck yet: opens the slide outline" onclick="kitOpenSlides(\''+esc(k.Code)+'\',\''+esc(cid)+'\')">'+ic('slides')+' Slides</button>':'<button class="btn sm secondary" disabled title="No slides yet">'+ic('slides')+' Slides</button>')+'</div>'+
+    (k.reportDue?'<div class="kccrep">'+(sent.length?'<span class="small">'+ic('check')+' Facilitator report sent '+d(sent[sent.length-1].Submitted)+' by '+esc(sent[sent.length-1].FacilitatorName)+'</span><button class="linkbtn" onclick="kitReportForm()">Send another</button>':
+      '<span class="small"><b>Course ending:</b> send your facilitator report to the Academic Lead.</span><button class="btn sm" onclick="kitReportForm()">Facilitator report</button>')+'</div>':'')+'</div>';
+}
+function kitOpenSlides(code,cid){
+  S.kitTab='parts'; S.kitOpenPart=S.kitOpenPart||{};
+  kitOpen(code,cid);
+  var wait=setInterval(function(){ if(S.kit&&S.kit.kit.Code===code){ clearInterval(wait); var p=S.kit.parts.filter(function(x){return /slide/i.test(x.Title);})[0]; if(p){ S.kitOpenPart[p.Id]=true; kitDraw(); var el=$('kp_'+p.Id); if(el&&el.scrollIntoView) el.scrollIntoView({block:'start'}); } } },150);
+  setTimeout(function(){ clearInterval(wait); },8000);
+}
+function kitReportForm(){
+  var c=S.course, k=c.kit, n=c.roster.length;
+  var sesN=(c.sessions||[]).length;
+  modal('<h3>Facilitator report</h3><p class="small muted">'+esc(c.course.CourseName)+' · '+esc(k.Code)+' v'+esc(k.Version)+'. Goes to the Academic Lead to improve the kit.</p>'+
+    '<div class="row"><div><label>Sessions delivered</label><input type="number" min="0" id="kr_ses" value="'+(sesN||'')+'"></div><div><label>Learners who started</label><input type="number" min="0" id="kr_start" value="'+(n||'')+'"></div><div><label>Learners who completed</label><input type="number" min="0" id="kr_done"></div></div>'+
+    '<label>How well did the kit work? (1 = poorly, 5 = very well)</label><div class="seg krate">'+[1,2,3,4,5].map(function(x){ return '<button type="button" data-v="'+x+'" onclick="gpSeg(this)">'+x+'</button>'; }).join('')+'</div>'+
+    '<label>What worked well</label><textarea id="kr_ok" placeholder="Activities, timings, materials that worked"></textarea>'+
+    '<label>What should change</label><textarea id="kr_chg" placeholder="What was too long, too hard, missing or unclear"></textarea>'+
+    '<label>Parts or sessions to fix</label><input id="kr_parts" placeholder="e.g. Session 5 timing; Part 7 quiz 2 answer key">'+
+    '<label>Materials and setup</label><input id="kr_mat" placeholder="Computers, internet, printing, slides">'+
+    '<label>Other notes</label><textarea id="kr_notes"></textarea>'+
+    '<div class="err" id="krerr"></div><div class="row" style="margin-top:12px"><button class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" id="krgo" onclick="kitReportSend()">Send report</button></div>');
+}
+function kitReportSend(){
+  var r=document.querySelector('.krate button.on');
+  var f={SessionsDelivered:val('kr_ses'),LearnersStarted:val('kr_start'),LearnersCompleted:val('kr_done'),Rating:r?r.getAttribute('data-v'):'',WhatWorked:val('kr_ok'),WhatToChange:val('kr_chg'),PartsToFix:val('kr_parts'),Materials:val('kr_mat'),Notes:val('kr_notes')};
+  busy($('krgo'),true,'Sending…');
+  call('apiKitReport',S.token,S.course.course.CourseID,f).then(function(x){ closeModal(); toast('Report sent to '+x.emailedTo+'. Thank you!'); openCourse(S.course.course.CourseID); })
+    .catch(function(e){ busy($('krgo'),false,'Send report'); $('krerr').textContent=e.message; });
+}
+
+/* ----- students: learner handbook page ----- */
+function kitHandbook(courseId,btn){
+  var lab=btn.innerHTML; btn.disabled=true; btn.textContent='Preparing…';
+  call('apiKitHandbook',S.token,courseId).then(function(r){ kitB64Download(r); }).catch(function(e){ toast(e.message); }).then(function(){ btn.disabled=false; btn.innerHTML=lab; });
 }
 
 /* ---------- start ---------- */
